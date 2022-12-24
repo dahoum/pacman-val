@@ -1,6 +1,8 @@
 # PacMan of Val
 
-https://dahoum.wales/the-pacman-as-a-nursery-32ba07b282b1
+* https://dahoum.wales/the-pacman-as-a-nursery-32ba07b282b1
+* Goal, we do not need the DOs we need the skills in you.
+  * If you do not understand something, take your time, until you understand it.
 
 ## 24 December 2022
 
