@@ -1,5 +1,7 @@
 # PacMan of Val
 
+https://dahoum.wales/the-pacman-as-a-nursery-32ba07b282b1
+
 ## 24 December 2022
 
 * Do not look for any PacMan code! You should write it all ;) This is the goal ;) `agreed`
