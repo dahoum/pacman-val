@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.appendChild(square)
         squares.push(square)
   
-        //add layout to the board
         if(layout[i] === 0) {
           squares[i].classList.add('pac-dot')
         } else if (layout[i] === 1) {
