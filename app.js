@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // const scoreDisplay = document.getElementById('score')
-    const width = 28
-    let score = 0
     const grid = document.querySelector('.grid')
     const layout = [
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -34,15 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
       1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     ]
-    // 0 - pac-dots
+    // 0 - dots
     // 1 - wall
-    // 2 - ghost-lair
-    // 3 - power-pellet
+    // 2 - ghost-line
+    // 3 - power
     // 4 - empty
   
     const squares = []
   
-    //create your board
     function createBoard() {
       for (let i = 0; i < layout.length; i++) {
         const square = document.createElement('div')
