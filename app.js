@@ -36,15 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2 - ghost-line
     // 3 - power
     // 4 - empty
-  
+    // TODO
+    // You will need more elements
+    // 4 x corners
+    // etc.
+
     const squares = []
-  
+
     function createBoard() {
       for (let i = 0; i < layout.length; i++) {
         const square = document.createElement('div')
         grid.appendChild(square)
         squares.push(square)
-  
+
         if(layout[i] === 0) {
           squares[i].classList.add('pac-dot')
         } else if (layout[i] === 1) {
@@ -57,5 +61,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     createBoard()
-  
+
 });
