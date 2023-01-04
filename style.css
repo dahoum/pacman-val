@@ -1,14 +1,15 @@
-.grid {
+html { height:100%; }
+.spritesheet {
     display: flex;
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
-    border: solid black 5px;
+    border: solid black 6px;
     background-color: black;
 
 }
   
-.grid div {
+.spritesheet div {
     width: 20px;
     height: 20px;
 }
@@ -19,16 +20,35 @@
     box-sizing: border-box;
     border-radius: 10px;
 }
-
+.left{
+    background-color: black;
+    border-right-style: solid 1px #000099;
+}
+.bt{
+    border-bottom: solid #000099;
+}
+.bl{
+    background-color: #000099;
+    border-bottom-left-radius: 20px 20px ;
+}
 .wall {
     background-color: #000099;
+    border: 1px black  ;
+
 }
-.pac{
-    height: 22px;
-    width: 22px;
-    position: relative;
+.corner{
+    background-color: #000099;
+    border-bottom-right-radius: 20px 20px;
+}
+
+.pacman{
+    position:absolute; 
+    bottom:300px;
+    height: 30px;
+    width: 30px;
+    /* position: relative;
     top: -102px;
-    right: -10px;
+    right: -10px; */
 }
 
 .power-pellet {
@@ -43,63 +63,4 @@
     position: relative;
     top: -300px;
     right: -230px;
-}
-
- 
- 
- 
- 
- 
- /* .main {
-    max-width: 375px;  
-     overflow: hidden; 
-     max-width: initial;
-    text-indent: -140%;
-}
-.path{
-    background: #eee url(./img.png) left center;
-    width: 220px;
-    height:250px;
-    border: 1px solid red;
-    text-indent: -9999px;
-    z-index: 0;
-}  */
-
-
-.main{
-    /* display: inline; */
-    width: 225px;
-    height: 250px;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.main .img{
-    margin: 0px;
-    /* margin-left: -229px;
-    margin-bottom: -229px;
-    margin-right: -229px; */
-}
-
-.mains{
-    width: 225px;
-    height: 250px;
-    overflow: hidden;
-    z-index: 0;
-}
-.mains .sec{
-    margin-left: -229px;
-    margin-bottom: -229px;
-    margin-right: -229px;
-}
-.mainb{
-    width: 230px;
-    height: 250px;
-    overflow: hidden;
-    z-index: 0;
-}
-.mainb .third{
-    margin-left: -455px;
-    margin-bottom: -230px;
-    margin-right: 100px;
 }

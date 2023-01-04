@@ -1,3 +1,11 @@
+#4 January 2023
+Homework val
+  *Fix the structure of spreetshits `val`
+    *make colors a little similar
+  *Make pacman to move but I must fix some problems with height
+
+
+
 # 3 January 2023
 
 17:45 val et dahoum

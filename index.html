@@ -9,34 +9,59 @@
     <title>PackMan</title>
 </head>
 <body>
-    <div class="grid"></div>
+    <div class="spritesheet"></div>
     <img class="en" src="orange enemy.png">
     <img class="en" src="green enemy.png">
     <img class="en" src="pink enemy.png">
     <img class="en" src="red enemy.png">
-    <img class="pac" src="pacman.png">
-    <!-- <div>
-        <p >
-        <img class="main" src="img.png" alt="">
-    </p>
-    <p >
-       <img class="path" src="img.png" alt="">
-    </p> 
-    </div> -->
-   <div>
-    <img src="map.png">
-   </div>
+
+    <span id="pos"></span>
+    <img id="pacman" class="pacman" src="pacman.png">
     
 
-     <div class="main">
-        <img src="img.png" class="img" />
-    </div>
-    <div class="mains">
-        <img src="img.png" class="sec" />
-    </div>
-    <div class="mainb">
-        <img src="img.png" class="third" />
-    </div> 
+   <!-- <div>
+    <img src="map.png">
+   </div>
+     -->
 
+   <script>
+    let moveX = 0, moveY = 0; 
+    const speed = 10;  
+    let w = 690;  let h = 690;
+        let view_W = w - 110;  let view_H = h - 100;
+    window.addEventListener("keydown", Control);
+    function Control() 
+    {      
+       let key = event.key;
+       let pacman = document.getElementById('pacman');
+       let pos = document.getElementById('pos');
+
+          if (key == "ArrowUp" && moveY < view_H)  
+          {      moveY = moveY + speed;  
+            pacman.style.bottom = moveY + "px";
+            pacman.style.left = moveX + "px";    
+          }
+          else if (key == "ArrowDown" && moveY > 0)  
+          { 
+              moveY = moveY - speed; 
+              pacman.style.bottom = moveY + "px";
+          }
+          else if (key == "ArrowLeft" && moveX > 0) 
+          { 
+              moveX = moveX - speed; 
+              pacman.style.left = moveX + "px";
+          }
+          else if (key == "ArrowRight" && moveX < view_W)  
+          { 
+              moveX = moveX + speed; 
+              pacman.style.left = moveX + "px";
+          }
+          else 
+          {  
+            pacman.style.left = moveX + "px"; 
+            pacman.style.bottom = moveY + "px";
+          }
+   }  
+</script>
 </body>
 </html>

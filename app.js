@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const grid = document.querySelector('.grid')
+    const spritesheet = document.querySelector('.spritesheet')
     const layout = [
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
       1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -29,13 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
       1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
       1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
       1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+      8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,
     ]
     // 0 - dots
     // 1 - wall
     // 2 - ghost-line
     // 3 - power
     // 4 - empty
+    // 6 - bottom right corners
+    // 7 - bottom walls
+    // 8 - bottom left corners
+    // 9 - left corners
+
     // TODO
     // You will need more elements
     // 4 x corners
@@ -46,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createBoard() {
       for (let i = 0; i < layout.length; i++) {
         const square = document.createElement('div')
-        grid.appendChild(square)
+        spritesheet.appendChild(square)
         squares.push(square)
 
         if(layout[i] === 0) {
@@ -57,6 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[i].classList.add('ghost-lair')
         } else if (layout[i] === 3) {
           squares[i].classList.add('power-pellet')
+        }else if (layout[i] === 6){
+            squares[i].classList.add('corner')
+        }else if (layout[i] === 7){
+            squares[i].classList.add('bt')
+        }else if (layout[i] === 8){
+            squares[i].classList.add('bl')
+        }else if (layout[i] === 9){
+            squares[i].classList.add('left')
         }
       }
     }
