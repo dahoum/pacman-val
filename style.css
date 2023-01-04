@@ -4,6 +4,7 @@
     width: 560px;
     height: 560px;
     border: solid black 5px;
+    background-color: black;
 
 }
   
@@ -13,8 +14,8 @@
 }
 
 .pac-dot {
-    background-color:  #F88379;   
-    border: 6px solid white;
+    background-color:  white;   
+    border: 6px solid black;
     box-sizing: border-box;
     border-radius: 10px;
 }
@@ -31,7 +32,7 @@
 }
 
 .power-pellet {
-    background-color: #F88379;
+    background-color: white;
     border-radius: 10px;
 }
 
