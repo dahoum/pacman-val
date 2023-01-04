@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
       1,1,1,1,1,1,0,1,1,1,1,1,4,1,1,4,1,1,1,1,1,0,1,1,1,1,1,1,
       1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,1,1,1,1,1,
+      1,1,1,1,1,1,0,1,1,4,1,1,1,10,10,1,1,1,4,1,1,0,1,1,1,1,1,1,
       1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
       4,4,4,4,4,4,0,4,4,4,1,2,2,2,2,2,2,1,4,4,4,0,4,4,4,4,4,4,
       1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7 - bottom walls
     // 8 - bottom left corners
     // 9 - left corners
+    //10 - ghost magic line
 
     // TODO
     // You will need more elements
@@ -70,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[i].classList.add('bl')
         }else if (layout[i] === 9){
             squares[i].classList.add('left')
+        }else if (layout[i] === 10){
+            squares[i].classList.add('ghost')
         }
       }
     }

@@ -13,7 +13,9 @@ html { height:100%; }
     width: 20px;
     height: 20px;
 }
-
+.ghost{
+    background-color: pink;
+}
 .pac-dot {
     background-color:  white;   
     border: 6px solid black;
