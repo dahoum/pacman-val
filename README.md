@@ -2,6 +2,9 @@
 
 * Try to make spritesheet with nested array
 
+* Mantra
+  * The longer you go in the wrong direction the less you want to come back.
+
 # 4 January 2023
 
 Homework val

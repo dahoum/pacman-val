@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            function function_append_child(){
+
+                var parent_div = document.getElementById("parent_div");
+
+                var child_div = document.createElement("div");
+
+                parent_div.appendChild(child_div);
+
+                var child_div = document.createElement("div");
+
+                parent_div.appendChild(child_div);
+
+            }
+        </script>
+    </head>
+    <body onload="function_append_child();">
+        <div id="parent_div"></div>
+    </body>
+</html>

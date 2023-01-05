@@ -66,28 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
       [1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],
       [1],[1],[1],[1]
     ]
-    
 
     function createBoard() {
-        let mass;
-         
+
+      var spritesheet = document.getElementById("spritesheet");
+
       for (let i = 0; i < layout.length; i++) {
-        console.log("first for");
-        mass = layout[i]
-        const square = document.createElement('div')
-        spritesheet.appendChild(square)
-        for(let j = 0; j < mass.length; j++){
-          console.log("sec for");
-          squares[j].push(square)
-          console.log(squares[j]);
-           
-        
-          
+
+        // const square = document.createElement('div')
+        // spritesheet.appendChild(square)
+
+        for(let j = 0; j < layout[i].length; j++){
+
+          // squares[j].push(square)
+          var element = document.createElement("div");
+          spritesheet.appendChild(element);
 
         // if(mass[i] === 0) {
         //   console.log(mass[j]);
         //   squares[i][j].classList.add('pac-dot')
-        // } 
+        // }
         // else if (mass[j] === 1) {
         //   squares[j].classList.add('wall')
         // } else if (mass[j] === 2) {
@@ -105,11 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // }else if (layout[i] === 10){
         //     squares[i].classList.add('ghost')
         // }
-     
+
         }
-       
+
       }
-       console.log(mass.length);
     }
     createBoard()
 
