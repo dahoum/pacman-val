@@ -1,3 +1,4 @@
+
 #4 January 2023
 Homework val
   *Fix the structure of spreetshits `val`
