@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spritesheet.appendChild(square)
         for(let j = 0; j < mass.length; j++){
           console.log("sec for");
-          squares.push(square)
+          squares[j].push(square)
           console.log(squares[j]);
            
         
