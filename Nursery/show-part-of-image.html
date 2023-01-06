@@ -5,15 +5,15 @@
         body {
             background-color: aqua;
         }
-        
+
         .container {
             position: relative;
         }
-        
+
         #clip {
             position: absolute;
             /* clip-path: circle(50px at 0 100px); */
-            clip-path: inset(0px 425px 480px 0px);
+            clip-path: inset(0px 405px 480px 20px) view-box;
             /* clip-path: rect(0 0, 0 100, 100 100, 100 0); */
             /* clip-path: rectangle(1px 1px 1px 0px); */
         }
@@ -27,6 +27,7 @@
     <div class="container">
         <img id="clip" src="../map.png" />
     </div>
+    <p>fffff</p>
 </body>
 
 </html>
