@@ -1,23 +1,32 @@
 <html>
-    <head>
-        <style>
-            .container {
+
+<head>
+    <style>
+        body {
+            background-color: aqua;
+        }
+        
+        .container {
             position: relative;
-            }
-            #clip {
+        }
+        
+        #clip {
             position: absolute;
-            /* https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path */
-            clip-path: circle(50px at 0 100px);
+            /* clip-path: circle(50px at 0 100px); */
+            clip-path: inset(0px 425px 480px 0px);
             /* clip-path: rect(0 0, 0 100, 100 100, 100 0); */
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <img src="../img.png" />
-          </div>
-          <div class="container">
-            <img id="clip" src="../img.png" />
-          </div>
-    </body>
+            /* clip-path: rectangle(1px 1px 1px 0px); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="../img.png" />
+    </div>
+    <div class="container">
+        <img id="clip" src="../map.png" />
+    </div>
+</body>
+
 </html>

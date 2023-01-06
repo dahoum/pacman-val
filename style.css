@@ -1,4 +1,7 @@
-html { height:100%; }
+html {
+    height: 100%;
+}
+
 #spritesheet {
     display: flex;
     flex-wrap: wrap;
@@ -14,39 +17,9 @@ html { height:100%; }
     height: 20px;
 }
 
-.ghost{
-    background-color: pink;
-}
-.pac-dot {
-    background-color:  white;
-    border: 6px solid black;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-.left{
-    background-color: black;
-    border-right-style: solid 1px #000099;
-}
-.bt{
-    border-bottom: solid #000099;
-}
-.bl{
-    background-color: #000099;
-    border-bottom-left-radius: 20px 20px ;
-}
-.wall {
-    background-color: #000099;
-    border: 1px black  ;
-
-}
-.corner{
-    background-color: #000099;
-    border-bottom-right-radius: 20px 20px;
-}
-
-.pacman{
-    position:absolute;
-    bottom:300px;
+.pacman {
+    position: absolute;
+    bottom: 300px;
     height: 30px;
     width: 30px;
     /* position: relative;
@@ -54,16 +27,20 @@ html { height:100%; }
     right: -10px; */
 }
 
-.power-pellet {
-    background-color: white;
-    border-radius: 10px;
-}
-
-.en{
+.en {
     height: 20px;
     width: 20px;
     z-index: 2;
     position: relative;
     top: -300px;
     right: -230px;
+}
+
+.container {
+    position: relative;
+}
+
+.clip {
+    position: absolute;
+    /* clip-path: inset(0px 425px 480px 0px); */
 }

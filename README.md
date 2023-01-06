@@ -1,3 +1,13 @@
+# 6 January 2023
+
+* Today
+  * Set to all divs class name
+  * Create images and append each image to each div 
+  * Set a class name and src
+  * Understand concept - show part of image
+  * Try - make cut images to match the divs
+
+
 # 5 January 2023
 
 * Try to make spritesheet with nested array
