@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4 x corners
     // etc.
 
-    const squares = [
+    let squares = [
       [1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],
       [1],[1],[1],[1]
     ]
@@ -75,11 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("first for");
         mass = layout[i]
         const square = document.createElement('div')
-        spritesheet.appendChild(square)
+        
         for(let j = 0; j < mass.length; j++){
           console.log("sec for");
-          squares[j].push(square)
-          console.log(squares[j]);
+          // squares[i][j].push(square)
+          spritesheet.appendChild(square)
+          // console.log(squares[j]);
            
         
           
