@@ -1,23 +1,24 @@
 html { height:100%; }
-.spritesheet {
+#spritesheet {
     display: flex;
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
     border: solid black 6px;
-    background-color: black;
-
+    /* background-color: black;
+     */
 }
-  
-.spritesheet div {
+
+#spritesheet div {
     width: 20px;
     height: 20px;
 }
+
 .ghost{
     background-color: pink;
 }
 .pac-dot {
-    background-color:  white;   
+    background-color:  white;
     border: 6px solid black;
     box-sizing: border-box;
     border-radius: 10px;
@@ -44,7 +45,7 @@ html { height:100%; }
 }
 
 .pacman{
-    position:absolute; 
+    position:absolute;
     bottom:300px;
     height: 30px;
     width: 30px;
