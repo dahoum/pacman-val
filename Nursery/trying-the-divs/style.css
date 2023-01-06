@@ -1,0 +1,46 @@
+html {
+    height: 100%;
+}
+
+#spritesheet {
+    display: flex;
+    flex-wrap: wrap;
+    width: 560px;
+    height: 560px;
+    border: solid black 6px;
+    /* background-color: black;
+     */
+}
+
+#spritesheet div {
+    width: 20px;
+    height: 20px;
+}
+
+.pacman {
+    position: absolute;
+    bottom: 300px;
+    height: 30px;
+    width: 30px;
+    /* position: relative;
+    top: -102px;
+    right: -10px; */
+}
+
+.en {
+    height: 20px;
+    width: 20px;
+    z-index: 2;
+    position: relative;
+    top: -300px;
+    right: -230px;
+}
+
+.container {
+    position: relative;
+}
+
+.clip {
+    position: absolute;
+    clip-path: inset(0px 425px 480px 0px);
+}
