@@ -1,3 +1,9 @@
+# 8 January 2023
+
+* Today
+   * Set backgrouds to divs
+   * Make a logic to make a spritesheet 
+
 # 6 January 2023
 
 * Today

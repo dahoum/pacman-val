@@ -5,17 +5,18 @@ html {
 #spritesheet {
     display: flex;
     flex-wrap: wrap;
-    width: 560px;
-    height: 560px;
+    width: 224px;
+    height: 247px;
     border: solid black 6px;
     /* background-color: black;
      */
 }
 
-#spritesheet div {
+
+/* #spritesheet div {
     width: 20px;
     height: 20px;
-}
+} */
 
 .pacman {
     position: absolute;
