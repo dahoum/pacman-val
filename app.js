@@ -1,102 +1,49 @@
-let layout = []
+//
+// This is the Game Engine.
+//
+// The execution begins when it is loaded.
+//
+
+// The whole Game Engine is inside.
 document.addEventListener('DOMContentLoaded', () => {
 
     //
-    // layout = [
-    //           [
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"],
-    //            [5,on,"0 0, 100 100, 100 0, 0 100"], // THIS IS A CHERRY ON THE SAME COORDINATES
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"],
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"],
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"]
-    //           ]
-    //           [
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"],
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"],
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"],
-    //            [1,on,"0 0, 100 100, 100 0, 0 100"]
-    //           ]
-    layout = [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 10, 10, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],
-            [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-            [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
-        ]
-        // 0 - dots
-        // 1 - wall
-        // 2 - ghost-line
-        // 3 - power
-        // 4 - empty
-        // 6 - bottom right corners
-        // 7 - bottom walls
-        // 8 - bottom left corners
-        // 9 - left corners
-        //10 - ghost magic line
+    //
+    // Initialisation
+    //
+    //
+
+    //
+    // Values
+    //
 
     // TODO
-    // You will need more elements
-    // 4 x corners
-    // etc.
-    var spritesheet = document.getElementById("spritesheet");
-
-    function createBoard() {
-        let posy = 0;
-        for (let i = 0; i < layout.length; i++) {
-
-            let posx = 0;
-            for (let j = 0; j < layout[i].length; j++) {
-                var element = document.createElement("div");
-                element.style.height = "8.82px";
-                element.style.width = "8px";
-                element.classList.add('container')
-                element.style.backgroundImage = "url('./img.png')"
-
-                let counter = 0;
-                if (counter <= j) {
-                    element.style.backgroundPositionX = `${posx}px`
-                    element.style.backgroundPositionY = `${posy}px`
-                    posx -= 8
-                    counter++
-                }
-
-                spritesheet.appendChild(element);
-            }
-            posy -= 8.82
-
-        }
-
-    }
-    createBoard()
-
-    var xpos = 100;
-    var ypos = 100;
+    // Later we can make it in a function, so that we can "reset" the game from w/in the game.
+    // Initial coordinates of the PacMan.
+    var xpos = 121;
+    var ypos = 200;
+    // Initial speed of the PacMan.
     var xspeed = 1;
     var yspeed = 0;
+    // Game Speed
     var maxSpeed = 1;
+
+
+
+    createBoard()
+
+    //
+    //
+    // End of creating of the labyrint
+    //
+    //
+
+    //
+    // Place the Actors
+    //
+
+    document.getElementById('pacman').style.left = xpos;
+    document.getElementById('pacman').style.top = ypos;
 
     function moveP(e) {
         xpos = xpos + xspeed;
