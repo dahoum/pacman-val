@@ -1,11 +1,18 @@
 <html>
+
 <head>
     <link rel="stylesheet" href="style.css">
-    <script src="./app.js" ></script>
+    <script src="./app.js"></script>
     <title>PackMan</title>
 </head>
+
 <body>
-    <div id="spritesheet"></div>
+    <img id="pacman" class="pacman" src="pacman.png">
+    <!-- <img id="zebra" src="http://macloo.com/images/african_animals/zebra.png" alt="Zebra"> -->
+    <div id="spritesheet">
+
+    </div>
+
 
     <!-- img class="en" src="orange enemy.png">
     <img class="en" src="green enemy.png">
@@ -13,52 +20,12 @@
     <img class="en" src="red enemy.png" -->
 
     <span id="pos"></span>
-    <img id="pacman" class="pacman" src="pacman.png">
+    <div>
+
+    </div>
 
 
-   <!-- <div>
-    <img src="map.png">
-   </div>
-     -->
 
-   <script>
-    let moveX = 0, moveY = 0;
-    const speed = 10;
-    let w = 690;  let h = 690;
-        let view_W = w - 110;  let view_H = h - 100;
-    window.addEventListener("keydown", Control);
-    function Control()
-    {
-       let key = event.key;
-       let pacman = document.getElementById('pacman');
-       let pos = document.getElementById('pos');
-
-          if (key == "ArrowUp" && moveY < view_H)
-          {      moveY = moveY + speed;
-            pacman.style.bottom = moveY + "px";
-            pacman.style.left = moveX + "px";
-          }
-          else if (key == "ArrowDown" && moveY > 0)
-          {
-              moveY = moveY - speed;
-              pacman.style.bottom = moveY + "px";
-          }
-          else if (key == "ArrowLeft" && moveX > 0)
-          {
-              moveX = moveX - speed;
-              pacman.style.left = moveX + "px";
-          }
-          else if (key == "ArrowRight" && moveX < view_W)
-          {
-              moveX = moveX + speed;
-              pacman.style.left = moveX + "px";
-          }
-          else
-          {
-            pacman.style.left = moveX + "px";
-            pacman.style.bottom = moveY + "px";
-          }
-   }
-</script>
 </body>
+
 </html>

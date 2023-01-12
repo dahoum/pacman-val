@@ -1,3 +1,27 @@
+# 12 January 2023
+
+* Today
+   * Try to move pacman 
+   * Change logic
+
+# 11 January 2023
+
+* Today
+   * Search way to move pacman 
+   * Make a logic to move it in layout
+
+# 10 January 2023
+
+* Today
+   * Search for game loop
+   * Try move pacman from js file logic
+   
+# 9 January 2023
+
+* Today
+   * Search for game loop
+   * Try move pacman from js file logic
+
 # 8 January 2023
 
 * Today
