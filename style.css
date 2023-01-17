@@ -12,11 +12,11 @@ html {
 
 .pacman {
     position: absolute;
-    height: 8px;
-    width: 9px;
-    /* position: relative;
-    top: -102px;
-    right: -10px; */
+    height: 18px;
+    width: 18px;
+    background-image: url(img.png);
+    /* background-repeat: no-repeat, repeat; */
+    background-position: 890px 2px;
 }
 
 .en {

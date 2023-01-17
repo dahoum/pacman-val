@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    createBoard()
 
     //
     //
@@ -42,37 +41,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Place the Actors
     //
 
-    document.getElementById('pacman').style.left = xpos;
-    document.getElementById('pacman').style.top = ypos;
+    // document.getElementById('pacman').style.left = xpos;
+    // document.getElementById('pacman').style.top = ypos;
 
-    function moveP(e) {
-        xpos = xpos + xspeed;
-        ypos = ypos + yspeed;
-        switch (e.keyCode) {
-            case 37:
-                // left
-                document.getElementById('pacman').style.left = xpos;
-                document.getElementById('pacman').style.top = ypos;
-                break
-            case 38:
-                // up
-                document.getElementById('pacman').style.left = xpos;
-                document.getElementById('pacman').style.top = ypos;
-                break
-            case 39:
-                // right
-                document.getElementById('pacman').style.left = xpos;
-                document.getElementById('pacman').style.top = ypos;
-                break
-            case 40:
-                // down
-                document.getElementById('pacman').style.left = xpos;
-                document.getElementById('pacman').style.top = ypos;
-                break
-        }
-    }
-    // yspeed = Math.max(yspeed - 1, -1 * maxSpeed);
-    document.addEventListener('keyup', moveP)
+    // function moveP(e) {
+    //     xpos = xpos + xspeed;
+    //     ypos = ypos + yspeed;
+    //     switch (e.keyCode) {
+    //         case 37:
+    //             // left
+    //             document.getElementById('pacman').style.left = xpos;
+    //             document.getElementById('pacman').style.top = ypos;
+    //             break
+    //         case 38:
+    //             // up
+    //             document.getElementById('pacman').style.left = xpos;
+    //             document.getElementById('pacman').style.top = ypos;
+    //             break
+    //         case 39:
+    //             // right
+    //             document.getElementById('pacman').style.left = xpos;
+    //             document.getElementById('pacman').style.top = ypos;
+    //             break
+    //         case 40:
+    //             // down
+    //             document.getElementById('pacman').style.left = xpos;
+    //             document.getElementById('pacman').style.top = ypos;
+    //             break
+    //     }
+    // }
+    // // yspeed = Math.max(yspeed - 1, -1 * maxSpeed);
+    // document.addEventListener('keyup', moveP)
 
 });
 
