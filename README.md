@@ -1,15 +1,9 @@
-# 12 January 2023
+# 16 January 2023
 
 * Today
-   * Try to move pacman
-   * Change logic
+   * make pacman div to have background from other picture 
+   * make function which make pacman to move (function is in other file)
 
-18:00 val et dahoum
-
-* Today
-  * See the challenges around moving PacMan `in progress`
-  * We created Initiation Section/ Logic `done`
-  * We placed PacMan on the right starting position `done`
 * Backlog
   * Game Loop `val`
   * Follow the array for the movement of the PacMan and Ghosts `val`
@@ -36,58 +30,3 @@ PacMan
     * https://pacman-val.netlify.app
 * Architecture
   * We will use the sprite sheet vs individual images, because it is the classic approach and you will learn more about image processing and management this way `dahoum`
-
-# 11 January 2023
-
-* Today
-   * Search way to move pacman
-   * Make a logic to move it in layout
-
-# 10 January 2023
-
-* Today
-   * Search for game loop
-   * Try move pacman from js file logic
-
-# 9 January 2023
-
-* Today
-   * Search for game loop
-   * Try move pacman from js file logic
-
-# 8 January 2023
-
-* Today
-   * Set backgrouds to divs
-   * Make a logic to make a spritesheet
-
-# 6 January 2023
-
-* Today
-  * Set to all divs class name
-  * Create images and append each image to each div
-  * Set a class name and src
-  * Understand concept - show part of image
-  * Try - make cut images to match the divs
-
-# 5 January 2023
-
-* Try to make spritesheet with nested array
-
-* Mantra
-  * The longer you go in the wrong direction the less you want to come back.
-
-# 4 January 2023
-
-Homework val
-
-* Fix the structure of spreetshits `val`
-  * make colors a little similar
-  * Make pacman to move but I must fix some problems with height
-
-Homework val
-
-  * Fix the structure of sprite sheets `val` `done`
-    * One T is still missing `val`
-  * Try to create several (no all) elements to be w/ correct design `val` `done`
-    * Try w/ CSS cutouts `val`
