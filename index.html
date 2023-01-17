@@ -9,6 +9,7 @@
     <script src="./app.js"></script>
     <script src="./createLabyrint.js"></script>
     <script src="./move.js"></script>
+    <script src="./enemy.js"></script>
 </head>
 
 <body>
@@ -19,19 +20,32 @@
     <!-- onload="gameLoop()" onkeydown="keyDown(event)" onkeyup="keyUp(event)" -->
 
     <body>
+        <img id="item" src="green enemy.png" width="10" height="10">
+        <!--        
+            <img id="a" class="a" src="orange enemy.png">
+            <img id="b" class="b" src="green enemy.png">
+            <img id="c" class="c" src="pink enemy.png">
+            <img id="d" class="d" src="red enemy.png"> -->
 
 
-
-
-        <!-- img class="en" src="orange enemy.png">
-        <img class="en" src="green enemy.png">
-        <img class="en" src="pink enemy.png">
-        <img class="en" src="red enemy.png" -->
 
         <span id="pos"></span>
         <div>
 
         </div>
+        <script>
+            var object = document.getElementById('item');
+
+
+            // while (true) {
+            //     var x = Math.floor(Math.random() * 200);
+            //     var y = Math.floor(Math.random() * 200);
+            //     object.style.top = x + 'px';
+            //     object.style.left = y + 'px';
+
+
+            // }
+        </script>
 
         <!-- <script>
             var xpos = 100;

@@ -56,6 +56,7 @@ function slowDownY() {
         yspeed = yspeed + 1;
 }
 
+
 function gameLoop() {
     xpos = xpos + xspeed;
     ypos = ypos + yspeed;
@@ -92,8 +93,6 @@ function gameLoop() {
 
     // loop
     setTimeout("gameLoop()", 10);
-
-
 }
 
 function keyDown(e) {
