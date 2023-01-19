@@ -12,9 +12,9 @@ html {
 
 .pacman {
     position: absolute;
-    height: 18px;
-    width: 18px;
-    background-image: url(img.png);
+    height: 8px;
+    width: 8.92px;
+    background-image: url(./images/img.png);
     /* background-repeat: no-repeat, repeat; */
     background-position: 890px 2px;
 }
