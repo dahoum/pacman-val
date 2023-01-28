@@ -1,3 +1,9 @@
+//
+//
+// Here are constants
+//
+//
+
 let layout = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -28,11 +34,21 @@ let layout = [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
 ]
+
+//
+//
+// Here are the initial states
+//
+//
+
+// This is state of the PacMan
 var xpos = 121;
 var ypos = 200;
-var xspeed = 1;
+var xspeed = 0;
 var yspeed = 0;
 var maxSpeed = 1;
+
+// This is state of the Enemy
 var xposE = 121;
 var yposE = 200;
 var xspeedE = 1;
@@ -114,6 +130,14 @@ function slowDownY() {
 
 
 function gameLoop() {
+
+    //
+    //
+    // Here are the Brains
+    //
+    //
+
+    // This is the state of the PacMan
     xpos = xpos + xspeed;
     ypos = ypos + yspeed;
 
@@ -130,8 +154,21 @@ function gameLoop() {
     } else {
 
     }
+
+    //
+    //
+    // Execution of the decisions by the Brains
+    //
+    //
+
     pacman.style.left = xpos;
     pacman.style.top = ypos;
+
+    upPressed    = window.localStorage.getItem("keyPressedUp");
+    downPressed  = window.localStorage.getItem("keyPressedDown");
+    rightPressed = window.localStorage.getItem("keyPressedRight");
+    leftPressed  = window.localStorage.getItem("keyPressedLeft");
+
     if (upPressed == 1)
         yspeed = Math.max(yspeed - 1, -1 * maxSpeed);
     if (downPressed == 1)
@@ -147,34 +184,29 @@ function gameLoop() {
         slowDownX();
 
     setTimeout("gameLoop()", 10);
-}
 
-function keyDown(e) {
-    let code = e.keyCode ? e.keyCode : e.which;
-    if (code == 38)
-        upPressed = 1;
-    console.log("da");
-    if (code == 40)
-        downPressed = 1;
-    if (code == 37)
-        leftPressed = 1;
-    if (code == 39)
-        rightPressed = 1;
-}
+} // END of gameloop()
 
-function keyUp(e) {
-    let code = e.keyCode ? e.keyCode : e.which;
-    if (code == 38)
-        upPressed = 0;
-    if (code == 40)
-        downPressed = 0;
-    if (code == 37)
-        leftPressed = 0;
-    if (code == 39)
-        rightPressed = 0;
-}
 document.addEventListener("DOMContentLoaded", gameLoop)
     // document.addEventListener("DOMContentLoaded", enemyMove)
 
-document.addEventListener("keydown", keyDown)
-document.addEventListener("keyup", keyUp)
+document.addEventListener("keydown", (event) => {
+    let code = event.keyCode ? event.keyCode : event.which;
+
+    // Show which key is pressed.
+    document.getElementById("keydown").innerHTML = code;
+
+    if (code == 38)
+       // upPressed = 1;
+        window.localStorage.setItem("keyPressedUp", "1");
+    console.log("da");
+    if (code == 40)
+        // downPressed = 1;
+        window.localStorage.setItem("keyPressedDown", "1");
+    if (code == 37)
+        // leftPressed = 1;
+        window.localStorage.setItem("keyPressedLeft", "1");
+    if (code == 39)
+        // rightPressed = 1;
+        window.localStorage.setItem("keyPressedRight", "1");
+}, true);

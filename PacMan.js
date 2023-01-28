@@ -4,6 +4,11 @@
 // The execution begins when it is loaded.
 //
 
+// Reset the Game on Start
+
+// We clear the localStorage on Start in order to forget the pressed keys, etc.
+window.localStorage.clear();
+
 // The whole Game Engine is inside.
 document.addEventListener('DOMContentLoaded', () => {
 

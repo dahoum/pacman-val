@@ -1,7 +1,21 @@
+# 28 January 2023
+
+val et dahoum
+
+* Discuss the GameLoop and it components `done`
+* Added comments in the code to improve the readability `done`
+* Combine the addEventListener and the function it calls in one block so that there is more order `done`
+* Make the movement to continuie on keyup `done`
+
+Homework
+
+* Fix the game so that the movement works in all direction after it has started `val`
+  * Do not care that PacMan leaves the labyrinth `val`
+
 # 16 January 2023
 
 * Today
-   * make pacman div to have background from other picture 
+   * make pacman div to have background from other picture
    * make function which make pacman to move (function is in other file)
 
 * Backlog
