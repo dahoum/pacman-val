@@ -53,9 +53,10 @@ let maxHeight = 247;
 let currentPosition = 0;
 let curentMovingDirection = null;
 let requectMovingDirection = null;
-pacman = document.getElementById('pacman')
+
 
 function getPacman() {
+    pacman = document.getElementById('pacman')
     for (let row = 0; row < layout.length; row++) {
         for (let column = 0; column < layout[row].length; column++) {
             let tile = layout[row][column];

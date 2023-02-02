@@ -46,25 +46,17 @@ var xpos = 121;
 var ypos = 200;
 var xspeed = 0;
 var yspeed = 0;
-var maxSpeed = 1;
 
 // This is state of the Enemy
 var xposE = 121;
 var yposE = 200;
-var xspeedE = 1;
+var xspeedE = 0;
 var yspeedE = 0;
-var maxSpeedE = 1;
 // let emenyBrains = [
 //     red, yellow, green, pink
 // ]
 
-var upPressed = 0;
-var downPressed = 0;
-var leftPressed = 0;
-var rightPressed = 0;
 
-let maxWidth = 224;
-let maxHeight = 247;
 
 // function moveEnemy() {
 //     let enemy = document.getElementById('item');
@@ -84,19 +76,7 @@ let maxHeight = 247;
 //     //     slowDownX();
 // }
 
-function slowDownX() {
-    if (xspeed > 0)
-        xspeed = xspeed - 1;
-    if (xspeed < 0)
-        xspeed = xspeed + 1;
-}
 
-function slowDownY() {
-    if (yspeed > 0)
-        yspeed = yspeed - 1;
-    if (yspeed < 0)
-        yspeed = yspeed + 1;
-}
 
 // function enemyMove() {
 //     xposE = xposE + xspeedE;
@@ -143,52 +123,21 @@ function gameLoop() {
 
     pacman = document.getElementById('pacman')
 
-    if (xpos >= maxWidth || ypos >= maxHeight || ypos <= 0 || xpos <= 0) {
-        xpos = xpos - 10;
-        ypos = ypos - 10;
-        console.log(maxHeight);
-        console.log(maxWidth);
-        console.log("xpos = " + xpos);
-        console.log("ypos = " + ypos);
-
-    } else {
-
-    }
-
     //
     //
     // Execution of the decisions by the Brains
     //
-    //
-
+    // 
     pacman.style.left = xpos;
     pacman.style.top = ypos;
-
-    upPressed    = window.localStorage.getItem("keyPressedUp");
-    downPressed  = window.localStorage.getItem("keyPressedDown");
-    rightPressed = window.localStorage.getItem("keyPressedRight");
-    leftPressed  = window.localStorage.getItem("keyPressedLeft");
-
-    if (upPressed == 1)
-        yspeed = Math.max(yspeed - 1, -1 * maxSpeed);
-    if (downPressed == 1)
-        yspeed = Math.min(yspeed + 1, 1 * maxSpeed)
-    if (rightPressed == 1)
-        xspeed = Math.min(xspeed + 1, 1 * maxSpeed);
-    if (leftPressed == 1)
-        xspeed = Math.max(xspeed - 1, -1 * maxSpeed);
-
-    if (upPressed == 0 && downPressed == 0)
-        slowDownY();
-    if (leftPressed == 0 && rightPressed == 0)
-        slowDownX();
 
     setTimeout("gameLoop()", 10);
 
 } // END of gameloop()
 
+
+
 document.addEventListener("DOMContentLoaded", gameLoop)
-    // document.addEventListener("DOMContentLoaded", enemyMove)
 
 document.addEventListener("keydown", (event) => {
     let code = event.keyCode ? event.keyCode : event.which;
@@ -196,17 +145,28 @@ document.addEventListener("keydown", (event) => {
     // Show which key is pressed.
     document.getElementById("keydown").innerHTML = code;
 
-    if (code == 38)
-       // upPressed = 1;
-        window.localStorage.setItem("keyPressedUp", "1");
-    console.log("da");
-    if (code == 40)
-        // downPressed = 1;
-        window.localStorage.setItem("keyPressedDown", "1");
-    if (code == 37)
-        // leftPressed = 1;
-        window.localStorage.setItem("keyPressedLeft", "1");
-    if (code == 39)
-        // rightPressed = 1;
-        window.localStorage.setItem("keyPressedRight", "1");
+    if (code == 38) {
+        // up
+        yspeed = -1
+        xspeed = 0
+    }
+
+    if (code == 40) {
+        // down
+        yspeed = 1
+        xspeed = 0
+    }
+
+    if (code == 37) {
+        // left;
+        xspeed = -1
+        yspeed = 0
+    }
+
+    if (code == 39) {
+        // right;
+        xspeed = 1
+        yspeed = 0
+    }
+
 }, true);

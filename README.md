@@ -1,3 +1,14 @@
+# 1 February 2023
+* Make pacman move in all direction after it has started
+
+
+# 31 January 2023
+
+* When down is pressed - up dont work at all
+* When left is pressed - right dont work at all
+* Find problem in pacman move
+
+
 # 28 January 2023
 
 val et dahoum
@@ -9,14 +20,9 @@ val et dahoum
 
 Homework
 
-* Fix the game so that the movement works in all direction after it has started `val`
-  * Do not care that PacMan leaves the labyrinth `val`
+* Fix the game so that the movement works in all direction after it has started `done`
+  * Do not care that PacMan leaves the labyrinth `done`
 
-# 16 January 2023
-
-* Today
-   * make pacman div to have background from other picture
-   * make function which make pacman to move (function is in other file)
 
 * Backlog
   * Game Loop `val`
