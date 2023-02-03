@@ -1,3 +1,13 @@
+# 3 February 2023
+* Try to make pacman move in labyrinth
+  * try to make boolean variable which choose where pacman can move - it is not working
+  * search information for canvas
+
+# 2 February 2023
+* Try to make pacman move in labyrinth
+  * make nested loops - game stop working at all
+
+
 # 1 February 2023
 * Make pacman move in all direction after it has started
 
