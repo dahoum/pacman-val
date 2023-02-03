@@ -25,7 +25,7 @@ let layout = [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
     [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],
+    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],
     [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
     [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
@@ -34,6 +34,7 @@ let layout = [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
 ]
+
 
 //
 //
@@ -46,6 +47,7 @@ var xpos = 121;
 var ypos = 200;
 var xspeed = 0;
 var yspeed = 0;
+let flag = false;
 
 // This is state of the Enemy
 var xposE = 121;
@@ -109,6 +111,7 @@ var yspeedE = 0;
 // }
 
 
+
 function gameLoop() {
 
     //
@@ -118,25 +121,37 @@ function gameLoop() {
     //
 
     // This is the state of the PacMan
+
     xpos = xpos + xspeed;
     ypos = ypos + yspeed;
 
     pacman = document.getElementById('pacman')
+        // if (flag == true) {
+
+
+    pacman.style.left = xpos;
+    pacman.style.top = ypos;
+    // }
+
 
     //
     //
     // Execution of the decisions by the Brains
     //
     // 
-    pacman.style.left = xpos;
-    pacman.style.top = ypos;
+
 
     setTimeout("gameLoop()", 10);
 
 } // END of gameloop()
 
 
-
+for (let i = 0; i < layout.length; i++) {
+    if (layout[i] == 0) {
+        console.log(layout[i]);
+        flag = true
+    }
+}
 document.addEventListener("DOMContentLoaded", gameLoop)
 
 document.addEventListener("keydown", (event) => {
