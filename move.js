@@ -125,15 +125,22 @@ function gameLoop() {
     // Where are we?
     if ((xpos % 8) === 0) {
         var PacManxcol = xpos / 8;
+        console.log(PacManxcol);
+        // alert(PacManxcol)
     }
 
     if ((ypos % 8) === 0) {
         var PacManycol = ypos / 8;
+        // console.log(PacManycol);
+        // alert(PacManycol)
     }
 
     // This code is not complete.
     // When we complete it, it will tell us what action is possible on the block we are.
     for (let i = 0; i < layout.length; i++) {
+        for (let j = 0; j < layout[i].length; j++) {
+
+        }
         // you make a 2nd cycle
         // you have PacManxcol
         // you have PacManycol

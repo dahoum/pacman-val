@@ -1,3 +1,8 @@
+# 8 February 2023
+  * Try to make game logic 
+
+
+
 # 7 February 2023
     * CSS
       * https://www.w3schools.com/css/default.asp
@@ -10,7 +15,7 @@
         * CSS Colors - RGB, HEX, HSL
     * Understand game logic 
     * Try to make logic
-    
+
 # 6 February 2023
     * HTML
       * https://www.w3schools.com/html/default.asp
