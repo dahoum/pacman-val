@@ -123,11 +123,11 @@ function gameLoop() {
     // CURRENT STATE
 
     // Where are we?
-    if((xpos % 8) === 0){
+    if ((xpos % 8) === 0) {
         var PacManxcol = xpos / 8;
     }
 
-    if((ypos % 8) === 0){
+    if ((ypos % 8) === 0) {
         var PacManycol = ypos / 8;
     }
 
@@ -140,31 +140,32 @@ function gameLoop() {
         // so you can compare what is the number in the matrix of the current square
         // WHICH IS USELESS ;)
         // What is useful are
-            // A.
-            // CAN I CONTINUE?
-            // For this you need the direction? => var PacManDirection
-            // So depending on the direction you can check the next square on the array
-            // If not 0 you have to stop => var PacManStopped
-            // B.
-            // TURNING ON CROSSINGS
-            // 1.
-            // Is there a desired direction at all?
-               // ...
-            // How do we answer this?
-            // The semantically cleanest answer is "Is there a pressed key?"
-            // For this to work, after you process the pressed key, you must reset this variable
-            // 2.
-            // Can I turn here?
-            // To answer this we must know which is the desired direction?
-            // Also we must know if we are on a crossing:
-            // — we have current coordinates which change w/ step 1 pixel
-            // - we have the array w/ the docts which are on every 8 pixels
-            // — so we should execute the turning logic only if the current x/8 is an integer
+        // A.
+        // CAN I CONTINUE?
+        // For this you need the direction? => var PacManDirection
+        // So depending on the direction you can check the next square on the array
+        // If not 0 you have to stop => var PacManStopped
+        // B.
+        // TURNING ON CROSSINGS
+        // 1.
+        // Is there a desired direction at all?
+        // ...
+        // How do we answer this?
+        // The semantically cleanest answer is "Is there a pressed key?"
+        // For this to work, after you process the pressed key, you must reset this variable
+        // 2.
+        // Can I turn here?
+        // To answer this we must know which is the desired direction?
+        // Also we must know if we are on a crossing:
+        // — we have current coordinates which change w/ step 1 pixel
+        // - we have the array w/ the docts which are on every 8 pixels
+        // — so we should execute the turning logic only if the current x/8 is an integer
         // can I continue?
         if (layout[i] == 0) {
             flag = true;
         }
     }
+
 
     // You take a turn here, but you do not know if you can take a turn.
     xpos = xpos + xspeed;
