@@ -25,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // TODO
     // Later we can make it in a function, so that we can "reset" the game from w/in the game.
     // Initial coordinates of the PacMan.
-    var xpos = 121;
-    var ypos = 200;
+    // They do not work at the moment, we should make them work.
+    // var xpos = 124;
+    // var ypos = 160;
     // Initial speed of the PacMan.
     var xspeed = 1;
     var yspeed = 0;

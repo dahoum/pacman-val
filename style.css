@@ -6,17 +6,19 @@ html {
     display: flex;
     flex-wrap: wrap;
     width: 224px;
-    height: 247px;
-    border: solid black 6px;
+    height: 240px;
+    /* border: solid black 6px; */
 }
 
 .pacman {
     position: absolute;
-    height: 8px;
-    width: 8.92px;
+    height: 13px;
+    width:  9px;
     background-image: url(./images/img.png);
     /* background-repeat: no-repeat, repeat; */
-    background-position: 890px 2px;
+    /* from right, from top */
+    border: none;
+    background-position: 223px -1px;
 }
 
 #item {

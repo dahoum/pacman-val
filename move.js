@@ -43,8 +43,10 @@ let layout = [
 //
 
 // This is state of the PacMan
-var xpos = 121;
-var ypos = 200;
+// TODO
+// Move it in PacMan.js
+var xpos = 116;
+var ypos = 192;
 var xspeed = 0;
 var yspeed = 0;
 var RequestPacManDirection;
@@ -124,12 +126,20 @@ function gameLoop() {
     // Where are we?
     if ((xpos % 8) === 0) {
         var PacManxcol = xpos / 8;
+
+        // Logging
+        // Show in which column we are
+        document.getElementById("PacManxcol").innerHTML = PacManxcol;
         console.log("x = " + PacManxcol);
         // alert(PacManxcol)
     }
 
     if ((ypos % 8) === 0) {
         var PacManycol = ypos / 8;
+
+        // Logging
+        // Show in which column we are
+        document.getElementById("PacManycol").innerHTML = PacManycol;
         // console.log("y = " + PacManycol);
         // console.log(PacManycol);
         // alert(PacManycol)
@@ -143,15 +153,10 @@ function gameLoop() {
 
             }
         }
-        // you make a 2nd cycle
-        // you have PacManxcol
-        // you have PacManycol
-        // so you can compare what is the number in the matrix of the current square
-        // WHICH IS USELESS ;)
-        // What is useful are
         // A.
         // CAN I CONTINUE?
         // For this you need the direction? => var PacManDirection
+
         // So depending on the direction you can check the next square on the array
         // If not 0 you have to stop => var PacManStopped
         // B.
@@ -180,16 +185,16 @@ function gameLoop() {
 
     pacman = document.getElementById('pacman')
 
-    if (PacManxcol > 1 && PacManxcol < 29) {
+    // TODO
+    // Still does not work
+    if (PacManxcol > 1 && PacManxcol <= 30) {
         pacman.style.left = xpos;
         pacman.style.top = ypos;
     }
-    if (PacManycol > 1 && PacManycol < 29) {
+    if (PacManycol > 1 && PacManycol <= 30) {
         pacman.style.left = xpos;
         pacman.style.top = ypos;
     }
-
-
 
     upPressed = window.localStorage.getItem("keyPressedUp");
     downPressed = window.localStorage.getItem("keyPressedDown");
@@ -210,6 +215,8 @@ function gameLoop() {
 // Make move and change the direction
 function keyDown(e) {
     let code = e.keyCode ? e.keyCode : e.which;
+    // TODO
+    // Change from code to key name
     if (code == 38) {
         upPressed = 1;
         yspeed = -1
@@ -237,13 +244,16 @@ function keyDown(e) {
 document.addEventListener("DOMContentLoaded", gameLoop)
 
 // Here we capture the pressed key.
-
+// TODO
+// Change from code to key name
 document.addEventListener("keydown", (event) => {
     let code = event.keyCode ? event.keyCode : event.which;
 
     // Show which key is pressed.
     document.getElementById("keydown").innerHTML = code;
 
+    // TODO
+    // Simplify to "keyPressed" or so, up/down is not interesting
     function keyUp(e) {
         let code = e.keyCode ? e.keyCode : e.which;
         if (code == 38)
@@ -261,6 +271,7 @@ document.addEventListener("keydown", (event) => {
     document.addEventListener("DOMContentLoaded", gameLoop)
         // document.addEventListener("DOMContentLoaded", enemyMove)
 
+    // one is enough and this is keyDown
     document.addEventListener("keydown", keyDown)
     document.addEventListener("keyup", keyUp)
         // rightPressed = 1;

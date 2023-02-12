@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
             [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
+            [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
+            [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
+            [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6]
         ]
         // pacman =5
     let spritesheet = document.getElementById("spritesheet");
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let posx = 0;
             for (let j = 0; j < layout[i].length; j++) {
                 var element = document.createElement("div");
-                element.style.height = "8.82px";
+                element.style.height = "8px";
                 element.style.width = "8px";
                 element.classList.add('container')
                 element.style.backgroundImage = "url('./images/img.png')"
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 spritesheet.appendChild(element);
             }
-            posy -= 8.82
+            posy -= 8
 
         }
 
