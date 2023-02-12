@@ -47,8 +47,7 @@ var xpos = 121;
 var ypos = 200;
 var xspeed = 0;
 var yspeed = 0;
-let flag = false;
-
+var RequestPacManDirection;
 // This is state of the Enemy
 var xposE = 121;
 var yposE = 200;
@@ -125,12 +124,13 @@ function gameLoop() {
     // Where are we?
     if ((xpos % 8) === 0) {
         var PacManxcol = xpos / 8;
-        console.log(PacManxcol);
+        console.log("x = " + PacManxcol);
         // alert(PacManxcol)
     }
 
     if ((ypos % 8) === 0) {
         var PacManycol = ypos / 8;
+        // console.log("y = " + PacManycol);
         // console.log(PacManycol);
         // alert(PacManycol)
     }
@@ -139,7 +139,9 @@ function gameLoop() {
     // When we complete it, it will tell us what action is possible on the block we are.
     for (let i = 0; i < layout.length; i++) {
         for (let j = 0; j < layout[i].length; j++) {
+            if (layout[i] != 0) {
 
+            }
         }
         // you make a 2nd cycle
         // you have PacManxcol
@@ -168,9 +170,7 @@ function gameLoop() {
         // - we have the array w/ the docts which are on every 8 pixels
         // — so we should execute the turning logic only if the current x/8 is an integer
         // can I continue?
-        if (layout[i] == 0) {
-            flag = true;
-        }
+
     }
 
 
@@ -179,13 +179,22 @@ function gameLoop() {
     ypos = ypos + yspeed;
 
     pacman = document.getElementById('pacman')
-        // if (flag == true) {
+
+    if (PacManxcol > 1 && PacManxcol < 29) {
+        pacman.style.left = xpos;
+        pacman.style.top = ypos;
+    }
+    if (PacManycol > 1 && PacManycol < 29) {
+        pacman.style.left = xpos;
+        pacman.style.top = ypos;
+    }
 
 
-    pacman.style.left = xpos;
-    pacman.style.top = ypos;
-    // }
 
+    upPressed = window.localStorage.getItem("keyPressedUp");
+    downPressed = window.localStorage.getItem("keyPressedDown");
+    rightPressed = window.localStorage.getItem("keyPressedRight");
+    leftPressed = window.localStorage.getItem("keyPressedLeft");
 
     //
     //
@@ -198,37 +207,62 @@ function gameLoop() {
 
 } // END of gameloop()
 
+// Make move and change the direction
+function keyDown(e) {
+    let code = e.keyCode ? e.keyCode : e.which;
+    if (code == 38) {
+        upPressed = 1;
+        yspeed = -1
+        xspeed = 0
+    }
+    if (code == 40) {
+        downPressed = 1;
+        yspeed = 1
+        xspeed = 0
+    }
+
+    if (code == 37) {
+        leftPressed = 1;
+        yspeed = 0
+        xspeed = -1
+    }
+
+    if (code == 39) {
+        rightPressed = 1;
+        yspeed = 0
+        xspeed = 1
+    }
+
+}
 document.addEventListener("DOMContentLoaded", gameLoop)
 
 // Here we capture the pressed key.
+
 document.addEventListener("keydown", (event) => {
     let code = event.keyCode ? event.keyCode : event.which;
 
     // Show which key is pressed.
     document.getElementById("keydown").innerHTML = code;
 
-    if (code == 38) {
-        // up
-        yspeed = -1
-        xspeed = 0
+    function keyUp(e) {
+        let code = e.keyCode ? e.keyCode : e.which;
+        if (code == 38)
+            upPressed = 0;
+        window.localStorage.setItem("keyPressedUp", "1");
+        if (code == 40)
+            downPressed = 0;
+        window.localStorage.setItem("keyPressedDown", "1");
+        if (code == 37)
+            leftPressed = 0;
+        window.localStorage.setItem("keyPressedLeft", "1");
+        if (code == 39)
+            rightPressed = 0;
     }
+    document.addEventListener("DOMContentLoaded", gameLoop)
+        // document.addEventListener("DOMContentLoaded", enemyMove)
 
-    if (code == 40) {
-        // down
-        yspeed = 1
-        xspeed = 0
-    }
-
-    if (code == 37) {
-        // left;
-        xspeed = -1
-        yspeed = 0
-    }
-
-    if (code == 39) {
-        // right;
-        xspeed = 1
-        yspeed = 0
-    }
-
+    document.addEventListener("keydown", keyDown)
+    document.addEventListener("keyup", keyUp)
+        // rightPressed = 1;
+    window.localStorage.setItem("keyPressedRight", "1");
 }, true);

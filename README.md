@@ -1,5 +1,12 @@
+# 10 February 2023
+  * We have wanted direction - try to make pacman move in matrix 
+
+# 9 February 2023
+  * Try to make localStorage back
+
 # 8 February 2023
   * Try to make game logic 
+  * CSS https://www.w3schools.com/css/default.asp
 
 
 
