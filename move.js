@@ -150,12 +150,22 @@ function gameLoop() {
     for (let i = 0; i < layout.length; i++) {
         for (let j = 0; j < layout[i].length; j++) {
             if (layout[i] != 0) {
+                // CAN I CONTINUE?
+                // For this you need the direction? => var Direction
 
+                // i is a row
+                // j is the colum in this row
+                // I am [i][j|
+                // left is i j-1
+                // right is i j+1
+                // top is i-1 j
+                // botom is i+1 j
+
+                // if direction is up and i-1 j = 0 i can continue up
+                //  else i must stop
+                //    we must see how to do the stop, may be with PacManStop = true/false
             }
         }
-        // A.
-        // CAN I CONTINUE?
-        // For this you need the direction? => var PacManDirection
 
         // So depending on the direction you can check the next square on the array
         // If not 0 you have to stop => var PacManStopped
@@ -280,7 +290,7 @@ document.addEventListener("DOMContentLoaded", gameLoop)
 //         // document.addEventListener("keyup", keyUp)
 //         // rightPressed = 1;
 
-// }, true); 
+// }, true);
 document.addEventListener("DOMContentLoaded", gameLoop)
 document.addEventListener("keydown", keyDown)
 window.localStorage.setItem("keyPressedRight", "1");

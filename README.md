@@ -1,19 +1,31 @@
 # 13 February 2023
-  * Change from code to key name
-  * Simplify to "keyPressed" / only one function
+  * Change from code to key name `val` `done`
+  * Simplify to "keyPressed" / only one function `val` `done`
   * Start to fix labyrint
+  * Homework
+    * Change to lastKeyPressed
+    * Remove all upPressed, etc.
+    * move yspeed = and xspeed = 0 into the Brain
+    * Introduce localStorage Direction, which is the current direction and make it work
+    * then we will do the first logic based on the matrix togerer ...
+    * ...
+    * ...
+    * The game must work after you do all this. Whatever we do, we should not break the current state of the sofware `!`
+    * the next will be to put the move/stop decisions of PacMan in the Brain in the right order.
+  * Behaviour
+    * If something is not the next, but looks easy, do not do it.
+    * Try to find the next.
+    * Develop a habit to look for the next.
 
 # 10 February 2023
-  * We have wanted direction - try to make pacman move in matrix 
+  * We have wanted direction - try to make pacman move in matrix
 
 # 9 February 2023
   * Try to make localStorage back
 
 # 8 February 2023
-  * Try to make game logic 
+  * Try to make game logic
   * CSS https://www.w3schools.com/css/default.asp
-
-
 
 # 7 February 2023
     * CSS
@@ -25,7 +37,7 @@
         * CSS How to
         * CSS Comments
         * CSS Colors - RGB, HEX, HSL
-    * Understand game logic 
+    * Understand game logic
     * Try to make logic
 
 # 6 February 2023
@@ -39,7 +51,7 @@
         * HTML Attributes
         * HTML Headings
         * HTML Paragraphs
-    * Understand game logic 
+    * Understand game logic
 
 # 3 February 2023
 * Try to make pacman move in labyrinth
