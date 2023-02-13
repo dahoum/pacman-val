@@ -1,3 +1,7 @@
+# 13 February 2023
+  * Change from code to key name
+  * Simplify to "keyPressed" / only one function
+
 # 10 February 2023
   * We have wanted direction - try to make pacman move in matrix 
 

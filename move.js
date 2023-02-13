@@ -201,6 +201,7 @@ function gameLoop() {
     rightPressed = window.localStorage.getItem("keyPressedRight");
     leftPressed = window.localStorage.getItem("keyPressedLeft");
 
+
     //
     //
     // Execution of the decisions by the Brains
@@ -214,30 +215,33 @@ function gameLoop() {
 
 // Make move and change the direction
 function keyDown(e) {
-    let code = e.keyCode ? e.keyCode : e.which;
     // TODO
-    // Change from code to key name
-    if (code == 38) {
-        upPressed = 1;
+    // Change from code to key name    Done
+    if (e.code == "ArrowUp") {
+        // upPressed = 1;
         yspeed = -1
         xspeed = 0
+        window.localStorage.setItem("keyPressedUp", "1");
     }
-    if (code == 40) {
+    if (e.code == "ArrowDown") {
         downPressed = 1;
         yspeed = 1
         xspeed = 0
+        window.localStorage.setItem("keyPressedDown", "1");
     }
 
-    if (code == 37) {
+    if (e.code == "ArrowLeft") {
         leftPressed = 1;
         yspeed = 0
         xspeed = -1
+        window.localStorage.setItem("keyPressedLeft", "1");
     }
 
-    if (code == 39) {
+    if (e.code == "ArrowRight") {
         rightPressed = 1;
         yspeed = 0
         xspeed = 1
+        window.localStorage.setItem("keyPressedRight", "1");
     }
 
 }
@@ -246,34 +250,37 @@ document.addEventListener("DOMContentLoaded", gameLoop)
 // Here we capture the pressed key.
 // TODO
 // Change from code to key name
-document.addEventListener("keydown", (event) => {
-    let code = event.keyCode ? event.keyCode : event.which;
+// document.addEventListener("keydown", (event) => {
+//     let code = event.keyCode ? event.keyCode : event.which;
 
-    // Show which key is pressed.
-    document.getElementById("keydown").innerHTML = code;
+//     // Show which key is pressed.
+//     document.getElementById("keydown").innerHTML = code;
 
-    // TODO
-    // Simplify to "keyPressed" or so, up/down is not interesting
-    function keyUp(e) {
-        let code = e.keyCode ? e.keyCode : e.which;
-        if (code == 38)
-            upPressed = 0;
-        window.localStorage.setItem("keyPressedUp", "1");
-        if (code == 40)
-            downPressed = 0;
-        window.localStorage.setItem("keyPressedDown", "1");
-        if (code == 37)
-            leftPressed = 0;
-        window.localStorage.setItem("keyPressedLeft", "1");
-        if (code == 39)
-            rightPressed = 0;
-    }
-    document.addEventListener("DOMContentLoaded", gameLoop)
-        // document.addEventListener("DOMContentLoaded", enemyMove)
+//     // TODO
+//     // Simplify to "keyPressed" or so, up/down is not interesting
+//     function keyUp(e) {
+//         let code = e.keyCode ? e.keyCode : e.which;
+//         if (code == UP_ARROW)
+//             upPressed = 0;
+//         window.localStorage.setItem("keyPressedUp", "1");
+//         if (code === DOWN_ARROW)
+//             downPressed = 1;
+//         window.localStorage.setItem("keyPressedDown", "1");
+//         if (code === LEFT_ARROW)
+//             leftPressed = 1;
+//         window.localStorage.setItem("keyPressedLeft", "1");
+//         if (code == RIGHT_ARROW)
+//             rightPressed = 1;
+//     }
 
-    // one is enough and this is keyDown
-    document.addEventListener("keydown", keyDown)
-    document.addEventListener("keyup", keyUp)
-        // rightPressed = 1;
-    window.localStorage.setItem("keyPressedRight", "1");
-}, true);
+//         // document.addEventListener("DOMContentLoaded", enemyMove)
+
+//     // one is enough and this is keyDown
+
+//         // document.addEventListener("keyup", keyUp)
+//         // rightPressed = 1;
+
+// }, true); 
+document.addEventListener("DOMContentLoaded", gameLoop)
+document.addEventListener("keydown", keyDown)
+window.localStorage.setItem("keyPressedRight", "1");
