@@ -263,35 +263,8 @@ function gameLoop() {
 
 } // END of gameloop()
 
-// Make move and change the direction
-function keyDown(e) {
-    document.getElementById("keydown").innerHTML = e.code;
-    // TODO
-    // Change from code to key name    Done
-    if (e.code == "ArrowUp") {
-        window.localStorage.setItem("keyPressedUp", "1");
-        yspeed = -1
-        xspeed = 0
-    }
-    if (e.code == "ArrowDown") {
-        yspeed = 1
-        xspeed = 0
-        window.localStorage.setItem("keyPressedDown", "2");
-    }
 
-    if (e.code == "ArrowLeft") {
-        window.localStorage.setItem("keyPressedLeft", "3");
-        yspeed = 0
-        xspeed = -1
-    }
 
-    if (e.code == "ArrowRight") {
-        window.localStorage.setItem("keyPressedRight", "4");
-        yspeed = 0
-        xspeed = 1
-    }
-
-}
 document.addEventListener("DOMContentLoaded", gameLoop)
 
 // Here we capture the pressed key.
@@ -328,6 +301,35 @@ document.addEventListener("DOMContentLoaded", gameLoop)
 //         // rightPressed = 1;
 
 // }, true);
-document.addEventListener("DOMContentLoaded", gameLoop)
-document.addEventListener("keydown", keyDown)
-    // window.localStorage.setItem("keyPressedRight", "1");
+
+document.addEventListener("DOMContentLoaded", gameLoop);
+
+document.addEventListener("keydown", (e) => {
+
+        document.getElementById("keydown").innerHTML = e.code;
+        // TODO
+        // Change from code to key name    Done
+        if (e.code == "ArrowUp") {
+            window.localStorage.setItem("keyPressedUp", "1");
+            yspeed = -1
+            xspeed = 0
+        }
+        if (e.code == "ArrowDown") {
+            yspeed = 1
+            xspeed = 0
+            window.localStorage.setItem("keyPressedDown", "2");
+        }
+
+        if (e.code == "ArrowLeft") {
+            window.localStorage.setItem("keyPressedLeft", "3");
+            yspeed = 0
+            xspeed = -1
+        }
+
+        if (e.code == "ArrowRight") {
+            window.localStorage.setItem("keyPressedRight", "4");
+            yspeed = 0
+            xspeed = 1
+        }
+    }
+);
