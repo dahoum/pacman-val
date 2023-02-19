@@ -50,70 +50,21 @@ var ypos = 192;
 var xspeed = 0;
 var yspeed = 0;
 var RequestPacManDirection;
-// This is state of the Enemy
-var xposE = 121;
-var yposE = 200;
-var xspeedE = 0;
-var yspeedE = 0;
-// let emenyBrains = [
-//     red, yellow, green, pink
-// ]
-
-
-
-// function moveEnemy() {
-//     let enemy = document.getElementById('item');
-
-//     xposE = xposE + xspeedE;
-//     yposE = yposE + yspeedE;
-
-//     enemy.style.left = xposE;
-//     enemy.style.top = yposE;
-
-//     yspeedE = Math.floor(Math.random() * 20);
-//     xspeedE = Math.floor(Math.random() * 20);
-
-//     // if (upPressed == 0 && downPressed == 0)
-//     //     slowDownY();
-//     // if (leftPressed == 0 && rightPressed == 0)
-//     //     slowDownX();
-// }
-
-
-
-// function enemyMove() {
-//     xposE = xposE + xspeedE;
-//     yposE = yposE + yspeedE;
-
-//     enemy = document.getElementById('item')
-//     enemy.style.left = xposE;
-//     enemy.style.top = yposE;
-//     // console.log(xposE);
-//     // console.log(yposE);
-//     if (xposE === maxHeight || ypos === maxWidth) {
-
-//     } else {
-//         if (upPressed == 1)
-//             yspeedE = Math.max(yspeedE - 1, -1 * maxSpeedE);
-//         if (downPressed == 1)
-//             yspeedE = Math.min(yspeedE + 1, 1 * maxSpeedE)
-//         if (rightPressed == 1)
-//             xspeedE = Math.min(xspeedE + 1, 1 * maxSpeedE);
-//         if (leftPressed == 1)
-//             xspeedE = Math.max(xspeedE - 1, -1 * maxSpeedE);
-
-//         if (upPressed == 0 && downPressed == 0)
-//             slowDownY();
-//         if (leftPressed == 0 && rightPressed == 0)
-//             slowDownX();
-//     }
-
-//     setTimeout("enemyMove()", 10);
-// }
-
-
 
 function gameLoop() {
+
+    //
+    //
+    // State of the Game
+    //
+    //
+
+    // Get the PacMan
+    pacman = document.getElementById('pacman')
+
+    // Which key was pressed last?
+    var lastPressedKey  = window.localStorage.getItem("lastPressedKey");
+    var PacManDirection = window.localStorage.getItem("PacManDirection");
 
     //
     //
@@ -188,148 +139,96 @@ function gameLoop() {
 
     }
 
+    // Decide upon Direction
+    // TODO
+    // This must be enhanded w/ a condition "Can I turn in that direction?"
+    if (lastPressedKey == "ArrowUp"){
 
-    // You take a turn here, but you do not know if you can take a turn.
+        PacManDirection = "Up";
+
+    }else if(lastPressedKey == "ArrowDown"){
+
+        PacManDirection = "Down";
+
+    }else if(lastPressedKey == "ArrowLeft"){
+
+        PacManDirection = "Left";
+
+    }else if(lastPressedKey == "ArrowRight"){
+
+        PacManDirection = "Right";
+    }
+
+    document.getElementById("PacManDirection").innerHTML = PacManDirection;
+
+    //
+    //
+    // Execution of the Decisions by the Brains
+    //
+    //
+
+    //
+    //
+    // Move PacMan (later "if possible")
+    //
+    //
+
+    // For now w/ ifs, later we can switch to cases when the Brain is more advanced
+    // TODO
+    // Replace lastPressedKey w/ Direction (Up, Down, Left, Right)
+    if (PacManDirection == "Up"){
+
+        yspeed = -1;
+        xspeed = 0;
+
+    }else if(PacManDirection == "Down"){
+
+        yspeed = 1;
+        xspeed = 0;
+
+    }else if(PacManDirection == "Left"){
+
+        xspeed = -1;
+        yspeed = 0;
+
+    }else if(PacManDirection == "Right"){
+
+        xspeed = 1;
+        yspeed = 0;
+    }
+
+    // New Position
     xpos = xpos + xspeed;
     ypos = ypos + yspeed;
 
-    pacman = document.getElementById('pacman')
-
-    // TODO
-    // Still does not work
-    // if (PacManxcol > 1 && PacManxcol <= 30) {
+    // Apply the New Postion
     pacman.style.left = xpos;
     pacman.style.top = ypos;
-    // }
-    // if (PacManycol > 1 && PacManycol <= 30) {
-    //     pacman.style.left = xpos;
-    //     pacman.style.top = ypos;
-    // }
-
-    upPressed = window.localStorage.getItem("keyPressedUp");
-    downPressed = window.localStorage.getItem("keyPressedDown");
-    rightPressed = window.localStorage.getItem("keyPressedRight");
-    leftPressed = window.localStorage.getItem("keyPressedLeft");
-
-    // console.log("up" + upPressed);
-    // console.log("down" + downPressed);
-    // console.log("left" + leftPressed);
-    // console.log("right" + rightPressed);
-    // if (upPressed == 1) {
-    //     yspeed = -1
-    //     xspeed = 0
-    //     console.log("up - " + upPressed);
-    //     console.log("x -" + xspeed + " y - " + yspeed);
-    //     downPressed = 0
-    //     leftPressed = 0
-    //     rightPressed = 0
-    // }
-    // if (downPressed == 2) {
-    //     yspeed = 1
-    //     xspeed = 0
-    //     console.log("down - " + downPressed);
-    //     console.log("x -" + xspeed + " y - " + yspeed);
-    //     upPressed = 0
-    //     leftPressed = 0
-    //     rightPressed = 0
-    // }
-    // if (leftPressed == 3) {
-    //     yspeed = 0
-    //     xspeed = -1
-    //     console.log("left - " + leftPressed);
-    //     console.log("x -" + xspeed + " y - " + yspeed);
-    //     upPressed = 0
-    //     downPressed = 0
-    //     rightPressed = 0
-    // }
-    // if (rightPressed == 4) {
-    //     yspeed = 0
-    //     xspeed = 1
-    //     console.log("right - " + rightPressed);
-    //     console.log("x -" + xspeed + " y - " + yspeed);
-    //     upPressed = 0
-    //     downPressed = 0
-    //     leftPressed = 0
-    // }
-
-    //
-    //
-    // Execution of the decisions by the Brains
-    //
-    //
-
-
-    setTimeout("gameLoop()", 10);
 
 } // END of gameloop()
 
-
-
-document.addEventListener("DOMContentLoaded", gameLoop)
-
-// Here we capture the pressed key.
-// TODO
-// Change from code to key name
-// document.addEventListener("keydown", (event) => {
-//     let code = event.keyCode ? event.keyCode : event.which;
-
-//     // Show which key is pressed.
-//     document.getElementById("keydown").innerHTML = code;
-
-//     // TODO
-//     // Simplify to "keyPressed" or so, up/down is not interesting
-//     function keyUp(e) {
-//         let code = e.keyCode ? e.keyCode : e.which;
-//         if (code == UP_ARROW)
-//             upPressed = 0;
-//         window.localStorage.setItem("keyPressedUp", "1");
-//         if (code === DOWN_ARROW)
-//             downPressed = 1;
-//         window.localStorage.setItem("keyPressedDown", "1");
-//         if (code === LEFT_ARROW)
-//             leftPressed = 1;
-//         window.localStorage.setItem("keyPressedLeft", "1");
-//         if (code == RIGHT_ARROW)
-//             rightPressed = 1;
-//     }
-
-//         // document.addEventListener("DOMContentLoaded", enemyMove)
-
-//     // one is enough and this is keyDown
-
-//         // document.addEventListener("keyup", keyUp)
-//         // rightPressed = 1;
-
-// }, true);
-
-document.addEventListener("DOMContentLoaded", gameLoop);
-
+// Here we capture the last pressed key and store it in the game state
 document.addEventListener("keydown", (e) => {
 
-        document.getElementById("keydown").innerHTML = e.code;
-        // TODO
-        // Change from code to key name    Done
-        if (e.code == "ArrowUp") {
-            window.localStorage.setItem("keyPressedUp", "1");
-            yspeed = -1
-            xspeed = 0
-        }
-        if (e.code == "ArrowDown") {
-            yspeed = 1
-            xspeed = 0
-            window.localStorage.setItem("keyPressedDown", "2");
-        }
+        lastPressedKey = e.code;
 
-        if (e.code == "ArrowLeft") {
-            window.localStorage.setItem("keyPressedLeft", "3");
-            yspeed = 0
-            xspeed = -1
-        }
+        window.localStorage.setItem("lastPressedKey", lastPressedKey);
 
-        if (e.code == "ArrowRight") {
-            window.localStorage.setItem("keyPressedRight", "4");
-            yspeed = 0
-            xspeed = 1
-        }
+        document.getElementById("lastPressedKey").innerHTML = lastPressedKey;
     }
 );
+
+// This is the begin function which stets the initial state and launches the game loop
+function begin(){
+
+    // Initial State
+
+    window.localStorage.setItem("lastPressedKey", "ArrowRight");
+
+    // This is the Main Heartbeat
+    var gameLoopTimeout = setInterval(gameLoop, 50);
+
+}
+
+// This launches the game
+document.addEventListener("DOMContentLoaded", begin());

@@ -1,3 +1,20 @@
+# 19 February 2023
+
+* Homework from 13 February
+  * Change to lastKeyPressed `done`
+  * Remove all upPressed, etc. `done`
+  * move yspeed = and xspeed = 0 into the Brain `done`
+  * Introduce localStorage Direction, which is the current direction and make it work `done`
+* Homework
+  * Understand what we have done and explain it to me `val`
+  * See how we can continue implementing from 13 Feb `val`
+* Mantra
+  * Tidy First
+  * Coding Standards
+    * Easy to Read
+      * Shorter Steps
+      * Consistent Naming of Variables
+
 # 17 February 2023
   * Try to change to lastKeyPressed - other way - the logic is not right
 
@@ -5,7 +22,7 @@
   * Try to remove upPressed, downPressed, leftPressed, rightPressed
 
 # 15 February 2023
-  * Try to move pacman into game loop 
+  * Try to move pacman into game loop
 
 # 14 February 2023
   * Try to change to lastKeyPressed
@@ -17,10 +34,10 @@
   * Simplify to "keyPressed" / only one function `val` `done`
   * Start to fix labyrint
   * Homework
-    * Change to lastKeyPressed
-    * Remove all upPressed, etc.
-    * move yspeed = and xspeed = 0 into the Brain
-    * Introduce localStorage Direction, which is the current direction and make it work
+    * Change to lastKeyPressed `done on 19 Feb`
+    * Remove all upPressed, etc. `done on 19 Feb`
+    * move yspeed = and xspeed = 0 into the Brain `done on 19 Feb`
+    * Introduce localStorage Direction, which is the current direction and make it work `done on 19 Feb`
     * then we will do the first logic based on the matrix togerer ...
     * ...
     * ...
