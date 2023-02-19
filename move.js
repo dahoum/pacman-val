@@ -130,7 +130,7 @@ function gameLoop() {
         // Logging
         // Show in which column we are
         document.getElementById("PacManxcol").innerHTML = PacManxcol;
-        console.log("x = " + PacManxcol);
+        // console.log("x = " + PacManxcol);
         // alert(PacManxcol)
     }
 
@@ -197,20 +197,60 @@ function gameLoop() {
 
     // TODO
     // Still does not work
-    if (PacManxcol > 1 && PacManxcol <= 30) {
-        pacman.style.left = xpos;
-        pacman.style.top = ypos;
-    }
-    if (PacManycol > 1 && PacManycol <= 30) {
-        pacman.style.left = xpos;
-        pacman.style.top = ypos;
-    }
+    // if (PacManxcol > 1 && PacManxcol <= 30) {
+    pacman.style.left = xpos;
+    pacman.style.top = ypos;
+    // }
+    // if (PacManycol > 1 && PacManycol <= 30) {
+    //     pacman.style.left = xpos;
+    //     pacman.style.top = ypos;
+    // }
 
     upPressed = window.localStorage.getItem("keyPressedUp");
     downPressed = window.localStorage.getItem("keyPressedDown");
     rightPressed = window.localStorage.getItem("keyPressedRight");
     leftPressed = window.localStorage.getItem("keyPressedLeft");
 
+    // console.log("up" + upPressed);
+    // console.log("down" + downPressed);
+    // console.log("left" + leftPressed);
+    // console.log("right" + rightPressed);
+    // if (upPressed == 1) {
+    //     yspeed = -1
+    //     xspeed = 0
+    //     console.log("up - " + upPressed);
+    //     console.log("x -" + xspeed + " y - " + yspeed);
+    //     downPressed = 0
+    //     leftPressed = 0
+    //     rightPressed = 0
+    // }
+    // if (downPressed == 2) {
+    //     yspeed = 1
+    //     xspeed = 0
+    //     console.log("down - " + downPressed);
+    //     console.log("x -" + xspeed + " y - " + yspeed);
+    //     upPressed = 0
+    //     leftPressed = 0
+    //     rightPressed = 0
+    // }
+    // if (leftPressed == 3) {
+    //     yspeed = 0
+    //     xspeed = -1
+    //     console.log("left - " + leftPressed);
+    //     console.log("x -" + xspeed + " y - " + yspeed);
+    //     upPressed = 0
+    //     downPressed = 0
+    //     rightPressed = 0
+    // }
+    // if (rightPressed == 4) {
+    //     yspeed = 0
+    //     xspeed = 1
+    //     console.log("right - " + rightPressed);
+    //     console.log("x -" + xspeed + " y - " + yspeed);
+    //     upPressed = 0
+    //     downPressed = 0
+    //     leftPressed = 0
+    // }
 
     //
     //
@@ -225,33 +265,30 @@ function gameLoop() {
 
 // Make move and change the direction
 function keyDown(e) {
+    document.getElementById("keydown").innerHTML = e.code;
     // TODO
     // Change from code to key name    Done
     if (e.code == "ArrowUp") {
-        // upPressed = 1;
+        window.localStorage.setItem("keyPressedUp", "1");
         yspeed = -1
         xspeed = 0
-        window.localStorage.setItem("keyPressedUp", "1");
     }
     if (e.code == "ArrowDown") {
-        downPressed = 1;
         yspeed = 1
         xspeed = 0
-        window.localStorage.setItem("keyPressedDown", "1");
+        window.localStorage.setItem("keyPressedDown", "2");
     }
 
     if (e.code == "ArrowLeft") {
-        leftPressed = 1;
+        window.localStorage.setItem("keyPressedLeft", "3");
         yspeed = 0
         xspeed = -1
-        window.localStorage.setItem("keyPressedLeft", "1");
     }
 
     if (e.code == "ArrowRight") {
-        rightPressed = 1;
+        window.localStorage.setItem("keyPressedRight", "4");
         yspeed = 0
         xspeed = 1
-        window.localStorage.setItem("keyPressedRight", "1");
     }
 
 }
@@ -293,4 +330,4 @@ document.addEventListener("DOMContentLoaded", gameLoop)
 // }, true);
 document.addEventListener("DOMContentLoaded", gameLoop)
 document.addEventListener("keydown", keyDown)
-window.localStorage.setItem("keyPressedRight", "1");
+    // window.localStorage.setItem("keyPressedRight", "1");

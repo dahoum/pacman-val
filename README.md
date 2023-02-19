@@ -1,3 +1,17 @@
+# 17 February 2023
+  * Try to change to lastKeyPressed - other way - the logic is not right
+
+# 16 February 2023
+  * Try to remove upPressed, downPressed, leftPressed, rightPressed
+
+# 15 February 2023
+  * Try to move pacman into game loop 
+
+# 14 February 2023
+  * Try to change to lastKeyPressed
+
+
+
 # 13 February 2023
   * Change from code to key name `val` `done`
   * Simplify to "keyPressed" / only one function `val` `done`
