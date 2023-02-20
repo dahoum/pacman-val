@@ -1,3 +1,6 @@
+# 20 February 2023
+* Macbook test
+
 # 19 February 2023
 
 * Homework from 13 February
