@@ -66,6 +66,17 @@ function gameLoop() {
     var lastPressedKey  = window.localStorage.getItem("lastPressedKey");
     var PacManDirection = window.localStorage.getItem("PacManDirection");
 
+    // Current colums
+    let PacManxcol = window.localStorage.getItem("PacManxcol");
+    let PacManycol = window.localStorage.getItem("PacManycol");
+
+
+    //Is direction is allowed
+    let rightTurnIsAllowed = false;
+    let leftTurnIsAllowed = false;
+    let upTurnIsAllowed = false; 
+    let downTurnIsAllowed = false;
+
     //
     //
     // Here are the Brains
@@ -73,37 +84,75 @@ function gameLoop() {
     //
 
     // CURRENT STATE
-
+    
     // Where are we?
     if ((xpos % 8) === 0) {
-        var PacManxcol = xpos / 8;
-
+        PacManxcol = xpos / 8;
+        
         // Logging
         // Show in which column we are
+        window.localStorage.setItem("PacManxcol", PacManxcol);
         document.getElementById("PacManxcol").innerHTML = PacManxcol;
         // console.log("x = " + PacManxcol);
         // alert(PacManxcol)
     }
 
     if ((ypos % 8) === 0) {
-        var PacManycol = ypos / 8;
+        PacManycol = ypos / 8;
 
         // Logging
         // Show in which column we are
+        window.localStorage.setItem("PacManycol", PacManycol);
         document.getElementById("PacManycol").innerHTML = PacManycol;
         // console.log("y = " + PacManycol);
         // console.log(PacManycol);
         // alert(PacManycol)
     }
+    document.getElementById("CurrentMatrixValue").innerHTML = "y: " + PacManycol + " x: " + PacManxcol;
 
     // This code is not complete.
     // When we complete it, it will tell us what action is possible on the block we are.
     for (let i = 0; i < layout.length; i++) {
         for (let j = 0; j < layout[i].length; j++) {
-            if (layout[i] != 0) {
+            // if (layout[i] != 0) {
                 // CAN I CONTINUE?
                 // For this you need the direction? => var Direction
+                let k = j+1;
+                // console.log("k: " + k);
+                // console.log("layout: i , j" + layout[i][j]);
+                if((i == PacManycol) &&
+                   (j == PacManxcol) &&
+                   (layout[i][k] == 0)){
+                    rightTurnIsAllowed = true;
+                }else if((i == PacManycol) &&
+                (j == PacManxcol) &&
+                (layout[i][j-1] == 0)){
+                    upTurnIsAllowed = true;
+                    downTurnIsAllowed = true;
+                    leftTurnIsAllowed = true;
+                }
+                else if((i == PacManycol) &&
+                (j == PacManxcol) &&
+                (layout[i-1][j] == 0)){
+                    upTurnIsAllowed = true;
+                }
+                else if((i == PacManycol) &&
+                (j == PacManxcol) &&
+                (layout[i+1][j] == 0)){
+                    downTurnIsAllowed = true;
+                }
+                    document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
+                    document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
+                    document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
+                    document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
+                    
+                    console.log(layout[i][k]);
 
+               window.localStorage.setItem("rightTurnIsAllowed", rightTurnIsAllowed);
+               window.localStorage.setItem("leftTurnIsAllowed", leftTurnIsAllowed);
+               window.localStorage.setItem("downTurnIsAllowed", downTurnIsAllowed);
+               window.localStorage.setItem("upTurnIsAllowed", upTurnIsAllowed);
+                
                 // i is a row
                 // j is the colum in this row
                 // I am [i][j|
@@ -115,7 +164,7 @@ function gameLoop() {
                 // if direction is up and i-1 j = 0 i can continue up
                 //  else i must stop
                 //    we must see how to do the stop, may be with PacManStop = true/false
-            }
+            // }
         }
 
         // So depending on the direction you can check the next square on the array
@@ -142,19 +191,24 @@ function gameLoop() {
     // Decide upon Direction
     // TODO
     // This must be enhanded w/ a condition "Can I turn in that direction?"
-    if (lastPressedKey == "ArrowUp"){
+    console.log(window.localStorage.getItem("rightTurnIsAllowed"));
+    // if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
+    if (lastPressedKey == "ArrowUp" ){
 
         PacManDirection = "Up";
 
-    }else if(lastPressedKey == "ArrowDown"){
+    // }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
+    }else if(lastPressedKey == "ArrowDown" ){
 
         PacManDirection = "Down";
 
-    }else if(lastPressedKey == "ArrowLeft"){
-
+    // }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
+    }else if(lastPressedKey == "ArrowLeft" ){
         PacManDirection = "Left";
 
-    }else if(lastPressedKey == "ArrowRight"){
+    // }else if((lastPressedKey === "ArrowRight") && (rightTurnIsAllowed == true) ){
+    }else if((lastPressedKey == "ArrowRight") ){
+        console.log("right");
 
         PacManDirection = "Right";
     }
