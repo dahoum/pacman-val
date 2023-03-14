@@ -74,7 +74,7 @@ function gameLoop() {
     //Is direction is allowed
     let rightTurnIsAllowed = false;
     let leftTurnIsAllowed = false;
-    let upTurnIsAllowed = false; 
+    let upTurnIsAllowed = false;
     let downTurnIsAllowed = false;
 
     //
@@ -84,17 +84,15 @@ function gameLoop() {
     //
 
     // CURRENT STATE
-    
+
     // Where are we?
     if ((xpos % 8) === 0) {
         PacManxcol = xpos / 8;
-        
+
         // Logging
         // Show in which column we are
         window.localStorage.setItem("PacManxcol", PacManxcol);
         document.getElementById("PacManxcol").innerHTML = PacManxcol;
-        // console.log("x = " + PacManxcol);
-        // alert(PacManxcol)
     }
 
     if ((ypos % 8) === 0) {
@@ -143,14 +141,14 @@ function gameLoop() {
                     document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
                     document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
                     document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
-                    
+
                     console.log(layout[i][k]);
 
                window.localStorage.setItem("rightTurnIsAllowed", rightTurnIsAllowed);
                window.localStorage.setItem("leftTurnIsAllowed", leftTurnIsAllowed);
                window.localStorage.setItem("downTurnIsAllowed", downTurnIsAllowed);
                window.localStorage.setItem("upTurnIsAllowed", upTurnIsAllowed);
-                
+
                 // i is a row
                 // j is the colum in this row
                 // I am [i][j|

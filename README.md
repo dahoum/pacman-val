@@ -1,5 +1,9 @@
 # 14 March
 
+* Today
+  * See why x is null in the beginning of the game `done`
+    * It is null, because the start postion of the PacMan is between two vertical colums `done`
+
 * Mantra
   * Tidy First
   * Coding Standards
