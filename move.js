@@ -5,34 +5,34 @@
 //
 
 let layout = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], // 0
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], // 1
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1], // 2
+    [1, 3, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 3, 1], // 3
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1], // 4
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], // 5
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1], // 6
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1], // 7
+    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1], // 8
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 4, 1, 1, 4, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1], // 9
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1], // 10
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 10, 10, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-    [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4],
-    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],
-    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6],
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1], // 12
+    [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4], // 13
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1], // 14
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1], // 15
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1], // 16
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], // 17
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1], // 18
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1], // 19
+    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1], // 20
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1], // 21
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1], // 22
+    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1], // 23
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1], // 24
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1], // 25
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], // 26
+    [8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6], // 27
 ]
 
 
@@ -87,7 +87,7 @@ function gameLoop() {
 
     // Where are we?
     if ((xpos % 8) === 0) {
-        PacManxcol = xpos / 8;
+        PacManxcol = (xpos / 8) - 1;
 
         // Logging
         // Show in which column we are
@@ -96,15 +96,13 @@ function gameLoop() {
     }
 
     if ((ypos % 8) === 0) {
-        PacManycol = ypos / 8;
+        PacManycol = (ypos / 8) - 1;
 
         // Logging
         // Show in which column we are
         window.localStorage.setItem("PacManycol", PacManycol);
         document.getElementById("PacManycol").innerHTML = PacManycol;
-        // console.log("y = " + PacManycol);
-        // console.log(PacManycol);
-        // alert(PacManycol)
+
     }
     document.getElementById("CurrentMatrixValue").innerHTML = "y: " + PacManycol + " x: " + PacManxcol;
 
@@ -112,55 +110,60 @@ function gameLoop() {
     // When we complete it, it will tell us what action is possible on the block we are.
     for (let i = 0; i < layout.length; i++) {
         for (let j = 0; j < layout[i].length; j++) {
-            // if (layout[i] != 0) {
-                // CAN I CONTINUE?
-                // For this you need the direction? => var Direction
-                let k = j+1;
-                // console.log("k: " + k);
-                // console.log("layout: i , j" + layout[i][j]);
-                if((i == PacManycol) &&
-                   (j == PacManxcol) &&
-                   (layout[i][k] == 0)){
+
+            // i is a row
+            // j is the colum in this row
+            // I am [i][j|
+            // left is i j-1
+            // right is i j+1
+            // top is i-1 j
+            // botom is i+1 j
+
+            // if direction is up and i-1 j = 0 i can continue up
+            //  else i must stop
+            //    we must see how to do the stop, may be with PacManStop = true/false
+
+            // CAN I CONTINUE?
+            // For this you need the direction? => var Direction
+            if((i == PacManycol) &&
+               (j == PacManxcol)){
+                // alert(i-1 + " " + j + " " + layout[i-1][j]);
+                if(layout[i][j+1] == 0){
+
                     rightTurnIsAllowed = true;
-                }else if((i == PacManycol) &&
-                (j == PacManxcol) &&
-                (layout[i][j-1] == 0)){
+
+                }else if(layout[i][j-1] == 0){
+
                     leftTurnIsAllowed = true;
-                }
-                else if((i == PacManycol) &&
-                (j == PacManxcol) &&
-                (layout[i-1][j] == 0)){
+
+                }else if(parseInt(layout[i-1][j]) == parseInt(0)){
+
                     upTurnIsAllowed = true;
-                }
-                else if((i == PacManycol) &&
-                (j == PacManxcol) &&
-                (layout[i+1][j] == 0)){
+
+                }else if(layout[i+1][j] == 0){
+
                     downTurnIsAllowed = true;
+
                 }
-                    document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
-                    document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
-                    document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
-                    document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
+            }else{
 
-                    console.log(layout[i][k]);
+                if(PacManDirection == "Left")  rightTurnIsAllowed = true;
+                if(PacManDirection == "Right") leftTurnIsAllowed  = true;
+                if(PacManDirection == "Down")  upTurnIsAllowed    = true;
+                if(PacManDirection == "Up")    downTurnIsAllowed  = true;
 
-               window.localStorage.setItem("rightTurnIsAllowed", rightTurnIsAllowed);
-               window.localStorage.setItem("leftTurnIsAllowed", leftTurnIsAllowed);
-               window.localStorage.setItem("downTurnIsAllowed", downTurnIsAllowed);
-               window.localStorage.setItem("upTurnIsAllowed", upTurnIsAllowed);
+            }
 
-                // i is a row
-                // j is the colum in this row
-                // I am [i][j|
-                // left is i j-1
-                // right is i j+1
-                // top is i-1 j
-                // botom is i+1 j
+            document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
+            document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
+            document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
+            document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
 
-                // if direction is up and i-1 j = 0 i can continue up
-                //  else i must stop
-                //    we must see how to do the stop, may be with PacManStop = true/false
-            // }
+            window.localStorage.setItem("rightTurnIsAllowed", rightTurnIsAllowed);
+            window.localStorage.setItem("leftTurnIsAllowed", leftTurnIsAllowed);
+            window.localStorage.setItem("downTurnIsAllowed", downTurnIsAllowed);
+            window.localStorage.setItem("upTurnIsAllowed", upTurnIsAllowed);
+
         }
 
         // So depending on the direction you can check the next square on the array
@@ -202,9 +205,8 @@ function gameLoop() {
     }else if(lastPressedKey == "ArrowLeft" ){
         PacManDirection = "Left";
 
-    }else if((lastPressedKey === "ArrowRight") && (rightTurnIsAllowed == true) ){
+    }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
     // }else if((lastPressedKey == "ArrowRight") ){
-        console.log("right");
 
         PacManDirection = "Right";
     }

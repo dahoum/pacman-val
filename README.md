@@ -3,7 +3,13 @@
 * Today
   * See why x is null in the beginning of the game `done`
     * It is null, because the start postion of the PacMan is between two vertical colums `done`
-
+    * How to Fix
+      * Fake the original postion?
+        * Not a good idea.
+      * Fix the turning logic?
+        * We discovered that our logic for turning is wrong, because in the original game turnig can happen w/ picel precision and we have done it based on the columns `together`
+* Homework
+  * Replace the 10 in the matrix w/ for example 6 or 9 or whatever, to keep the matrix square `val`
 * Mantra
   * Tidy First
   * Coding Standards
