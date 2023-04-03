@@ -46,8 +46,10 @@ let layout = [
 // This is state of the PacMan
 // TODO
 // Move it in PacMan.js
-var xpos = 116;
-var ypos = 192;
+// var xpos = 116;
+// var ypos = 192;
+var xpos = 112;
+var ypos = 189;
 var xspeed = 0;
 var yspeed = 0;
 var RequestPacManDirection;
