@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
             [1, 1, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 7, 7, 7, 7, 7, 7, 7, 7, 1]
         ]
+
+        //227 248
         // pacman =5
     let spritesheet = document.getElementById("spritesheet");
     console.log(spritesheet);

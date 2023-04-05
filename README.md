@@ -1,3 +1,7 @@
+# 4 April 2023
+
+
+
 
 * Homework
   * Replace the 10 in the matrix w/ for example 6 or 9 or whatever, to keep the matrix square `val`
