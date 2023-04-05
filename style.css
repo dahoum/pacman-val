@@ -49,6 +49,32 @@ body{
         visibility: visible;
     }
 }
+
+.pellets{
+    background-image: url(./images/img.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -8px -24px;
+    animation: pellets 0.6s  infinite ;
+}
+@keyframes pellets{
+    0%{
+          background-position: -8px -24px;
+          visibility: visible;
+    }
+    15%{
+        background-position: -8px -24px;
+        visibility: visible;
+  }
+    50%{
+        background-position: -8px -24px;
+        visibility: hidden;
+           }
+    100%{
+        background-position: -8px -24px;
+        visibility: hidden;
+        }
+}
 div{
     color: black;
 }
