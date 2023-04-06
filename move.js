@@ -95,7 +95,7 @@ function gameLoop() {
 
     // Where are we?
     if ((xpos % 8) === 0 ) {
-        PacManxcol = Math.floor(xpos / 8) - 2;
+        PacManxcol = Math.floor(xpos / 8) ;
 
         // Logging
         // Show in which column we are
