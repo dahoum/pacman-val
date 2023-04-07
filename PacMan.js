@@ -1,3 +1,30 @@
+document.addEventListener('DOMContentLoaded', () => {
+const pacmanC = document.getElementById('pacman');
+const frame = [
+    '209px 0px',
+    '225px 0px'
+]
+let currentFrameIndex = 0;
+
+setInterval(() => {
+    pacmanC.style.backgroundPosition = frame[currentFrameIndex];
+    currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+}, 10)
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 // This is the Game Engine.
 //
@@ -7,79 +34,82 @@
 // Reset the Game on Start
 
 // We clear the localStorage on Start in order to forget the pressed keys, etc.
-window.localStorage.clear();
+// window.localStorage.clear();
 
 // The whole Game Engine is inside.
-document.addEventListener('DOMContentLoaded', () => {
-
-    //
-    //
-    // Initialisation
-    //
-    //
-
-    //
-    // Values
-    //
-
-    // TODO
-    // Later we can make it in a function, so that we can "reset" the game from w/in the game.
-    // Initial coordinates of the PacMan.
-    // They do not work at the moment, we should make them work.
-    // var xpos = 124;
-    // var ypos = 160;
-    // Initial speed of the PacMan.
-    var xspeed = 1;
-    var yspeed = 0;
-    // Game Speed
-    var maxSpeed = 1;
+// document.addEventListener('DOMContentLoaded', () => {
 
 
 
 
-    //
-    //
-    // End of creating of the labyrint
-    //
-    //
+//     //
+//     //
+//     // Initialisation
+//     //
+//     //
 
-    //
-    // Place the Actors
-    //
+//     //
+//     // Values
+//     //
 
-    // document.getElementById('pacman').style.left = xpos;
-    // document.getElementById('pacman').style.top = ypos;
+//     // TODO
+//     // Later we can make it in a function, so that we can "reset" the game from w/in the game.
+//     // Initial coordinates of the PacMan.
+//     // They do not work at the moment, we should make them work.
+//     // var xpos = 124;
+//     // var ypos = 160;
+//     // Initial speed of the PacMan.
+//     // var xspeed = 1;
+//     // var yspeed = 0;
+//     // Game Speed
+//     // var maxSpeed = 1;
 
-    // function moveP(e) {
-    //     xpos = xpos + xspeed;
-    //     ypos = ypos + yspeed;
-    //     switch (e.keyCode) {
-    //         case 37:
-    //             // left
-    //             document.getElementById('pacman').style.left = xpos;
-    //             document.getElementById('pacman').style.top = ypos;
-    //             break
-    //         case 38:
-    //             // up
-    //             document.getElementById('pacman').style.left = xpos;
-    //             document.getElementById('pacman').style.top = ypos;
-    //             break
-    //         case 39:
-    //             // right
-    //             document.getElementById('pacman').style.left = xpos;
-    //             document.getElementById('pacman').style.top = ypos;
-    //             break
-    //         case 40:
-    //             // down
-    //             document.getElementById('pacman').style.left = xpos;
-    //             document.getElementById('pacman').style.top = ypos;
-    //             break
-    //     }
-    // }
-    // // yspeed = Math.max(yspeed - 1, -1 * maxSpeed);
-    // document.addEventListener('keyup', moveP)
 
-});
+
+
+//     //
+//     //
+//     // End of creating of the labyrint
+//     //
+//     //
+
+//     //
+//     // Place the Actors
+//     //
+
+//     // document.getElementById('pacman').style.left = xpos;
+//     // document.getElementById('pacman').style.top = ypos;
+
+//     // function moveP(e) {
+//     //     xpos = xpos + xspeed;
+//     //     ypos = ypos + yspeed;
+//     //     switch (e.keyCode) {
+//     //         case 37:
+//     //             // left
+//     //             document.getElementById('pacman').style.left = xpos;
+//     //             document.getElementById('pacman').style.top = ypos;
+//     //             break
+//     //         case 38:
+//     //             // up
+//     //             document.getElementById('pacman').style.left = xpos;
+//     //             document.getElementById('pacman').style.top = ypos;
+//     //             break
+//     //         case 39:
+//     //             // right
+//     //             document.getElementById('pacman').style.left = xpos;
+//     //             document.getElementById('pacman').style.top = ypos;
+//     //             break
+//     //         case 40:
+//     //             // down
+//     //             document.getElementById('pacman').style.left = xpos;
+//     //             document.getElementById('pacman').style.top = ypos;
+//     //             break
+//     //     }
+//     // }
+//     // // yspeed = Math.max(yspeed - 1, -1 * maxSpeed);
+//     // document.addEventListener('keyup', moveP)
+
+// });
 
 
 
