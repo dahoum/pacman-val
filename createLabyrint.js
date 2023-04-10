@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
             posy -= 8
 
         }
+
+        //Animate pellets
         el =document.querySelectorAll('[id=pellets]');
         count = 0;
         setInterval(() => {
