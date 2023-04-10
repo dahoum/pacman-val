@@ -1,6 +1,3 @@
-# 4 April 2023
-
-
 
 
 * Homework
