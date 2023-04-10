@@ -94,6 +94,86 @@ function gameLoop() {
     yellow.style.left = yellowXpos;
     yellow.style.top = yellowYpos;
 
+    //Movement of red ghost
+   function  moveRed(){
+        let direction = Math.floor(Math.random() * 8) + 1;
+    switch(direction){
+        case 1:
+            // up
+            redYpos -= 10;
+            frame = [
+                // background-position: 223px -65px;
+                '160px -65px',
+                '143px -65px'
+            ]
+    
+            let currentFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = frame[currentFrameIndex];
+                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+            }, 200)
+    
+            break;
+        case 2:
+            //right
+            redXpos += 10;
+            frame = [
+                // background-position: 223px -65px;
+                '223px -65px',
+                '208px -65px'
+            ]
+    
+            currentFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = frame[currentFrameIndex];
+                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+            }, 200)
+    
+            break;
+        case 3:
+            //down
+            redYpos += 10;
+            frame = [
+                // background-position: 223px -65px;
+                '128px -65px',
+                '111px -65px'
+            ]
+    
+            currentFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = frame[currentFrameIndex];
+                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+            }, 200)
+    
+            break;
+        case 4:
+            //left
+            redXpos += 10;
+            frame = [
+                // background-position: 223px -65px;
+                '208px -65px',
+                '192px -65px'
+            ]
+    
+            currentFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = frame[currentFrameIndex];
+                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+            }, 200)
+    
+            break;
+    }
+    red.style.left = redXpos;
+    red.style.top = redYpos;
+    }
+
+     setInterval(moveRed, 500)
+    
+
 
 
 

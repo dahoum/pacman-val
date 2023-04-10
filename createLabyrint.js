@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         //Animate pellets
-        el =document.querySelectorAll('[id=pellets]');
+        el = document.querySelectorAll('[id=pellets]');
         count = 0;
         setInterval(() => {
             for(let i = 0; i < el.length; i++){
