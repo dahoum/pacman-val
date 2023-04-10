@@ -49,8 +49,6 @@ let layout = [
 //
 
 // This is state of the PacMan
-// TODO
-// Move it in PacMan.js
 // var xpos = 116;
 // var ypos = 192;
 var xpos = 112;
@@ -58,6 +56,16 @@ var ypos = 192;
 var xspeed = 0;
 var yspeed = 0;
 var RequestPacManDirection;
+
+//This is state of enemies
+var redXpos = 113
+var redYpos = 96
+var pinkXpos = 113
+var pinkYpos = 119
+var greenXpos = 128
+var greenYpos = 120
+var yellowXpos = 98
+var yellowYpos = 120
 
 function gameLoop() {
 
@@ -68,7 +76,28 @@ function gameLoop() {
     //
 
     // Get the PacMan
-    pacman = document.getElementById('pacman')
+    pacman = document.getElementById('pacman');
+
+    //Get Enemies
+    red = document.getElementById("red");
+    pink = document.getElementById("pink");
+    green = document.getElementById("green");
+    yellow = document.getElementById("yellow");
+
+    //SET starting positions of emenies
+    red.style.left = redXpos;
+    red.style.top = redYpos;
+    pink.style.left = pinkXpos;
+    pink.style.top = pinkYpos;
+    green.style.left = greenXpos;
+    green.style.top = greenYpos;
+    yellow.style.left = yellowXpos;
+    yellow.style.top = yellowYpos;
+
+
+
+
+
 
     // Which key was pressed last?
     var lastPressedKey  = window.localStorage.getItem("lastPressedKey");
@@ -135,7 +164,7 @@ function gameLoop() {
             // For this you need the direction? => var Direction
             if((i == PacManycol) &&
                (j == PacManxcol)){
-                console.log(xpos + " " + ypos );
+                // console.log(xpos + " " + ypos );
                 // alert(i-1 + " " + j + " " + layout[i-1][j]);
                 if(layout[i][j+1] == 0 || layout[i][j+1] == 4){
 
@@ -199,25 +228,83 @@ function gameLoop() {
     // Decide upon Direction
     // TODO
     // This must be enhanded w/ a condition "Can I turn in that direction?"
-    console.log(window.localStorage.getItem("rightTurnIsAllowed"));
+    // console.log(window.localStorage.getItem("rightTurnIsAllowed"));
+
+
     if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
     // if (lastPressedKey == "ArrowUp" ){
-
+        
         PacManDirection = "Up";
 
+        //Animating pacman when moving up
+       frame = [
+            '209px -32px',
+            '225px -32px'
+        ]
+
+        let currentFrameIndex = 0;
+
+        setInterval(() => {
+             pacman.style.backgroundPosition = frame[currentFrameIndex];
+             currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+        }, 200)
+
+
     }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
-    // }else if(lastPressedKey == "ArrowDown" ){
+    //  }else if(lastPressedKey == "ArrowDown" ){
 
         PacManDirection = "Down";
 
+        //Animating pacman when moving down
+        frame = [
+            '209px -47px',
+            '225px -47px'
+        ]
+
+        let currentFrameIndex = 0;
+
+        setInterval(() => {
+             pacman.style.backgroundPosition = frame[currentFrameIndex];
+             currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+        }, 200)
+
+
     }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
     // }else if(lastPressedKey == "ArrowLeft" ){
+
         PacManDirection = "Left";
+
+        //Animating pacman when moving left
+       frame = [
+            '209px -15px',
+            '225px -15px'
+        ]
+
+        let currentFrameIndex = 0;
+        
+        setInterval(() => {
+             pacman.style.backgroundPosition = frame[currentFrameIndex];
+             currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+        }, 200)
+
 
     }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
     // }else if((lastPressedKey == "ArrowRight") ){
 
         PacManDirection = "Right";
+
+        //Animating pacman when moving right
+          frame = [
+            '209px 0px',
+            '225px 0px'
+        ]
+
+        let currentFrameIndex = 0;
+
+       setInterval(() => {
+             pacman.style.backgroundPosition = frame[currentFrameIndex];
+             currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+        }, 200)
     }
 
     document.getElementById("PacManDirection").innerHTML = PacManDirection;
@@ -237,25 +324,25 @@ function gameLoop() {
     // For now w/ ifs, later we can switch to cases when the Brain is more advanced
     // TODO
     // Replace lastPressedKey w/ Direction (Up, Down, Left, Right)
+   
     if (PacManDirection == "Up"){
-
         yspeed = -1;
         xspeed = 0;
-
+        
+        
     }else if(PacManDirection == "Down"){
-
         yspeed = 1;
         xspeed = 0;
-
+         
     }else if(PacManDirection == "Left"){
-
         xspeed = -1;
         yspeed = 0;
+     
 
     }else if(PacManDirection == "Right"){
-
         xspeed = 1;
         yspeed = 0;
+       
     }
 
     // New Position

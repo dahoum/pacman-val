@@ -1,17 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-const pacmanC = document.getElementById('pacman');
-const frame = [
-    '209px 0px',
-    '225px 0px'
-]
-let currentFrameIndex = 0;
+// document.addEventListener('DOMContentLoaded', () => {
+//     let el = document.getElementById("pellets");
+//     setInterval(() => {
+//         el.style.opacity = '0'
+//          }, 200)
+// // const pacmanC = document.getElementById('pacman');
+// // const frame = [
+// //     '209px -15px',
+// //     '225px -15px'
+// // ]
+// // let currentFrameIndex = 0;
 
-setInterval(() => {
-    pacmanC.style.backgroundPosition = frame[currentFrameIndex];
-    currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-}, 10)
+// // setInterval(() => {
+// //     pacmanC.style.backgroundPosition = frame[currentFrameIndex];
+// //     currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+// // }, 200)
 
-});
+// });
 
 
 

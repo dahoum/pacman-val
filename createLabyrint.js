@@ -47,33 +47,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 var element = document.createElement("div");
                 element.style.height = "8px";
                 element.style.width = "8px";
-                element.classList.add('container')
+               
                
                 let counter = 0;
                 if (counter <= j) {
+                    element.style.backgroundImage = "url('./images/img.png')"
+                    element.classList.add('container')
                     element.style.backgroundPositionX = `${posx}px`
                     element.style.backgroundPositionY = `${posy}px`
-                     if(posx === -8 && posy === -24 || posx === -208 && posy === -24 || 
-                        posx === -8 && posy === -184 || posx === -208 && posy === -184 ){
+                   
+                     if(posx === -8 && posy === -24  ){
+                        element.id = 'pellets'
                         element.classList.add('pellets');
-                        element.style.backgroundImage = "url('./images/img.png')"
-                        element.style.animation = "pellets 0.6s  infinite"
-                      
-                    }else{
-                         element.style.backgroundImage = "url('./images/img.png')"
-
+                       
+                        
                     }
+                    else if(posx === -208 && posy === -24){
+                        element.id = 'pellets'
+                        element.classList.add('pellets');
+                        
+                    }else if(posx === -8 && posy === -184 ){
+                       
+                        element.id = 'pellets'
+                        element.classList.add('pellets');
+                    }else if(posx === -208 && posy === -184){
+                        element.id = 'pellets'
+                        element.classList.add('pellets');
+                    }
+                  
+                    
+                         
                     posx -= 8
                     counter++
                    
                 }
-
+               
                 spritesheet.appendChild(element);
             }
             posy -= 8
 
         }
-
+        el =document.querySelectorAll('[id=pellets]');
+        count = 0;
+        setInterval(() => {
+            for(let i = 0; i < el.length; i++){
+                if(count % 2 == 0){
+                el[i].style.opacity = '1'
+            }else{
+                el[i].style.opacity = '0'
+            }
+            }
+            
+            count++;
+        }, 100)
+                        
     }
 
     createBoard()
