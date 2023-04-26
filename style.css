@@ -8,6 +8,7 @@ body{
 }
 .prop{
     color: white;
+    margin: 30px;
 }
 
 #spritesheet {
@@ -26,6 +27,7 @@ body{
     background-image: url(./images/img.png);
     background-color: transparent;
     border-image: none;
+   z-index: 100;
     background-position: 193px 0px;
     border: 0px;
     padding: 0px;
@@ -104,3 +106,43 @@ body{
     left: 0px;
     transition: all 1s;
 }
+
+.lives{
+    position: absolute;
+    height: 15px;
+    width:  15px;
+    background-image: url(./images/img.png);
+    background-color: transparent;
+    border-image: none;
+   z-index: 100;
+    background-position: 225px -15px;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+.lives1{
+    position: absolute;
+    height: 15px;
+    width:  15px;
+    background-image: url(./images/img.png);
+    background-color: transparent;
+    border-image: none;
+   z-index: 100;
+    background-position: 225px -15px;
+    left: 25px;
+}
+.lives2{
+    position: absolute;
+    height: 15px;
+    width:  15px;
+    background-image: url(./images/img.png);
+    background-color: transparent;
+    border-image: none;
+   z-index: 100;
+    background-position: 225px -15px;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    left: 40;
+}
+

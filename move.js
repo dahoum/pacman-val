@@ -67,6 +67,9 @@ var greenYpos = 120
 var yellowXpos = 98
 var yellowYpos = 120
 
+var countLives = 1;
+var gameOver = false;
+
 function gameLoop() {
 
     //
@@ -93,89 +96,8 @@ function gameLoop() {
     green.style.top = greenYpos;
     yellow.style.left = yellowXpos;
     yellow.style.top = yellowYpos;
-
-    //Movement of red ghost
-   function  moveRed(){
-        let direction = Math.floor(Math.random() * 8) + 1;
-    switch(direction){
-        case 1:
-            // up
-            redYpos -= 10;
-            frame = [
-                // background-position: 223px -65px;
-                '160px -65px',
-                '143px -65px'
-            ]
     
-            let currentFrameIndex = 0;
     
-            setInterval(() => {
-                 red.style.backgroundPosition = frame[currentFrameIndex];
-                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-            }, 200)
-    
-            break;
-        case 2:
-            //right
-            redXpos += 10;
-            frame = [
-                // background-position: 223px -65px;
-                '223px -65px',
-                '208px -65px'
-            ]
-    
-            currentFrameIndex = 0;
-    
-            setInterval(() => {
-                 red.style.backgroundPosition = frame[currentFrameIndex];
-                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-            }, 200)
-    
-            break;
-        case 3:
-            //down
-            redYpos += 10;
-            frame = [
-                // background-position: 223px -65px;
-                '128px -65px',
-                '111px -65px'
-            ]
-    
-            currentFrameIndex = 0;
-    
-            setInterval(() => {
-                 red.style.backgroundPosition = frame[currentFrameIndex];
-                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-            }, 200)
-    
-            break;
-        case 4:
-            //left
-            redXpos += 10;
-            frame = [
-                // background-position: 223px -65px;
-                '208px -65px',
-                '192px -65px'
-            ]
-    
-            currentFrameIndex = 0;
-    
-            setInterval(() => {
-                 red.style.backgroundPosition = frame[currentFrameIndex];
-                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-            }, 200)
-    
-            break;
-    }
-    red.style.left = redXpos;
-    red.style.top = redYpos;
-    }
-
-     setInterval(moveRed, 500)
-    
-
-
-
 
 
 
@@ -311,8 +233,8 @@ function gameLoop() {
     // console.log(window.localStorage.getItem("rightTurnIsAllowed"));
 
 
-    if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
-    // if (lastPressedKey == "ArrowUp" ){
+    // if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
+    if (lastPressedKey == "ArrowUp" ){
         
         PacManDirection = "Up";
 
@@ -330,8 +252,8 @@ function gameLoop() {
         }, 200)
 
 
-    }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
-    //  }else if(lastPressedKey == "ArrowDown" ){
+    // }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
+     }else if(lastPressedKey == "ArrowDown" ){
 
         PacManDirection = "Down";
 
@@ -349,8 +271,8 @@ function gameLoop() {
         }, 200)
 
 
-    }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
-    // }else if(lastPressedKey == "ArrowLeft" ){
+    // }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
+    }else if(lastPressedKey == "ArrowLeft" ){
 
         PacManDirection = "Left";
 
@@ -368,8 +290,8 @@ function gameLoop() {
         }, 200)
 
 
-    }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
-    // }else if((lastPressedKey == "ArrowRight") ){
+    // }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
+    }else if((lastPressedKey == "ArrowRight") ){
 
         PacManDirection = "Right";
 
@@ -423,8 +345,10 @@ function gameLoop() {
         xspeed = 1;
         yspeed = 0;
        
+    }else if(PacManDirection == "Stop"){
+        xspeed = 0;
+        yspeed = 0; 
     }
-
     // New Position
     xpos = xpos + xspeed;
     ypos = ypos + yspeed;
@@ -432,6 +356,174 @@ function gameLoop() {
     // Apply the New Postion
     pacman.style.left = xpos;
     pacman.style.top = ypos;
+
+
+    //Movement of red ghost
+   function  moveRed(){
+     
+    if((redXpos  > 0 && redXpos + 10 <= 200 ) || (redYpos > 0 && redYpos + 10 <= 200)){
+        let currentRedFrameIndex = 0;
+   let direction = Math.floor(Math.random() * 4) ;
+    switch(direction){
+        case 1:
+            // up
+            redYpos -= 5;
+            redFrame = [
+                // background-position: 223px -65px;
+                '160px -65px',
+                '143px -65px'
+            ]
+    
+             currentRedFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = redFrame[currentRedFrameIndex];
+                 currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
+            }, 20)
+    
+            break;
+        case 2:
+            //right
+            redXpos += 5;
+            redFrame = [
+                // background-position: 223px -65px;
+                '223px -65px',
+                '208px -65px'
+            ]
+    
+            currentRedFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = redFrame[currentRedFrameIndex];
+                 currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
+            }, 20)
+            break;
+        case 3:
+            //down
+            redYpos += 5;
+            redFrame = [
+                // background-position: 223px -65px;
+                '128px -65px',
+                '111px -65px'
+            ]
+    
+            currentRedFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = redFrame[currentRedFrameIndex];
+                 currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
+            }, 20)
+            break;
+        case 4:
+            //left
+            redXpos += 5;
+            redFrame = [
+                // background-position: 223px -65px;
+                '208px -65px',
+                '192px -65px'
+            ]
+    
+            currentRedFrameIndex = 0;
+    
+            setInterval(() => {
+                 red.style.backgroundPosition = redFrame[currentRedFrameIndex];
+                 currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
+            }, 20)
+    
+            break;
+    }
+
+        red.style.left = redXpos;
+        red.style.top = redYpos;
+    }
+    
+    }
+
+     setInterval(moveRed, 300)
+    
+function reset(){
+    xpos = 112
+    ypos = 192 
+    xspeed = 0
+    yspeed = 0
+    xpos = xpos + xspeed;
+    ypos = ypos + yspeed;
+    PacManDirection = null
+    lastPressedKey = null
+    redXpos = 113
+    redYpos = 96
+       
+}
+let isDeath = false;
+let r;
+
+
+     if(pinkXpos === xpos && pinkYpos === ypos){
+        console.log(xpos + " + " + ypos);
+        isDeath = true;
+        console.log("death");
+        
+//  setTimeout(d, 2000)
+
+    if(isDeath === true){
+        
+        countLives++;
+        xspeed = 1;
+        yspeed = -1;
+        
+        isDeath = false;
+        Dframe = [
+            '176px 0px',
+            '160px 0px',
+            '144px 0px',
+            '128px 0px',
+            '113px 0px',
+            '97px 0px',
+            '81px 0px',
+            '65px 0px',
+            '50px 0px',
+            '35px 0px',
+            '16px -4px'
+        ]
+           for(let i = 0; i < Dframe.length; i++){
+             pacman.style.backgroundPosition = Dframe[i];
+            
+            }
+        
+       setTimeout(reset, 300)
+     
+     }
+     
+     
+    }
+    setTimeout(() => {
+         if(countLives === 1){
+        document.getElementById("lives2").style.visibility = "hidden";
+    }else if(countLives === 2){
+        document.getElementById("lives1").style.visibility = "hidden";
+    }else if(countLives === 3){
+        document.getElementById("lives").style.visibility = "hidden";
+    }else if(countLives === 4){
+        gameOver = true;
+    }
+    }, 30)
+    setTimeout(() => {
+        if(gameOver === true){
+        document.getElementById("lives1").style.visibility = "visible";
+       document.getElementById("lives2").style.visibility = "visible";
+       document.getElementById("lives").style.visibility = "visible";
+   }
+
+   }, 30)
+
+
+
+
+   
+
+// reset();
+
+
 
 } // END of gameloop()
 
