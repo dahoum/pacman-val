@@ -164,34 +164,27 @@ function gameLoop() {
 
             // CAN I CONTINUE?
             // For this you need the direction? => var Direction
-            if((i == PacManycol) &&
-               (j == PacManxcol)){
+            if((i == PacManxcol ) &&
+               (j == PacManycol )){
                 // console.log(xpos + " " + ypos );
                 // alert(i-1 + " " + j + " " + layout[i-1][j]);
-                if(layout[i][j+1] == 0 || layout[i][j+1] == 4){
+                if(layout[PacManxcol][PacManycol+1] == 0 || layout[PacManxcol][PacManycol+1] == 4){
 
                     rightTurnIsAllowed = true;
 
-                }else if(layout[i][j-1] == 0 || layout[i][j-1] == 4){
+                }else if(layout[PacManxcol][PacManycol-1] == 0 || layout[PacManxcol][PacManycol-1] == 4){
 
                     leftTurnIsAllowed = true;
 
-                }else if(parseInt(layout[i-1][j]) == 0 || parseInt(layout[i-1][j]) == 4){
+                }else if(parseInt(layout[PacManxcol-1][PacManycol]) == 0 || parseInt(layout[PacManxcol-1][PacManycol]) == 4){
 
                     upTurnIsAllowed = true;
 
-                }else if(layout[i+1][j] == 0 || layout[i+1][j] == 4){
+                }else if(layout[PacManxcol+1][PacManycol] == 0 || layout[PacManxcol+1][PacManycol] == 4){
 
                     downTurnIsAllowed = true;
 
                 }
-            }else{
-
-                if(PacManDirection == "Left")  rightTurnIsAllowed = true;
-                if(PacManDirection == "Right") leftTurnIsAllowed  = true;
-                if(PacManDirection == "Down")  upTurnIsAllowed    = true;
-                if(PacManDirection == "Up")    downTurnIsAllowed  = true;
-
             }
 
             document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
@@ -233,9 +226,9 @@ function gameLoop() {
     // console.log(window.localStorage.getItem("rightTurnIsAllowed"));
 
 
-    // if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
-    if (lastPressedKey == "ArrowUp" ){
-        
+    if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
+    // if (lastPressedKey == "ArrowUp" ){
+        console.log("ArrowUp");
         PacManDirection = "Up";
 
         //Animating pacman when moving up
@@ -252,11 +245,10 @@ function gameLoop() {
         }, 200)
 
 
-    // }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
-     }else if(lastPressedKey == "ArrowDown" ){
-
+    }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
+    //  }else if(lastPressedKey == "ArrowDown" ){
+        console.log("ArrowDown");
         PacManDirection = "Down";
-
         //Animating pacman when moving down
         frame = [
             '209px -47px',
@@ -264,16 +256,15 @@ function gameLoop() {
         ]
 
         let currentFrameIndex = 0;
-
         setInterval(() => {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
 
 
-    // }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
-    }else if(lastPressedKey == "ArrowLeft" ){
-
+    }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
+    // }else if(lastPressedKey == "ArrowLeft" ){
+        console.log("ArrowLeft");
         PacManDirection = "Left";
 
         //Animating pacman when moving left
@@ -290,9 +281,9 @@ function gameLoop() {
         }, 200)
 
 
-    // }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
-    }else if((lastPressedKey == "ArrowRight") ){
-
+    }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
+    // }else if((lastPressedKey == "ArrowRight") ){
+        console.log("ArrowRight");
         PacManDirection = "Right";
 
         //Animating pacman when moving right
