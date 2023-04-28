@@ -70,24 +70,23 @@ var yellowYpos = 120
 var countLives = 1;
 var gameOver = false;
 
+var lastPressedKey, PacManDirection, PacManxcol, PacManycol;
+
+let rightTurnIsAllowed = true;
+let leftTurnIsAllowed = true;
+let upTurnIsAllowed = false;
+let downTurnIsAllowed = false;
+
+
+
 function gameLoop() {
-
-    //
-    //
-    // State of the Game
-    //
-    //
-
-    // Get the PacMan
     pacman = document.getElementById('pacman');
 
-    //Get Enemies
     red = document.getElementById("red");
     pink = document.getElementById("pink");
     green = document.getElementById("green");
     yellow = document.getElementById("yellow");
 
-    //SET starting positions of emenies
     red.style.left = redXpos;
     red.style.top = redYpos;
     pink.style.left = pinkXpos;
@@ -96,142 +95,52 @@ function gameLoop() {
     green.style.top = greenYpos;
     yellow.style.left = yellowXpos;
     yellow.style.top = yellowYpos;
-    
-    
-
-
-
-    // Which key was pressed last?
-    var lastPressedKey  = window.localStorage.getItem("lastPressedKey");
-    var PacManDirection = window.localStorage.getItem("PacManDirection");
-
-    // Current colums
-    let PacManxcol = window.localStorage.getItem("PacManxcol");
-    let PacManycol = window.localStorage.getItem("PacManycol");
-
-
-    //Is direction is allowed
-    let rightTurnIsAllowed = false;
-    let leftTurnIsAllowed = false;
-    let upTurnIsAllowed = false;
-    let downTurnIsAllowed = false;
-
-    //
-    //
-    // Here are the Brains
-    //
-    //
-
-    // CURRENT STATE
 
     // Where are we?
     if ((xpos % 8) === 0 ) {
         PacManxcol = Math.floor(xpos / 8) ;
 
-        // Logging
-        // Show in which column we are
-        window.localStorage.setItem("PacManxcol", PacManxcol);
         document.getElementById("PacManxcol").innerHTML = PacManxcol;
     }
 
     if ((ypos % 8) === 0) {
         PacManycol = Math.floor(ypos / 8) - 2;
 
-        // Logging
-        // Show in which column we are
-        window.localStorage.setItem("PacManycol", PacManycol);
         document.getElementById("PacManycol").innerHTML = PacManycol;
 
     }
     document.getElementById("CurrentMatrixValue").innerHTML = "y: " + PacManycol + " x: " + PacManxcol;
 
     // This code is not complete.
-    // When we complete it, it will tell us what action is possible on the block we are.
-    for (let i = 0; i < layout.length; i++) {
-        for (let j = 0; j < layout[i].length; j++) {
-
-            // i is a row
-            // j is the colum in this row
-            // I am [i][j|
-            // left is i j-1
-            // right is i j+1
-            // top is i-1 j
-            // botom is i+1 j
-
-            // if direction is up and i-1 j = 0 i can continue up
-            //  else i must stop
-            //    we must see how to do the stop, may be with PacManStop = true/false
-
-            // CAN I CONTINUE?
-            // For this you need the direction? => var Direction
-            if((i == PacManxcol ) &&
-               (j == PacManycol )){
-                // console.log(xpos + " " + ypos );
-                // alert(i-1 + " " + j + " " + layout[i-1][j]);
+// When we complete it, it will tell us what action is possible on the block we are.
                 if(layout[PacManxcol][PacManycol+1] == 0 || layout[PacManxcol][PacManycol+1] == 4){
 
                     rightTurnIsAllowed = true;
 
-                }else if(layout[PacManxcol][PacManycol-1] == 0 || layout[PacManxcol][PacManycol-1] == 4){
+                } else if(layout[PacManxcol][PacManycol-1] == 0 || layout[PacManxcol][PacManycol-1] == 4){
 
                     leftTurnIsAllowed = true;
 
-                }else if(parseInt(layout[PacManxcol-1][PacManycol]) == 0 || parseInt(layout[PacManxcol-1][PacManycol]) == 4){
+                } else if(layout[PacManxcol-1][PacManycol] == 0 || layout[PacManxcol-1][PacManycol] == 4){
 
                     upTurnIsAllowed = true;
 
-                }else if(layout[PacManxcol+1][PacManycol] == 0 || layout[PacManxcol+1][PacManycol] == 4){
+                } else if(layout[PacManxcol+1][PacManycol] == 0 || layout[PacManxcol+1][PacManycol] == 4){
 
                     downTurnIsAllowed = true;
 
                 }
-            }
 
             document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
             document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
             document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
             document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
 
-            window.localStorage.setItem("rightTurnIsAllowed", rightTurnIsAllowed);
-            window.localStorage.setItem("leftTurnIsAllowed", leftTurnIsAllowed);
-            window.localStorage.setItem("downTurnIsAllowed", downTurnIsAllowed);
-            window.localStorage.setItem("upTurnIsAllowed", upTurnIsAllowed);
-
-        }
-
-        // So depending on the direction you can check the next square on the array
-        // If not 0 you have to stop => var PacManStopped
-        // B.
-        // TURNING ON CROSSINGS
-        // 1.
-        // Is there a desired direction at all?
-        // ...
-        // How do we answer this?
-        // The semantically cleanest answer is "Is there a pressed key?"
-        // For this to work, after you process the pressed key, you must reset this variable
-        // 2.
-        // Can I turn here?
-        // To answer this we must know which is the desired direction?
-        // Also we must know if we are on a crossing:
-        // — we have current coordinates which change w/ step 1 pixel
-        // - we have the array w/ the docts which are on every 8 pixels
-        // — so we should execute the turning logic only if the current x/8 is an integer
-        // can I continue?
-
-    }
-
-    // Decide upon Direction
-    // TODO
-    // This must be enhanded w/ a condition "Can I turn in that direction?"
-    // console.log(window.localStorage.getItem("rightTurnIsAllowed"));
-
-
-    // if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
-    if (lastPressedKey == "ArrowUp" ){
+    if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
+    // if (lastPressedKey == "ArrowUp" ){
         console.log("ArrowUp");
         PacManDirection = "Up";
-
-        //Animating pacman when moving up
+//Animating pacman when moving up
        frame = [
             '209px -32px',
             '225px -32px'
@@ -249,6 +158,7 @@ function gameLoop() {
     //  }else if(lastPressedKey == "ArrowDown" ){
         console.log("ArrowDown");
         PacManDirection = "Down";
+
         //Animating pacman when moving down
         frame = [
             '209px -47px',
@@ -260,10 +170,9 @@ function gameLoop() {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
-
-
-    }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
+}else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
     // }else if(lastPressedKey == "ArrowLeft" ){
+
         console.log("ArrowLeft");
         PacManDirection = "Left";
 
@@ -283,6 +192,7 @@ function gameLoop() {
 
     }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
     // }else if((lastPressedKey == "ArrowRight") ){
+
         console.log("ArrowRight");
         PacManDirection = "Right";
 
@@ -299,25 +209,8 @@ function gameLoop() {
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
     }
+document.getElementById("PacManDirection").innerHTML = PacManDirection;
 
-    document.getElementById("PacManDirection").innerHTML = PacManDirection;
-
-    //
-    //
-    // Execution of the Decisions by the Brains
-    //
-    //
-
-    //
-    //
-    // Move PacMan (later "if possible")
-    //
-    //
-
-    // For now w/ ifs, later we can switch to cases when the Brain is more advanced
-    // TODO
-    // Replace lastPressedKey w/ Direction (Up, Down, Left, Right)
-   
     if (PacManDirection == "Up"){
         yspeed = -1;
         xspeed = 0;
@@ -340,16 +233,14 @@ function gameLoop() {
         xspeed = 0;
         yspeed = 0; 
     }
+
     // New Position
     xpos = xpos + xspeed;
     ypos = ypos + yspeed;
 
-    // Apply the New Postion
     pacman.style.left = xpos;
     pacman.style.top = ypos;
-
-
-    //Movement of red ghost
+//Movement of red ghost
    function  moveRed(){
      
     if((redXpos  > 0 && redXpos + 10 <= 200 ) || (redYpos > 0 && redYpos + 10 <= 200)){
@@ -360,7 +251,6 @@ function gameLoop() {
             // up
             redYpos -= 5;
             redFrame = [
-                // background-position: 223px -65px;
                 '160px -65px',
                 '143px -65px'
             ]
@@ -377,11 +267,9 @@ function gameLoop() {
             //right
             redXpos += 5;
             redFrame = [
-                // background-position: 223px -65px;
                 '223px -65px',
                 '208px -65px'
             ]
-    
             currentRedFrameIndex = 0;
     
             setInterval(() => {
@@ -393,7 +281,6 @@ function gameLoop() {
             //down
             redYpos += 5;
             redFrame = [
-                // background-position: 223px -65px;
                 '128px -65px',
                 '111px -65px'
             ]
@@ -409,7 +296,6 @@ function gameLoop() {
             //left
             redXpos += 5;
             redFrame = [
-                // background-position: 223px -65px;
                 '208px -65px',
                 '192px -65px'
             ]
@@ -423,14 +309,13 @@ function gameLoop() {
     
             break;
     }
-
-        red.style.left = redXpos;
+red.style.left = redXpos;
         red.style.top = redYpos;
     }
     
     }
 
-     setInterval(moveRed, 300)
+     setInterval(moveRed, 300);
     
 function reset(){
     xpos = 112
@@ -461,8 +346,7 @@ let r;
         countLives++;
         xspeed = 1;
         yspeed = -1;
-        
-        isDeath = false;
+isDeath = false;
         Dframe = [
             '176px 0px',
             '160px 0px',
@@ -504,42 +388,21 @@ let r;
        document.getElementById("lives2").style.visibility = "visible";
        document.getElementById("lives").style.visibility = "visible";
    }
+}, 30);
 
-   }, 30)
-
-
-
-
-   
-
-// reset();
-
-
-
-} // END of gameloop()
-
-// Here we capture the last pressed key and store it in the game state
 document.addEventListener("keydown", (e) => {
 
         lastPressedKey = e.code;
 
-        window.localStorage.setItem("lastPressedKey", lastPressedKey);
-
         document.getElementById("lastPressedKey").innerHTML = lastPressedKey;
     }
 );
-
-// This is the begin function which stets the initial state and launches the game loop
+}
+// set the initial state and launch the game loop
 function begin(){
 
-    // Initial State
-
-    window.localStorage.setItem("lastPressedKey", "ArrowRight");
-
-    // This is the Main Heartbeat
-    var gameLoopTimeout = setInterval(gameLoop, 50);
-
+    setInterval(gameLoop, 50);
 }
 
-// This launches the game
+// launch the game
 document.addEventListener("DOMContentLoaded", begin());
