@@ -226,8 +226,8 @@ function gameLoop() {
     // console.log(window.localStorage.getItem("rightTurnIsAllowed"));
 
 
-    if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
-    // if (lastPressedKey == "ArrowUp" ){
+    // if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
+    if (lastPressedKey == "ArrowUp" ){
         console.log("ArrowUp");
         PacManDirection = "Up";
 

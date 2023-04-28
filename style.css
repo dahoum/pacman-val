@@ -145,4 +145,11 @@ body{
     margin: 0px;
     left: 40;
 }
+.game-over{
+    position: absolute;
+    height: 15px;
+    width:  15px;
+    background-image: url(./images/gameOver.png);
+    z-index: 2000;
+}
 
