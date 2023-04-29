@@ -41,20 +41,7 @@ let layout = [
 // 2 - ghost
 
 
-
-//
-//
-// Here are the initial states
-//
-//
-
-// This is state of the PacMan
-// var xpos = 116;
-// var ypos = 192;
-var xpos = 112;
-var ypos = 192;
-var xspeed = 0;
-var yspeed = 0;
+var rowPos, columnPos;
 var RequestPacManDirection;
 
 //This is state of enemies
@@ -70,77 +57,77 @@ var yellowYpos = 120
 var countLives = 1;
 var gameOver = false;
 
-var lastPressedKey, PacManDirection, PacManxcol, PacManycol;
+var lastPressedKey, PacManDirection;
+var pacmanRowIndex = 21, pacmanColumnIndex = 13;
 
-let rightTurnIsAllowed = true;
-let leftTurnIsAllowed = true;
+let rightTurnIsAllowed = false;
+let leftTurnIsAllowed = false;
 let upTurnIsAllowed = false;
 let downTurnIsAllowed = false;
 
+let isDeath = false;
+
+pacman = document.getElementById('pacman');
+
+pacman.style.top = 8 * (pacmanRowIndex+1) + 15  ;
+pacman.style.left = 8 * (pacmanColumnIndex+1) ;
+
+red = document.getElementById("red");
+pink = document.getElementById("pink");
+green = document.getElementById("green");
+yellow = document.getElementById("yellow");
+
+red.style.left = redXpos;
+red.style.top = redYpos;
+pink.style.left = pinkXpos;
+pink.style.top = pinkYpos;
+green.style.left = greenXpos;
+green.style.top = greenYpos;
+yellow.style.left = yellowXpos;
+yellow.style.top = yellowYpos;
 
 
 function gameLoop() {
-    pacman = document.getElementById('pacman');
+    
+  
+    document.getElementById("CurrentMatrixValue").innerHTML = "y: " + pacmanColumnIndex + " x: " + pacmanRowIndex;
 
-    red = document.getElementById("red");
-    pink = document.getElementById("pink");
-    green = document.getElementById("green");
-    yellow = document.getElementById("yellow");
-
-    red.style.left = redXpos;
-    red.style.top = redYpos;
-    pink.style.left = pinkXpos;
-    pink.style.top = pinkYpos;
-    green.style.left = greenXpos;
-    green.style.top = greenYpos;
-    yellow.style.left = yellowXpos;
-    yellow.style.top = yellowYpos;
-
-    // Where are we?
-    if ((xpos % 8) === 0 ) {
-        PacManxcol = Math.floor(xpos / 8) ;
-
-        document.getElementById("PacManxcol").innerHTML = PacManxcol;
+    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 0 ){
+        rightTurnIsAllowed = true
+    }
+     if(layout[pacmanRowIndex][pacmanColumnIndex-1] == 0 ){
+        leftTurnIsAllowed = true
+    } 
+    if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 0 ){
+        upTurnIsAllowed = true
+    } 
+     if(layout[pacmanRowIndex+1][pacmanColumnIndex] == 0 ){
+        downTurnIsAllowed = true
     }
 
-    if ((ypos % 8) === 0) {
-        PacManycol = Math.floor(ypos / 8) - 2;
-
-        document.getElementById("PacManycol").innerHTML = PacManycol;
-
+    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 1 ){
+        // upTurnIsAllowed = true
+        rightTurnIsAllowed = false
+        PacManDirection = "Stop"
     }
-    document.getElementById("CurrentMatrixValue").innerHTML = "y: " + PacManycol + " x: " + PacManxcol;
 
-    // This code is not complete.
-// When we complete it, it will tell us what action is possible on the block we are.
-                if(layout[PacManxcol][PacManycol+1] == 0 || layout[PacManxcol][PacManycol+1] == 4){
+    console.log("Up" + layout[pacmanRowIndex-1][pacmanColumnIndex]);
+    console.log("Down" + layout[pacmanRowIndex+1][pacmanColumnIndex]);
+    console.log("Right" + layout[pacmanRowIndex][pacmanColumnIndex+1]);
+    console.log("Left" + layout[pacmanRowIndex][pacmanColumnIndex-1]);
 
-                    rightTurnIsAllowed = true;
 
-                } else if(layout[PacManxcol][PacManycol-1] == 0 || layout[PacManxcol][PacManycol-1] == 4){
-
-                    leftTurnIsAllowed = true;
-
-                } else if(layout[PacManxcol-1][PacManycol] == 0 || layout[PacManxcol-1][PacManycol] == 4){
-
-                    upTurnIsAllowed = true;
-
-                } else if(layout[PacManxcol+1][PacManycol] == 0 || layout[PacManxcol+1][PacManycol] == 4){
-
-                    downTurnIsAllowed = true;
-
-                }
-
-            document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
-            document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
-            document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
-            document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
+    document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
+    document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
+    document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
+    document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
+    document.getElementById("PacManDirection").innerHTML = PacManDirection;
 
     if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
     // if (lastPressedKey == "ArrowUp" ){
         console.log("ArrowUp");
         PacManDirection = "Up";
-//Animating pacman when moving up
+        //Animating pacman when moving up
        frame = [
             '209px -32px',
             '225px -32px'
@@ -170,7 +157,7 @@ function gameLoop() {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
-}else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
+    }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
     // }else if(lastPressedKey == "ArrowLeft" ){
 
         console.log("ArrowLeft");
@@ -209,41 +196,24 @@ function gameLoop() {
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
     }
-document.getElementById("PacManDirection").innerHTML = PacManDirection;
 
-    if (PacManDirection == "Up"){
-        yspeed = -1;
-        xspeed = 0;
-        
-        
+     if (PacManDirection == "Up"){
+        console.log(pacman.style.top );
+        pacman.style.top = parseInt(pacman.style.top) - 8 + "px";
+        console.log(pacman.style.top );
     }else if(PacManDirection == "Down"){
-        yspeed = 1;
-        xspeed = 0;
-         
+        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";;
     }else if(PacManDirection == "Left"){
-        xspeed = -1;
-        yspeed = 0;
-     
-
+        pacman.style.left = parseInt(pacman.style.left) - 8 + "px";
     }else if(PacManDirection == "Right"){
-        xspeed = 1;
-        yspeed = 0;
-       
+        pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";;
     }else if(PacManDirection == "Stop"){
-        xspeed = 0;
-        yspeed = 0; 
     }
 
-    // New Position
-    xpos = xpos + xspeed;
-    ypos = ypos + yspeed;
-
-    pacman.style.left = xpos;
-    pacman.style.top = ypos;
+   
 //Movement of red ghost
-   function  moveRed(){
-     
-    if((redXpos  > 0 && redXpos + 10 <= 200 ) || (redYpos > 0 && redYpos + 10 <= 200)){
+     setInterval(() => {
+        if((redXpos  > 0 && redXpos + 10 <= 200 ) || (redYpos > 0 && redYpos + 10 <= 200)){
         let currentRedFrameIndex = 0;
    let direction = Math.floor(Math.random() * 4) ;
     switch(direction){
@@ -312,41 +282,26 @@ document.getElementById("PacManDirection").innerHTML = PacManDirection;
 red.style.left = redXpos;
         red.style.top = redYpos;
     }
+     }, 300);
     
-    }
-
-     setInterval(moveRed, 300);
-    
-function reset(){
-    xpos = 112
-    ypos = 192 
-    xspeed = 0
-    yspeed = 0
-    xpos = xpos + xspeed;
-    ypos = ypos + yspeed;
+    function reset(){
+    pacman.style.top = 8 * (pacmanRowIndex+1) + 15  ;
+    pacman.style.left = 8 * (pacmanColumnIndex+1) ;
     PacManDirection = null
     lastPressedKey = null
     redXpos = 113
     redYpos = 96
        
-}
-let isDeath = false;
-let r;
+    }
 
-
-     if(pinkXpos === xpos && pinkYpos === ypos){
-        console.log(xpos + " + " + ypos);
+     if(pinkXpos === rowPos && pinkYpos === columnPos){
+        console.log(rowPos + " + " + columnPos);
         isDeath = true;
         console.log("death");
-        
-//  setTimeout(d, 2000)
 
-    if(isDeath === true){
-        
+         if(isDeath === true){
         countLives++;
-        xspeed = 1;
-        yspeed = -1;
-isDeath = false;
+        isDeath = false;
         Dframe = [
             '176px 0px',
             '160px 0px',
@@ -366,11 +321,9 @@ isDeath = false;
             }
         
        setTimeout(reset, 300)
-     
-     }
-     
-     
+        }
     }
+    //Count lives
     setTimeout(() => {
          if(countLives === 1){
         document.getElementById("lives2").style.visibility = "hidden";
@@ -382,6 +335,7 @@ isDeath = false;
         gameOver = true;
     }
     }, 30)
+    //game over
     setTimeout(() => {
         if(gameOver === true){
         document.getElementById("lives1").style.visibility = "visible";
@@ -391,18 +345,18 @@ isDeath = false;
 }, 30);
 
 document.addEventListener("keydown", (e) => {
-
         lastPressedKey = e.code;
-
         document.getElementById("lastPressedKey").innerHTML = lastPressedKey;
     }
 );
 }
 // set the initial state and launch the game loop
 function begin(){
-
-    setInterval(gameLoop, 50);
+    setInterval(gameLoop, 500);
 }
 
 // launch the game
-document.addEventListener("DOMContentLoaded", begin());
+document.addEventListener("DOMContentLoaded", begin);
+
+
+
