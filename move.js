@@ -22,16 +22,16 @@ let layout = [
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//15
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//16
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//17
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],//18
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//19
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//20
-    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],//21
-    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//22
-    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//23
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],//24
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//25
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//26
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1],//27
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//18
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//19
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],//20
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//21
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//22
+    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],//23
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//24
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//25
+    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],//26
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//27
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//28
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],//29
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]//30
@@ -58,7 +58,7 @@ var countLives = 1;
 var gameOver = false;
 
 var lastPressedKey, PacManDirection;
-var pacmanRowIndex = 21, pacmanColumnIndex = 13;
+var pacmanRowIndex = 23, pacmanColumnIndex = 13;
 
 let rightTurnIsAllowed = false;
 let leftTurnIsAllowed = false;
@@ -69,7 +69,7 @@ let isDeath = false;
 
 pacman = document.getElementById('pacman');
 
-pacman.style.top = 8 * (pacmanRowIndex+1) + 15  ;
+pacman.style.top = 8 * (pacmanRowIndex+1) ;
 pacman.style.left = 8 * (pacmanColumnIndex+1) ;
 
 red = document.getElementById("red");
@@ -90,31 +90,37 @@ yellow.style.top = yellowYpos;
 function gameLoop() {
     
   
-    document.getElementById("CurrentMatrixValue").innerHTML = "y: " + pacmanColumnIndex + " x: " + pacmanRowIndex;
+    document.getElementById("CurrentMatrixValue").innerHTML = "col: " + pacmanColumnIndex + " row: " + pacmanRowIndex;
 
-    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 0 ){
+    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex+1] == 4 ){
         rightTurnIsAllowed = true
+    }else{
+        rightTurnIsAllowed=false
     }
-     if(layout[pacmanRowIndex][pacmanColumnIndex-1] == 0 ){
+     if(layout[pacmanRowIndex][pacmanColumnIndex-1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 4 ){
         leftTurnIsAllowed = true
-    } 
-    if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 0 ){
+    } else{
+        leftTurnIsAllowed = false
+    }
+    if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex-1][pacmanColumnIndex] == 4){
         upTurnIsAllowed = true
-    } 
-     if(layout[pacmanRowIndex+1][pacmanColumnIndex] == 0 ){
+    }else if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 1){
+        upTurnIsAllowed = false
+        
+    }else{
+        upTurnIsAllowed = false
+    }
+     if(layout[pacmanRowIndex+1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 4){
         downTurnIsAllowed = true
+    }else{
+        downTurnIsAllowed=false
     }
 
-    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 1 ){
-        // upTurnIsAllowed = true
-        rightTurnIsAllowed = false
-        PacManDirection = "Stop"
-    }
-
-    console.log("Up" + layout[pacmanRowIndex-1][pacmanColumnIndex]);
-    console.log("Down" + layout[pacmanRowIndex+1][pacmanColumnIndex]);
-    console.log("Right" + layout[pacmanRowIndex][pacmanColumnIndex+1]);
-    console.log("Left" + layout[pacmanRowIndex][pacmanColumnIndex-1]);
+    
+    document.getElementById("up").innerHTML ="Up " + layout[pacmanRowIndex-1][pacmanColumnIndex] ;
+    document.getElementById("down").innerHTML = "Down " + layout[pacmanRowIndex+1][pacmanColumnIndex];
+    document.getElementById("left").innerHTML ="Left " + layout[pacmanRowIndex][pacmanColumnIndex-1];
+    document.getElementById("right").innerHTML =  "Right " + layout[pacmanRowIndex][pacmanColumnIndex+1];
 
 
     document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
@@ -198,16 +204,30 @@ function gameLoop() {
     }
 
      if (PacManDirection == "Up"){
-        console.log(pacman.style.top );
         pacman.style.top = parseInt(pacman.style.top) - 8 + "px";
-        console.log(pacman.style.top );
+        pacmanRowIndex--
     }else if(PacManDirection == "Down"){
-        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";;
+        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
+        pacmanRowIndex++
     }else if(PacManDirection == "Left"){
         pacman.style.left = parseInt(pacman.style.left) - 8 + "px";
+        pacmanColumnIndex--
     }else if(PacManDirection == "Right"){
-        pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";;
+        pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";
+        pacmanColumnIndex++
     }else if(PacManDirection == "Stop"){
+       
+        
+
+    }
+
+    if(pacmanColumnIndex <= 0 || pacmanRowIndex <= 0){
+    
+    }
+    if(pacman.style.left == undefined){
+        pacmanColumnIndex++
+        pacmanRowIndex++
+        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
     }
 
    
@@ -285,7 +305,7 @@ red.style.left = redXpos;
      }, 300);
     
     function reset(){
-    pacman.style.top = 8 * (pacmanRowIndex+1) + 15  ;
+    pacman.style.top = 8 * (pacmanRowIndex+1)   ;
     pacman.style.left = 8 * (pacmanColumnIndex+1) ;
     PacManDirection = null
     lastPressedKey = null
@@ -352,7 +372,7 @@ document.addEventListener("keydown", (e) => {
 }
 // set the initial state and launch the game loop
 function begin(){
-    setInterval(gameLoop, 500);
+    setInterval(gameLoop, 900);
 }
 
 // launch the game
