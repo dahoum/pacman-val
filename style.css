@@ -73,6 +73,16 @@ body{
     background-position: 223px -113px;
 }
 
+.eat{
+    position: absolute;
+    height: 8px;
+    width:  8px;
+    background-image: url(./images/img.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: 223px -97px;
+}
+
 .pellets{
     background-image: url(./images/img.png);
     background-color: transparent;

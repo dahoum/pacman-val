@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.style.height = "8px";
                 element.style.width = "8px";
                
-               
                 let counter = 0;
                 if (counter <= j) {
                     element.style.backgroundImage = "url('./images/img.png')"

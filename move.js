@@ -69,8 +69,8 @@ let isDeath = false;
 
 pacman = document.getElementById('pacman');
 
-pacman.style.top = 8 * (pacmanRowIndex+1) ;
-pacman.style.left = 8 * (pacmanColumnIndex+1) ;
+pacman.style.top = 8 * (pacmanRowIndex+1);
+pacman.style.left = 8 * (pacmanColumnIndex+1);
 
 red = document.getElementById("red");
 pink = document.getElementById("pink");
@@ -86,23 +86,26 @@ green.style.top = greenYpos;
 yellow.style.left = yellowXpos;
 yellow.style.top = yellowYpos;
 
+let eatCoins = 0;
+
 
 function gameLoop() {
     
   
     document.getElementById("CurrentMatrixValue").innerHTML = "col: " + pacmanColumnIndex + " row: " + pacmanRowIndex;
 
-    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex+1] == 4 ){
+    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex+1] == 4 || layout[pacmanRowIndex][pacmanColumnIndex+1] == 3){
         rightTurnIsAllowed = true
+
     }else{
         rightTurnIsAllowed=false
     }
-     if(layout[pacmanRowIndex][pacmanColumnIndex-1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 4 ){
+     if(layout[pacmanRowIndex][pacmanColumnIndex-1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 4 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ){
         leftTurnIsAllowed = true
     } else{
         leftTurnIsAllowed = false
     }
-    if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex-1][pacmanColumnIndex] == 4){
+    if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex-1][pacmanColumnIndex] == 4 || layout[pacmanRowIndex-1][pacmanColumnIndex] == 3){
         upTurnIsAllowed = true
     }else if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 1){
         upTurnIsAllowed = false
@@ -110,7 +113,7 @@ function gameLoop() {
     }else{
         upTurnIsAllowed = false
     }
-     if(layout[pacmanRowIndex+1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 4){
+     if(layout[pacmanRowIndex+1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 4 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3){
         downTurnIsAllowed = true
     }else{
         downTurnIsAllowed=false
@@ -130,26 +133,18 @@ function gameLoop() {
     document.getElementById("PacManDirection").innerHTML = PacManDirection;
 
     if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
-    // if (lastPressedKey == "ArrowUp" ){
-        console.log("ArrowUp");
         PacManDirection = "Up";
         //Animating pacman when moving up
        frame = [
             '209px -32px',
             '225px -32px'
         ]
-
         let currentFrameIndex = 0;
-
         setInterval(() => {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
-
-
     }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
-    //  }else if(lastPressedKey == "ArrowDown" ){
-        console.log("ArrowDown");
         PacManDirection = "Down";
 
         //Animating pacman when moving down
@@ -164,10 +159,7 @@ function gameLoop() {
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
     }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
-    // }else if(lastPressedKey == "ArrowLeft" ){
-
-        console.log("ArrowLeft");
-        PacManDirection = "Left";
+      PacManDirection = "Left";
 
         //Animating pacman when moving left
        frame = [
@@ -184,10 +176,7 @@ function gameLoop() {
 
 
     }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
-    // }else if((lastPressedKey == "ArrowRight") ){
-
-        console.log("ArrowRight");
-        PacManDirection = "Right";
+     PacManDirection = "Right";
 
         //Animating pacman when moving right
           frame = [
@@ -203,23 +192,29 @@ function gameLoop() {
         }, 200)
     }
 
-     if (PacManDirection == "Up"){
+     if (PacManDirection == "Up" && upTurnIsAllowed ){
         pacman.style.top = parseInt(pacman.style.top) - 8 + "px";
         pacmanRowIndex--
-    }else if(PacManDirection == "Down"){
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+    }else if(PacManDirection == "Down" && downTurnIsAllowed ){
         pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
         pacmanRowIndex++
-    }else if(PacManDirection == "Left"){
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+    }else if(PacManDirection == "Left" && leftTurnIsAllowed){
         pacman.style.left = parseInt(pacman.style.left) - 8 + "px";
         pacmanColumnIndex--
-    }else if(PacManDirection == "Right"){
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+    }else if(PacManDirection == "Right" && rightTurnIsAllowed){
         pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";
         pacmanColumnIndex++
-    }else if(PacManDirection == "Stop"){
-       
-        
-
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
     }
+
+    console.log(eatCoins);
 
     if(pacmanColumnIndex <= 0 || pacmanRowIndex <= 0){
     
@@ -229,6 +224,7 @@ function gameLoop() {
         pacmanRowIndex++
         pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
     }
+
 
    
 //Movement of red ghost
@@ -370,13 +366,83 @@ document.addEventListener("keydown", (e) => {
     }
 );
 }
+
+
+
+let spritesheet = document.getElementById("spritesheet");
+
+function createBoard() {
+    let posy = 0;
+    for (let i = 0; i < layout.length; i++) {
+
+        let posx = 0;
+        for (let j = 0; j < layout[i].length; j++) {
+            var element = document.createElement("div");
+            element.style.height = "8px";
+            element.style.width = "8px";
+          
+            let counter = 0;
+            if (counter <= j) {
+                element.style.backgroundImage = "url('./images/img.png')"
+                element.classList.add('container')
+                element.style.backgroundPositionX = `${posx}px`
+                element.style.backgroundPositionY = `${posy}px`
+               
+                 if(posx === -8 && posy === -24  ){
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                   
+                    
+                }
+                else if(posx === -208 && posy === -24){
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                    
+                }else if(posx === -8 && posy === -184 ){
+                   
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                }else if(posx === -208 && posy === -184){
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                }
+              
+                
+                     
+                posx -= 8
+                counter++
+               
+            }
+           
+            spritesheet.appendChild(element);
+        }
+        posy -= 8
+
+    }
+
+    //Animate pellets
+    el = document.querySelectorAll('[id=pellets]');
+    count = 0;
+    setInterval(() => {
+        for(let i = 0; i < el.length; i++){
+            if(count % 2 == 0){
+            el[i].style.opacity = '1'
+        }else{
+            el[i].style.opacity = '0'
+        }
+        }
+        
+        count++;
+    }, 100)
+                    
+}
+
+
 // set the initial state and launch the game loop
 function begin(){
-    setInterval(gameLoop, 900);
+    setInterval(gameLoop, 100);
 }
 
 // launch the game
 document.addEventListener("DOMContentLoaded", begin);
-
-
-
+document.addEventListener("DOMContentLoaded", createBoard)
