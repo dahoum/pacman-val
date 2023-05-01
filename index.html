@@ -7,8 +7,8 @@
             The executino begins when it is loaded.
         -->
     <script src="./PacMan.js"></script>
-    <script src="./createLabyrint.js"></script>
-    <script src="./move.js"></script>
+    <!-- <script src="./createLabyrint.js"></script> -->
+    
     <script src="./enemy.js"></script>
 
 </head>
@@ -45,7 +45,15 @@
             <div id="lives1" class="lives1"></div>
             <div id="lives2" class="lives2"></div>
         </div>
+
+        <div>
+            <div class="game-over" id="game-over"></div>
+        </div>
         <div class="prop">
+            <div id="up"></div>
+            <div id="down"></div>
+            <div id="right"></div>
+            <div id="left"></div>
             Game State
             <div class="prop">
                 lastPressedKey: <span id="lastPressedKey"></span>
@@ -68,7 +76,7 @@
             </div>
         </div>
 
-
+<script src="./move.js"></script>
     </body>
 
 </html>

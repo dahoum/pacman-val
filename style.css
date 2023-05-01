@@ -17,6 +17,7 @@ body{
     width: 227px;
     height: 248px;
     background-color: black;
+    
     /* border: solid black 6px; */
 }
 
@@ -70,6 +71,16 @@ body{
     background-color: transparent;
     border-image: none;
     background-position: 223px -113px;
+}
+
+.eat{
+    position: absolute;
+    height: 8px;
+    width:  8px;
+    background-image: url(./images/img.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: 223px -97px;
 }
 
 .pellets{
@@ -144,5 +155,12 @@ body{
     padding: 0px;
     margin: 0px;
     left: 40;
+}
+.game-over{
+    position: absolute;
+    height: 15px;
+    width:  15px;
+    background-image: url(./images/gameOver.png);
+    z-index: 2000;
 }
 

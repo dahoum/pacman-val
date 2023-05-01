@@ -17,16 +17,16 @@ let layout = [
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 2, 2, 2, 2, 2, 2, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//15
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//16
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//17
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],//18
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//19
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//20
-    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],//21
-    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//22
-    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//23
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],//24
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//25
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//26
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1],//27
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//18
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 1, 1, 1, 1, 1, 1],//19
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],//20
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//21
+    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1],//22
+    [1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 3, 1],//23
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//24
+    [1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1],//25
+    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],//26
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//27
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],//28
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],//29
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]//30
@@ -35,13 +35,8 @@ let layout = [
 //1 - wall
 // 2 - ghost
 
-// This is state of the PacMan
-// var xpos = 116;
-// var ypos = 192;
-var xpos = 112;
-var ypos = 192;
-var xspeed = 0;
-var yspeed = 0;
+
+var rowPos, columnPos;
 var RequestPacManDirection;
 
 //This is state of enemies
@@ -57,94 +52,94 @@ var yellowYpos = 120
 var countLives = 1;
 var gameOver = false;
 
+var lastPressedKey, PacManDirection;
+var pacmanRowIndex = 23, pacmanColumnIndex = 13;
+
+let rightTurnIsAllowed = false;
+let leftTurnIsAllowed = false;
+let upTurnIsAllowed = false;
+let downTurnIsAllowed = false;
+
+let isDeath = false;
+
 pacman = document.getElementById('pacman');
+
+pacman.style.top = 8 * (pacmanRowIndex+1);
+pacman.style.left = 8 * (pacmanColumnIndex+1);
 
 red = document.getElementById("red");
 pink = document.getElementById("pink");
 green = document.getElementById("green");
 yellow = document.getElementById("yellow");
 
-var lastPressedKey, PacManDirection, PacManxcol, PacManycol;
+red.style.left = redXpos;
+red.style.top = redYpos;
+pink.style.left = pinkXpos;
+pink.style.top = pinkYpos;
+green.style.left = greenXpos;
+green.style.top = greenYpos;
+yellow.style.left = yellowXpos;
+yellow.style.top = yellowYpos;
 
-let rightTurnIsAllowed = true;
-let leftTurnIsAllowed = true;
-let upTurnIsAllowed = false;
-let downTurnIsAllowed = false;
+let eatCoins = 0;
+
 
 function gameLoop() {
+    
+  
+    document.getElementById("CurrentMatrixValue").innerHTML = "col: " + pacmanColumnIndex + " row: " + pacmanRowIndex;
 
-    red.style.left = redXpos;
-    red.style.top = redYpos;
-    pink.style.left = pinkXpos;
-    pink.style.top = pinkYpos;
-    green.style.left = greenXpos;
-    green.style.top = greenYpos;
-    yellow.style.left = yellowXpos;
-    yellow.style.top = yellowYpos;
+    if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex+1] == 4 || layout[pacmanRowIndex][pacmanColumnIndex+1] == 3){
+        rightTurnIsAllowed = true
 
-    // Where are we?
-    if ((xpos % 8) === 0 ) {
-        PacManxcol = Math.floor(xpos / 8) ;
-
-        document.getElementById("PacManxcol").innerHTML = PacManxcol;
+    }else{
+        rightTurnIsAllowed=false
+    }
+     if(layout[pacmanRowIndex][pacmanColumnIndex-1] == 0 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 4 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ){
+        leftTurnIsAllowed = true
+    } else{
+        leftTurnIsAllowed = false
+    }
+    if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex-1][pacmanColumnIndex] == 4 || layout[pacmanRowIndex-1][pacmanColumnIndex] == 3){
+        upTurnIsAllowed = true
+    }else if(layout[pacmanRowIndex-1][pacmanColumnIndex] == 1){
+        upTurnIsAllowed = false
+        
+    }else{
+        upTurnIsAllowed = false
+    }
+     if(layout[pacmanRowIndex+1][pacmanColumnIndex] == 0 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 4 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3){
+        downTurnIsAllowed = true
+    }else{
+        downTurnIsAllowed=false
     }
 
-    if ((ypos % 8) === 0) {
-        PacManycol = Math.floor(ypos / 8) - 2;
+    
+    document.getElementById("up").innerHTML ="Up " + layout[pacmanRowIndex-1][pacmanColumnIndex] ;
+    document.getElementById("down").innerHTML = "Down " + layout[pacmanRowIndex+1][pacmanColumnIndex];
+    document.getElementById("left").innerHTML ="Left " + layout[pacmanRowIndex][pacmanColumnIndex-1];
+    document.getElementById("right").innerHTML =  "Right " + layout[pacmanRowIndex][pacmanColumnIndex+1];
 
-        document.getElementById("PacManycol").innerHTML = PacManycol;
 
-    }
-    document.getElementById("CurrentMatrixValue").innerHTML = "y: " + PacManycol + " x: " + PacManxcol;
-
-    // This code is not complete.
-    // When we complete it, it will tell us what action is possible on the block we are.
-                if(layout[PacManxcol][PacManycol+1] == 0 || layout[PacManxcol][PacManycol+1] == 4){
-
-                    rightTurnIsAllowed = true;
-
-                } else if(layout[PacManxcol][PacManycol-1] == 0 || layout[PacManxcol][PacManycol-1] == 4){
-
-                    leftTurnIsAllowed = true;
-
-                } else if(layout[PacManxcol-1][PacManycol] == 0 || layout[PacManxcol-1][PacManycol] == 4){
-
-                    upTurnIsAllowed = true;
-
-                } else if(layout[PacManxcol+1][PacManycol] == 0 || layout[PacManxcol+1][PacManycol] == 4){
-
-                    downTurnIsAllowed = true;
-
-                }
-
-            document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
-            document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
-            document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
-            document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
-        }
+    document.getElementById("rightTurnIsAllowed").innerHTML = rightTurnIsAllowed;
+    document.getElementById("leftTurnIsAllowed").innerHTML = leftTurnIsAllowed;
+    document.getElementById("downTurnIsAllowed").innerHTML = downTurnIsAllowed;
+    document.getElementById("upTurnIsAllowed").innerHTML = upTurnIsAllowed;
+    document.getElementById("PacManDirection").innerHTML = PacManDirection;
 
     if (lastPressedKey == "ArrowUp" && (upTurnIsAllowed == true)){
-    // if (lastPressedKey == "ArrowUp" ){
-        console.log("ArrowUp");
         PacManDirection = "Up";
-
         //Animating pacman when moving up
        frame = [
             '209px -32px',
             '225px -32px'
         ]
-
         let currentFrameIndex = 0;
-
         setInterval(() => {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
-
-
     }else if(lastPressedKey == "ArrowDown" && (downTurnIsAllowed == true)){
-    //  }else if(lastPressedKey == "ArrowDown" ){
-        console.log("ArrowDown");
         PacManDirection = "Down";
 
         //Animating pacman when moving down
@@ -158,13 +153,8 @@ function gameLoop() {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
-
-
     }else if(lastPressedKey == "ArrowLeft" && (leftTurnIsAllowed == true)){
-    // }else if(lastPressedKey == "ArrowLeft" ){
-
-        console.log("ArrowLeft");
-        PacManDirection = "Left";
+      PacManDirection = "Left";
 
         //Animating pacman when moving left
        frame = [
@@ -181,10 +171,7 @@ function gameLoop() {
 
 
     }else if((lastPressedKey == "ArrowRight") && (rightTurnIsAllowed == true) ){
-    // }else if((lastPressedKey == "ArrowRight") ){
-
-        console.log("ArrowRight");
-        PacManDirection = "Right";
+     PacManDirection = "Right";
 
         //Animating pacman when moving right
           frame = [
@@ -200,43 +187,44 @@ function gameLoop() {
         }, 200)
     }
 
-    document.getElementById("PacManDirection").innerHTML = PacManDirection;
-
-    if (PacManDirection == "Up"){
-        yspeed = -1;
-        xspeed = 0;
-        
-        
-    }else if(PacManDirection == "Down"){
-        yspeed = 1;
-        xspeed = 0;
-         
-    }else if(PacManDirection == "Left"){
-        xspeed = -1;
-        yspeed = 0;
-     
-
-    }else if(PacManDirection == "Right"){
-        xspeed = 1;
-        yspeed = 0;
-       
-    }else if(PacManDirection == "Stop"){
-        xspeed = 0;
-        yspeed = 0; 
+     if (PacManDirection == "Up" && upTurnIsAllowed ){
+        pacman.style.top = parseInt(pacman.style.top) - 8 + "px";
+        pacmanRowIndex--
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+    }else if(PacManDirection == "Down" && downTurnIsAllowed ){
+        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
+        pacmanRowIndex++
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+    }else if(PacManDirection == "Left" && leftTurnIsAllowed){
+        pacman.style.left = parseInt(pacman.style.left) - 8 + "px";
+        pacmanColumnIndex--
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+    }else if(PacManDirection == "Right" && rightTurnIsAllowed){
+        pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";
+        pacmanColumnIndex++
+        eatCoins++
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
     }
 
-    // New Position
-    xpos = xpos + xspeed;
-    ypos = ypos + yspeed;
+    console.log(eatCoins);
 
-    pacman.style.left = xpos;
-    pacman.style.top = ypos;
+    if(pacmanColumnIndex <= 0 || pacmanRowIndex <= 0){
+    
+    }
+    if(pacman.style.left == undefined){
+        pacmanColumnIndex++
+        pacmanRowIndex++
+        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
+    }
 
 
-    //Movement of red ghost
-   function  moveRed(){
-     
-    if((redXpos  > 0 && redXpos + 10 <= 200 ) || (redYpos > 0 && redYpos + 10 <= 200)){
+   
+//Movement of red ghost
+     setInterval(() => {
+        if((redXpos  > 0 && redXpos + 10 <= 200 ) || (redYpos > 0 && redYpos + 10 <= 200)){
         let currentRedFrameIndex = 0;
    let direction = Math.floor(Math.random() * 4) ;
     switch(direction){
@@ -263,7 +251,6 @@ function gameLoop() {
                 '223px -65px',
                 '208px -65px'
             ]
-    
             currentRedFrameIndex = 0;
     
             setInterval(() => {
@@ -303,45 +290,28 @@ function gameLoop() {
     
             break;
     }
-
-        red.style.left = redXpos;
+red.style.left = redXpos;
         red.style.top = redYpos;
     }
+     }, 300);
     
-    }
-
-     setInterval(moveRed, 300);
-    
-function reset(){
-    xpos = 112
-    ypos = 192 
-    xspeed = 0
-    yspeed = 0
-    xpos = xpos + xspeed;
-    ypos = ypos + yspeed;
+    function reset(){
+    pacman.style.top = 8 * (pacmanRowIndex+1)   ;
+    pacman.style.left = 8 * (pacmanColumnIndex+1) ;
     PacManDirection = null
     lastPressedKey = null
     redXpos = 113
     redYpos = 96
        
-}
-let isDeath = false;
-let r;
+    }
 
-
-     if(pinkXpos === xpos && pinkYpos === ypos){
-        console.log(xpos + " + " + ypos);
+     if(pinkXpos === rowPos && pinkYpos === columnPos){
+        console.log(rowPos + " + " + columnPos);
         isDeath = true;
         console.log("death");
-        
-//  setTimeout(d, 2000)
 
-    if(isDeath === true){
-        
+         if(isDeath === true){
         countLives++;
-        xspeed = 1;
-        yspeed = -1;
-        
         isDeath = false;
         Dframe = [
             '176px 0px',
@@ -362,11 +332,9 @@ let r;
             }
         
        setTimeout(reset, 300)
-     
-     }
-     
-     
+        }
     }
+    //Count lives
     setTimeout(() => {
          if(countLives === 1){
         document.getElementById("lives2").style.visibility = "hidden";
@@ -378,28 +346,98 @@ let r;
         gameOver = true;
     }
     }, 30)
+    //game over
     setTimeout(() => {
         if(gameOver === true){
         document.getElementById("lives1").style.visibility = "visible";
        document.getElementById("lives2").style.visibility = "visible";
        document.getElementById("lives").style.visibility = "visible";
    }
-
-   }, 30);
+}, 30);
 
 document.addEventListener("keydown", (e) => {
-
         lastPressedKey = e.code;
-
         document.getElementById("lastPressedKey").innerHTML = lastPressedKey;
     }
 );
+}
+
+
+
+let spritesheet = document.getElementById("spritesheet");
+
+function createBoard() {
+    let posy = 0;
+    for (let i = 0; i < layout.length; i++) {
+
+        let posx = 0;
+        for (let j = 0; j < layout[i].length; j++) {
+            var element = document.createElement("div");
+            element.style.height = "8px";
+            element.style.width = "8px";
+          
+            let counter = 0;
+            if (counter <= j) {
+                element.style.backgroundImage = "url('./images/img.png')"
+                element.classList.add('container')
+                element.style.backgroundPositionX = `${posx}px`
+                element.style.backgroundPositionY = `${posy}px`
+               
+                 if(posx === -8 && posy === -24  ){
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                   
+                    
+                }
+                else if(posx === -208 && posy === -24){
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                    
+                }else if(posx === -8 && posy === -184 ){
+                   
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                }else if(posx === -208 && posy === -184){
+                    element.id = 'pellets'
+                    element.classList.add('pellets');
+                }
+              
+                
+                     
+                posx -= 8
+                counter++
+               
+            }
+           
+            spritesheet.appendChild(element);
+        }
+        posy -= 8
+
+    }
+
+    //Animate pellets
+    el = document.querySelectorAll('[id=pellets]');
+    count = 0;
+    setInterval(() => {
+        for(let i = 0; i < el.length; i++){
+            if(count % 2 == 0){
+            el[i].style.opacity = '1'
+        }else{
+            el[i].style.opacity = '0'
+        }
+        }
+        
+        count++;
+    }, 100)
+                    
+}
+
 
 // set the initial state and launch the game loop
 function begin(){
-
-    setInterval(gameLoop, 50);
+    setInterval(gameLoop, 100);
 }
 
 // launch the game
-document.addEventListener("DOMContentLoaded", begin());
+document.addEventListener("DOMContentLoaded", begin);
+document.addEventListener("DOMContentLoaded", createBoard)
