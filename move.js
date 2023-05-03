@@ -377,7 +377,7 @@ setInterval(()=>{
        const directions = ["up", "down", "left", "right"];
     redWantedDirection = directions[Math.floor(Math.random() * 4)];
     
-    }, 2000)
+    }, 1000)
 
 
 function moveRed(){
@@ -410,7 +410,7 @@ function moveRed(){
    console.log(redWantedDirection);
 
 
-   if (redWantedDirection == "up" && (upTurnIsAllowed == true)){
+   if (redWantedDirection == "up" && (redUpTurnIsAllowed == true)){
     redDirection = "up";
     //Animating pacman when moving up
     redFrame = ['160px -65px', '143px -65px']
@@ -420,7 +420,7 @@ function moveRed(){
         currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
     }, 20)
         
-}else if(redWantedDirection == "down" && (downTurnIsAllowed == true)){
+}else if(redWantedDirection == "down" && (redDownTurnIsAllowed == true)){
     redDirection = "down";
 
     //Animating pacman when moving down
@@ -435,7 +435,7 @@ function moveRed(){
                      red.style.backgroundPosition = redFrame[currentRedFrameIndex];
                      currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
                 }, 20)
-}else if(redWantedDirection == "left" && (leftTurnIsAllowed == true)){
+}else if(redWantedDirection == "left" && (redLeftTurnIsAllowed == true)){
   redDirection = "left";
     //Animating pacman when moving left
     redFrame = [
@@ -449,7 +449,7 @@ function moveRed(){
                 }, 20)
 
 
-}else if((redWantedDirection == "right") && (rightTurnIsAllowed == true) ){
+}else if((redWantedDirection == "right") && (redRightTurnIsAllowed == true) ){
  redDirection = "right";
 
     //Animating pacman when moving right
@@ -479,8 +479,8 @@ function moveRed(){
         red.style.top = parseInt(red.style.top) + 8 + "px";
         redRowIndex++
     }
-    console.log("Col: " + redColumnIndex);
-    console.log("Row: " + redRowIndex);
+    // console.log("Col: " + redColumnIndex);
+    // console.log("Row: " + redRowIndex);
 }
 
 
