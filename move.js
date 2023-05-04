@@ -413,11 +413,7 @@ setInterval(()=>{
 
 function moveRed(){
       let currentRedFrameIndex = 0;
-    document.getElementById('up').textContent = "Up: " + redUpTurnIsAllowed
-    document.getElementById('down').textContent = "Down: " + redDownTurnIsAllowed
-    document.getElementById('left').textContent = "Left: " + redLeftTurnIsAllowed
-    document.getElementById('right').textContent = "Right: " + redRightTurnIsAllowed
-
+   
     if((layout[redRowIndex][redColumnIndex+1] == 0 || layout[redRowIndex][redColumnIndex+1] == 4 || layout[redRowIndex][redColumnIndex+1] == 3)){
         redRightTurnIsAllowed = true
     }else{
