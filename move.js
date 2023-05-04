@@ -41,7 +41,6 @@ let divArr = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
 let spritesheet = document.getElementById("spritesheet");
 let eatDiv;
 
-var rowPos, columnPos;
 var RequestPacManDirection;
 
 //This is state of enemies
@@ -88,8 +87,6 @@ pink = document.getElementById("pink");
 green = document.getElementById("green");
 yellow = document.getElementById("yellow");
 
-// red.style.left = redXpos;
-// red.style.top = redYpos;
 pink.style.left = pinkXpos;
 pink.style.top = pinkYpos;
 green.style.left = greenXpos;
@@ -189,63 +186,101 @@ function gameLoop() {
      if (PacManDirection == "Up" && upTurnIsAllowed ){
         pacman.style.top = parseInt(pacman.style.top) - 8 + "px";
         pacmanRowIndex--
-        eatCoins+= 10
-        eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
+        
+        if(layout[pacmanRowIndex][pacmanColumnIndex] === 0 || layout[pacmanRowIndex][pacmanColumnIndex] === 3){
+            eatCoins+= 10
+            eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
         eatDiv.style.backgroundPositionX = '223px'
         eatDiv.style.backgroundPositionY =  '-200px';
         layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+        }
+        
     }else if(PacManDirection == "Down" && downTurnIsAllowed ){
         pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
         pacmanRowIndex++
-        eatCoins+= 10
-        eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
+        
+        if(layout[pacmanRowIndex][pacmanColumnIndex] === 0 || layout[pacmanRowIndex][pacmanColumnIndex] === 3){
+            eatCoins+= 10
+            eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
         eatDiv.style.backgroundPositionX = '223px'
         eatDiv.style.backgroundPositionY =  '-200px';
         layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+        }
+        
     }else if(PacManDirection == "Left" && leftTurnIsAllowed){
         pacman.style.left = parseInt(pacman.style.left) - 8 + "px";
         pacmanColumnIndex--
-        eatCoins+= 10
-        eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
-        eatDiv.style.backgroundPositionX = '223px'
-        eatDiv.style.backgroundPositionY =  '-200px';
-    }else if(PacManDirection == "Right" && rightTurnIsAllowed){
-        pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";
-        pacmanColumnIndex++
-        eatCoins+=10
-        eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
+        
+        if(layout[pacmanRowIndex][pacmanColumnIndex] === 0 || layout[pacmanRowIndex][pacmanColumnIndex] === 3){
+            eatCoins+= 10
+            eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
         eatDiv.style.backgroundPositionX = '223px'
         eatDiv.style.backgroundPositionY =  '-200px';
         layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+        }
+        
+    }else if(PacManDirection == "Right" && rightTurnIsAllowed){
+        pacman.style.left =  parseInt(pacman.style.left) + 8 + "px";
+        pacmanColumnIndex++
+        
+        if(layout[pacmanRowIndex][pacmanColumnIndex] === 0 || layout[pacmanRowIndex][pacmanColumnIndex] === 3){
+            eatCoins+=10
+             eatDiv =  divArr[pacmanRowIndex][pacmanColumnIndex];
+        eatDiv.style.backgroundPositionX = '223px'
+        eatDiv.style.backgroundPositionY =  '-200px';
+        layout[pacmanRowIndex][pacmanColumnIndex] = 4;
+        }
+       
     }
 
+    if(pacmanRowIndex === 14 &&  pacmanColumnIndex === 0){
+        pacmanColumnIndex = 27
+        pacmanRowIndex = 14
+        pacman.style.top = 8 * (pacmanRowIndex+1);
+        pacman.style.left = 8 * (pacmanColumnIndex+1);
+    }else if(pacmanRowIndex === 14 &&  pacmanColumnIndex === 27){
+        pacmanColumnIndex = 0
+        pacmanRowIndex = 14
+        pacman.style.top = 8 * (pacmanRowIndex+1);
+        pacman.style.left = 8 * (pacmanColumnIndex+1);
+    }
     document.getElementById('liveCount').textContent = eatCoins
     
-    if(pacman.style.left == undefined){
-        pacmanColumnIndex++
-        pacmanRowIndex++
-        pacman.style.top = parseInt(pacman.style.top) + 8 + "px";
-    }
+   
 //movement
 
       
    
     
     function reset(){
+    
+    pacmanRowIndex = 23
+    pacmanColumnIndex = 13;
+    redRowIndex = 11
+    redColumnIndex = 14
     pacman.style.top = 8 * (pacmanRowIndex+1)   ;
     pacman.style.left = 8 * (pacmanColumnIndex+1) ;
-    PacManDirection = null
-    lastPressedKey = null
+    red.style.top = 8 * (redRowIndex+1);
+    red.style.left = 8 * (redColumnIndex+1);
+    rightTurnIsAllowed = false;
+    leftTurnIsAllowed = false;
+    upTurnIsAllowed = false;
+    downTurnIsAllowed = false;
+    PacManDirection = "Left"
+    redRightTurnIsAllowed = false;
+    redLeftTurnIsAllowed = false;
+    redUpTurnIsAllowed = false;
+    redDownTurnIsAllowed = false;
+    // isDeath = false;
+    
     // redXpos = 113
     // redYpos = 96
        
     }
 
-     if(pinkXpos === rowPos && pinkYpos === columnPos){
-        console.log(rowPos + " + " + columnPos);
+     if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex){
         isDeath = true;
-        console.log("death");
-
+        
          if(isDeath === true){
         countLives++;
         isDeath = false;
@@ -267,7 +302,7 @@ function gameLoop() {
             
             }
         
-       setTimeout(reset, 300)
+       setTimeout(reset, 30)
         }
     }
     //Count lives
@@ -281,10 +316,11 @@ function gameLoop() {
     }else if(countLives === 4){
         gameOver = true;
     }
-    }, 30)
+    }, 1000)
     //game over
     setTimeout(() => {
         if(gameOver === true){
+            eatCoins = 0;
         document.getElementById("lives1").style.visibility = "visible";
        document.getElementById("lives2").style.visibility = "visible";
        document.getElementById("lives").style.visibility = "visible";
@@ -372,7 +408,7 @@ setInterval(()=>{
        const directions = ["up", "down", "left", "right"];
     redWantedDirection = directions[Math.floor(Math.random() * 4)];
     
-    }, 1000)
+    }, 100)
 
 
 function moveRed(){
