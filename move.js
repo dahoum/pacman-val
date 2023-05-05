@@ -35,6 +35,7 @@ let layout = [
 //1 - wall
 // 2 - ghost
 
+let idGameLoop;
 let divArr = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [],[]
 ];
 
@@ -71,8 +72,6 @@ let redRightTurnIsAllowed = false;
 let redLeftTurnIsAllowed = false;
 let redUpTurnIsAllowed = false;
 let redDownTurnIsAllowed = false;
-
-let isDeath = false;
 
 pacman = document.getElementById('pacman');
 
@@ -145,7 +144,7 @@ function gameLoop() {
         ]
 
         let currentFrameIndex = 0;
-        setInterval(() => {
+       setInterval(() => {
              pacman.style.backgroundPosition = frame[currentFrameIndex];
              currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
         }, 200)
@@ -266,12 +265,14 @@ function gameLoop() {
     leftTurnIsAllowed = false;
     upTurnIsAllowed = false;
     downTurnIsAllowed = false;
-    PacManDirection = "Left"
+    PacManDirection = undefined;
     redRightTurnIsAllowed = false;
     redLeftTurnIsAllowed = false;
     redUpTurnIsAllowed = false;
     redDownTurnIsAllowed = false;
-    // isDeath = false;
+    redDirection = undefined;
+    redWantedDirection = undefined;
+    idGameLoop = setInterval(gameLoop, 100);
     
     // redXpos = 113
     // redYpos = 96
@@ -279,11 +280,8 @@ function gameLoop() {
     }
 
      if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex){
-        isDeath = true;
         
-         if(isDeath === true){
         countLives++;
-        isDeath = false;
         Dframe = [
             '176px 0px',
             '160px 0px',
@@ -302,8 +300,9 @@ function gameLoop() {
             
             }
         
-       setTimeout(reset, 30)
-        }
+        clearInterval(idGameLoop);    
+        setTimeout(reset, 3000);
+        
     }
     //Count lives
     setTimeout(() => {
@@ -510,10 +509,9 @@ function moveRed(){
     // console.log("Row: " + redRowIndex);
 }
 
-
 // set the initial state and launch the game loop
 function begin(){
-    setInterval(gameLoop, 100);
+    idGameLoop = setInterval(gameLoop, 100);
     setInterval(moveRed, 100);
 }
 document.addEventListener("DOMContentLoaded", createBoard)
