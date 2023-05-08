@@ -35,6 +35,27 @@ body{
     margin: 0px;
 }
 
+.gameOver {
+    position: absolute;
+    height: 10px;
+    width: 100px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -10px -463px;
+    z-index: 300000;
+}
+.ready {
+    position: absolute;
+    height: 10px;
+    width: 60px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -980px 0px;
+    z-index: 3000000;
+}
+
 .red{
     position: absolute;
     height: 15px;
