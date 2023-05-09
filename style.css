@@ -73,7 +73,18 @@ body{
     background-image: url(./images/img.png);
     background-color: transparent;
     border-image: none;
-    background-position: 223px -80px;
+    /* down */
+    /* background-position: 127px -80px; */
+    background-position: 111px -80px;
+    /* up */
+    /* background-position: 143px -80px; */
+    /* background-position: 159px -80px; */
+    /* left */
+    /* background-position: 191px -80px; */
+    /* background-position: 175px -80px; */
+    /* right */
+    /* background-position: 207px -80px; */
+    /* background-position: 223px -80px; */
 }
 .green{
     position: absolute;
