@@ -618,149 +618,333 @@ function moveRed(){
 }
 
 
-
+let cntP = 0;
 function movePink(){
-    let currentPinkFrameIndex = 0;
-    if(gameStart == true){
-      
-  if((layout[pinkRowIndex][pinkColumnIndex+1] == 0 || layout[pinkRowIndex][pinkColumnIndex+1] == 4 || layout[pinkRowIndex][pinkColumnIndex+1] == 3 || layout[pinkRowIndex][pinkColumnIndex+1] == 6 || layout[pinkRowIndex][pinkColumnIndex+1] == 2)){
-      pinkRightTurnIsAllowed = true
-  }else{
-      pinkRightTurnIsAllowed=false
-  }
-   if(( layout[pinkRowIndex][pinkColumnIndex-1] == 0 || layout[pinkRowIndex][pinkColumnIndex-1] == 4 || layout[pinkRowIndex][pinkColumnIndex-1] == 3 || layout[pinkRowIndex][pinkColumnIndex-1] == 6 || layout[pinkRowIndex][pinkColumnIndex-1] == 2  )){
-      pinkLeftTurnIsAllowed = true
-  } else{
-      pinkLeftTurnIsAllowed = false
-  }
-  if((layout[pinkRowIndex-1][pinkColumnIndex] == 0 || layout[pinkRowIndex-1][pinkColumnIndex] == 4 || layout[pinkRowIndex-1][pinkColumnIndex] == 3 || layout[pinkRowIndex-1][pinkColumnIndex] == 6 || layout[pinkRowIndex-1][pinkColumnIndex] == 2)){
-      pinkUpTurnIsAllowed = true
-  }else{
-      pinkUpTurnIsAllowed = false
-  }
-   if((layout[pinkRowIndex+1][pinkColumnIndex] == 0 || layout[pinkRowIndex+1][pinkColumnIndex] == 4 || layout[pinkRowIndex+1][pinkColumnIndex] == 3 || layout[pinkRowIndex+1][pinkColumnIndex] == 6 || layout[pinkRowIndex+1][pinkColumnIndex] == 2)){
-      pinkDownTurnIsAllowed = true  
-  }else{
-      pinkDownTurnIsAllowed=false
-  }
-console.log(pinkWantedDirection);
- if (pinkWantedDirection == "up" && (pinkUpTurnIsAllowed == true)){
-  pinkDirection = "up";
-  //Animating pacman when moving up
-  pinkFrame = ['143px -80px', '159px -80px']
-  currentPinkFrameIndex = 0;
-    setInterval(() => {
-      pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
-      currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
-  }, 20)
-      
-}else if(pinkWantedDirection == "down" && (pinkDownTurnIsAllowed == true)){
-  pinkDirection = "down";
-
-  //Animating pacman when moving down
-  pinkFrame = [
-                  '127px -80px',
-                  '111px -80px'
-              ]
-    //           127px -80px; */
-    // background-position: 111px -80px;
-      
-              currentPinkFrameIndex = 0;
-      
-        setInterval(() => {
-         pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
-          currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
-      }, 20)
-}else if(pinkWantedDirection == "left" && (pinkLeftTurnIsAllowed == true)){
-pinkDirection = "left";
-  //Animating pacman when moving left
-  pinkFrame = [
-                  '191px -80px',
-                  '175px -80px' 
-              ]
-              currentPinkFrameIndex = 0;
-                setInterval(() => {
-                   pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
-                   currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
-              }, 20)
+   upAndDown= setTimeout(() => {
+if(layout[pinkRowIndex-1][pinkColumnIndex] ==  2 && layout[pinkRowIndex+1][pinkColumnIndex] == 2 ){
+        
+        if(cntP % 2 == 1){
+            pinkUpTurnIsAllowed = true
+            pinkDownTurnIsAllowed = false
+            cntP++
+        }else if(cntP % 2 == 0){
+            pinkUpTurnIsAllowed = false
+            pinkDownTurnIsAllowed = true
+            cntP++
+        }
+        
+    } 
+    else if(layout[pinkRowIndex-1][pinkColumnIndex] ==  1 || layout[pinkRowIndex-1][pinkColumnIndex] ==  6){
+        pinkUpTurnIsAllowed = false
+        pinkDownTurnIsAllowed = true
+    } else if(layout[pinkRowIndex+1][pinkColumnIndex] ==  1 || layout[pinkRowIndex+1][pinkColumnIndex] ==  6){
+        pinkUpTurnIsAllowed = true
+        pinkDownTurnIsAllowed = false
+    }
 
 
-}else if((pinkWantedDirection == "right") && (pinkRightTurnIsAllowed == true) ){
-    pinkDirection = "right";
+    if ( pinkUpTurnIsAllowed ){
+        pink.style.top = parseInt(pink.style.top) - 8 + "px";
+        pinkRowIndex--   
+        pinkFrame = ['143px -80px', '159px -80px']
+          currentPinkFrameIndex = 0;
+            setInterval(() => {
+              pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+              currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+          }, 20)
+    }
+    if( pinkDownTurnIsAllowed ){
+        pink.style.top = parseInt(pink.style.top) + 8 + "px";
+        pinkRowIndex++
 
-  //Animating pacman when moving right
-  pinkFrame = [
-      '223px -80px',
-      '207px -80px' 
-              ]
-              currentPinkFrameIndex = 0;
-              setInterval(() => {
-                 pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
-                 currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
-            }, 20)
+        pinkFrame = ['127px -80px', '111px -80px' ]
+        currentPinkFrameIndex = 0;
+                  
+         setInterval(() => {
+             pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+            currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+        }, 20)
+    }
+
+    }, 10)
+    
+
+  cl =  setTimeout(() => {
+        clearTimeout(upAndDown)
+        if(layout[pinkRowIndex-1][pinkColumnIndex] ==  6){
+            pinkUpTurnIsAllowed = true
+            if ( pinkUpTurnIsAllowed ){
+                pink.style.top = parseInt(pink.style.top) - 8 + "px";
+                pinkRowIndex--   
+                pinkFrame = ['143px -80px', '159px -80px']
+                  currentPinkFrameIndex = 0;
+                    setInterval(() => {
+                      pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+                      currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+                  }, 20)
+            }
+        }
+
+
+       
+
+
+
+
+
+
+    
+    }, 5000)
+    // clearTimeout(cl)
+//  setInterval(movePinkRandom, 100)
+//     function movePinkRandom(){
+//           let currentPinkFrameIndex = 0;
+    
+      
+//   if(layout[pinkRowIndex][pinkColumnIndex+1] == 0 || layout[pinkRowIndex][pinkColumnIndex+1] == 4 ){
+//       pinkRightTurnIsAllowed = true
+//   }else{
+//       pinkRightTurnIsAllowed=false
+//   }
+//    if(( layout[pinkRowIndex][pinkColumnIndex-1] == 0 || layout[pinkRowIndex][pinkColumnIndex-1] == 4  )){
+//       pinkLeftTurnIsAllowed = true
+//   } else{
+//       pinkLeftTurnIsAllowed = false
+//   }
+//   if((layout[pinkRowIndex-1][pinkColumnIndex] == 0 || layout[pinkRowIndex-1][pinkColumnIndex] == 4)){
+//       pinkUpTurnIsAllowed = true
+//   }else{
+//       pinkUpTurnIsAllowed = false
+//   }
+//    if((layout[pinkRowIndex+1][pinkColumnIndex] == 0 || layout[pinkRowIndex+1][pinkColumnIndex] == 4 )){
+//       pinkDownTurnIsAllowed = true  
+//   }else{
+//       pinkDownTurnIsAllowed=false
+//   }
+
+//  if (pinkWantedDirection == "up" && (pinkUpTurnIsAllowed == true)){
+//   pinkDirection = "up";
+//   //Animating pacman when moving up
+//   pinkFrame = ['143px -80px', '159px -80px']
+//   currentPinkFrameIndex = 0;
+//     setInterval(() => {
+//       pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+//       currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+//   }, 20)
+      
+// }else if(pinkWantedDirection == "down" && (pinkDownTurnIsAllowed == true)){
+//   pinkDirection = "down";
+
+//   //Animating pacman when moving down
+//   pinkFrame = [
+//                   '127px -80px',
+//                   '111px -80px'
+//               ]
+//     //           127px -80px; */
+//     // background-position: 111px -80px;
+      
+//               currentPinkFrameIndex = 0;
+      
+//         setInterval(() => {
+//          pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+//           currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+//       }, 20)
+// }else if(pinkWantedDirection == "left" && (pinkLeftTurnIsAllowed == true)){
+// pinkDirection = "left";
+//   //Animating pacman when moving left
+//   pinkFrame = [
+//                   '191px -80px',
+//                   '175px -80px' 
+//               ]
+//               currentPinkFrameIndex = 0;
+//                 setInterval(() => {
+//                    pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+//                    currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+//               }, 20)
+
+
+// }else if((pinkWantedDirection == "right") && (pinkRightTurnIsAllowed == true) ){
+//     pinkDirection = "right";
+
+//   //Animating pacman when moving right
+//   pinkFrame = [
+//       '223px -80px',
+//       '207px -80px' 
+//               ]
+//               currentPinkFrameIndex = 0;
+//               setInterval(() => {
+//                  pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+//                  currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+//             }, 20)
+// }
+
+
+//   if(pinkDirection == "right" && pinkRightTurnIsAllowed == true){
+//       pink.style.left =  parseInt(pink.style.left) + 8 + "px";
+//       pinkColumnIndex++
+//   }else if(pinkDirection == "left" && pinkLeftTurnIsAllowed == true){
+//       pink.style.left =  parseInt(pink.style.left) - 8 + "px";
+//       pinkColumnIndex--
+//   } else if(pinkDirection == "up" && pinkUpTurnIsAllowed == true){
+//       pink.style.top = parseInt(pink.style.top) - 8 + "px";
+//       pinkRowIndex--
+//   }else if(pinkDirection == "down" && pinkDownTurnIsAllowed == true){
+//       pink.style.top = parseInt(pink.style.top) + 8 + "px";
+//       pinkRowIndex++
+//   }
+
+//       if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
+      
+//           pinkFrameP = [
+//           '80px -65px',
+//           '94px -65px'
+//       ]
+//      let currentPinkFrameIndexP = 0;
+//     pinkIsBlue = true;
+     
+//     rrrrp = setInterval(() => {
+//       pinkFrame = pinkFrameP
+//       currentPinkFrameIndex = currentPinkFrameIndexP
+//       pink.style.backgroundPosition = pinkFrameP[currentPinkFrameIndexP];
+//            currentPinkFrameIndexP = (currentPinkFrameIndexP + 1)  % pinkFrameP.length;
+//       }, 10)
+//         function clearInP(){ 
+//           pinkFrameP = pinkFrame
+//           currentPinkFrameIndexP = currentPinkFrameIndex
+//           pinkIsBlue = false
+//       clearInterval(rrrrp)
+//   }
+  
+//  pinkIsBlueTimeOut = setTimeout(clearInP, 10000)
+//   }
+//  if(pinkIsBlue === true){
+//       if(pacmanColumnIndex === pinkColumnIndex && pacmanRowIndex === pinkRowIndex || 
+//           pacmanColumnIndex === pinkColumnIndex+1 && pacmanRowIndex === pinkRowIndex+1||
+//           pacmanColumnIndex === pinkColumnIndex-1 && pacmanRowIndex === pinkRowIndex-1){
+//       pinkRowIndex = 14
+//       pinkColumnIndex = 13
+//       pink.style.top = 8 * (pinkRowIndex+1);
+//       pink.style.left = 8 * (pinkColumnIndex+1);
+//       clearInterval(rrrrp)
+//       pinkIsBlue = false
+//       eatCoins += 200
+//      }
+//   }
+    
+// //   
+//     }
+ 
+}
+let greenUpTurnIsAllowed
+let greenDownTurnIsAllowed
+let cntG = 0;
+function moveGreen(){
+
+    if(layout[greenRowIndex-1][greenColumnIndex] ==  2 && layout[greenRowIndex+1][greenColumnIndex] == 2 ){
+        
+        if(cntG % 2 == 0){
+            greenUpTurnIsAllowed = true
+            greenDownTurnIsAllowed = false
+            cntG++
+        }else if(cntG % 2 == 1){
+            greenUpTurnIsAllowed = false
+            greenDownTurnIsAllowed = true
+            cntG++
+        }
+        
+    } 
+    else if(layout[greenRowIndex-1][greenColumnIndex] ==  1){
+        greenUpTurnIsAllowed = false
+        greenDownTurnIsAllowed = true
+    } else if(layout[greenRowIndex+1][greenColumnIndex] ==  1){
+        greenUpTurnIsAllowed = true
+        greenDownTurnIsAllowed = false
+    }
+
+
+    if ( greenUpTurnIsAllowed ){
+        green.style.top = parseInt(green.style.top) - 8 + "px";
+        greenRowIndex--   
+        greenFrame = ['160px -97px', '144px -97px']
+        
+        currentGreenFrameIndex = 0;
+          setInterval(() => {
+            green.style.backgroundPosition = greenFrame[currentGreenFrameIndex];
+            currentGreenFrameIndex = (currentGreenFrameIndex + 1)  % greenFrame.length;
+        }, 20)
+    }
+    if( greenDownTurnIsAllowed ){
+        green.style.top = parseInt(green.style.top) + 8 + "px";
+        greenRowIndex++
+
+        greenFrame = ['128px -97px', '112px -97px']
+        currentGreenFrameIndex = 0;
+          setInterval(() => {
+            green.style.backgroundPosition = greenFrame[currentGreenFrameIndex];
+            currentGreenFrameIndex = (currentGreenFrameIndex + 1)  % greenFrame.length;
+        }, 20)
+    }
 }
 
 
-  if(pinkDirection == "right" && pinkRightTurnIsAllowed == true){
-      pink.style.left =  parseInt(pink.style.left) + 8 + "px";
-      pinkColumnIndex++
-  }else if(pinkDirection == "left" && pinkLeftTurnIsAllowed == true){
-      pink.style.left =  parseInt(pink.style.left) - 8 + "px";
-      pinkColumnIndex--
-  } else if(pinkDirection == "up" && pinkUpTurnIsAllowed == true){
-      pink.style.top = parseInt(pink.style.top) - 8 + "px";
-      pinkRowIndex--
-  }else if(pinkDirection == "down" && pinkDownTurnIsAllowed == true){
-      pink.style.top = parseInt(pink.style.top) + 8 + "px";
-      pinkRowIndex++
-  }
+let yellowUpTurnIsAllowed
+let yellowDownTurnIsAllowed
+let cntY = 0;
+function moveYellow(){
 
-      if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
-      
-          pinkFrameP = [
-          '80px -65px',
-          '94px -65px'
-      ]
-     let currentPinkFrameIndexP = 0;
-    pinkIsBlue = true;
-     
-    rrrrp = setInterval(() => {
-      pinkFrame = pinkFrameP
-      currentPinkFrameIndex = currentPinkFrameIndexP
-      pink.style.backgroundPosition = pinkFrameP[currentPinkFrameIndexP];
-           currentPinkFrameIndexP = (currentPinkFrameIndexP + 1)  % pinkFrameP.length;
-      }, 10)
-        function clearInP(){ 
-          pinkFrameP = pinkFrame
-          currentPinkFrameIndexP = currentPinkFrameIndex
-          pinkIsBlue = false
-      clearInterval(rrrrp)
-  }
-  
- pinkIsBlueTimeOut = setTimeout(clearInP, 10000)
-  }
- if(pinkIsBlue === true){
-      if(pacmanColumnIndex === pinkColumnIndex && pacmanRowIndex === pinkRowIndex || 
-          pacmanColumnIndex === pinkColumnIndex+1 && pacmanRowIndex === pinkRowIndex+1||
-          pacmanColumnIndex === pinkColumnIndex-1 && pacmanRowIndex === pinkRowIndex-1){
-      pinkRowIndex = 14
-      pinkColumnIndex = 13
-      pink.style.top = 8 * (pinkRowIndex+1);
-      pink.style.left = 8 * (pinkColumnIndex+1);
-      clearInterval(rrrr)
-      pinkIsBlue = false
-      eatCoins += 200
-     }
-  }
+    if(layout[yellowRowIndex-1][yellowColumnIndex] ==  2 && layout[yellowRowIndex+1][yellowColumnIndex] == 2 ){
+        
+        if(cntY % 2 == 0){
+            yellowUpTurnIsAllowed = true
+            yellowDownTurnIsAllowed = false
+            cntY++
+        }else if(cntY % 2 == 1){
+            yellowUpTurnIsAllowed = false
+            yellowDownTurnIsAllowed = true
+            cntY++
+        }
+        
+    } 
+    else if(layout[yellowRowIndex-1][yellowColumnIndex] ==  1){
+        yellowUpTurnIsAllowed = false
+        yellowDownTurnIsAllowed = true
+    } else if(layout[yellowRowIndex+1][yellowColumnIndex] ==  1){
+        yellowUpTurnIsAllowed = true
+        yellowDownTurnIsAllowed = false
     }
- 
+
+
+    if ( yellowUpTurnIsAllowed ){
+        yellow.style.top = parseInt(yellow.style.top) - 8 + "px";
+        yellowRowIndex--   
+        yellowFrame = ['160px -113px', '144px -113px']
+        
+        currentYellowFrameIndex = 0;
+          setInterval(() => {
+            yellow.style.backgroundPosition = yellowFrame[currentYellowFrameIndex];
+            currentYellowFrameIndex = (currentYellowFrameIndex + 1)  % yellowFrame.length;
+        }, 20)
+    }
+    if( yellowDownTurnIsAllowed ){
+        yellow.style.top = parseInt(yellow.style.top) + 8 + "px";
+        yellowRowIndex++
+
+        yellowFrame = ['128px -113px', '112px -113px']
+        currentYellowFrameIndex = 0;
+          setInterval(() => {
+            yellow.style.backgroundPosition = yellowFrame[currentYellowFrameIndex];
+            currentYellowFrameIndex = (currentYellowFrameIndex + 1)  % yellowFrame.length;
+        }, 20)
+    }
 }
 
 // set the initial state and launch the game loop
 function begin(){
     idGameLoop = setInterval(gameLoop, 100);
     setInterval(moveRed, 100);
-    setInterval(movePink, 100);
+    setInterval(movePink, 400);
+    setInterval(moveGreen, 400);
+    setInterval(moveYellow, 400);
 }
 document.addEventListener("DOMContentLoaded", createBoard)
 // launch the game
