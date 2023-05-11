@@ -301,25 +301,17 @@ function gameLoop() {
     redLeftTurnIsAllowed = false;
     redUpTurnIsAllowed = false;
     redDownTurnIsAllowed = false;
-    redDirection = undefined;
-    redWantedDirection = undefined;
-    idGameLoop = setInterval(gameLoop, 100);
-    clearInterval(dieAn)
-    red.style.visibility = "visible";
-    pink.style.visibility = "visible";
-    pacman.style.visibility = "visible";   
+    // isDeath = false;
+    
+    // redXpos = 113
+    // redYpos = 96
+       
     }
-let dieAn
-if(redIsBlue === false){
-    if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex || 
-        pacmanColumnIndex === redColumnIndex+1 && pacmanRowIndex === redRowIndex+1||
-        pacmanColumnIndex === redColumnIndex-1 && pacmanRowIndex === redRowIndex-1 ||
-        pacmanColumnIndex === pinkColumnIndex && pacmanRowIndex === pinkRowIndex || 
-        pacmanColumnIndex === pinkColumnIndex+1 && pacmanRowIndex === pinkRowIndex+1||
-        pacmanColumnIndex === pinkColumnIndex-1 && pacmanRowIndex === pinkRowIndex-1 
-        ){
-        red.style.visibility = "hidden";
-        pink.style.visibility = "hidden";
+
+     if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex){
+        isDeath = true;
+        
+         if(isDeath === true){
         countLives++;
         clearInterval(idGameLoop);   
         frame = [
@@ -352,9 +344,9 @@ if(redIsBlue === false){
         //  
         setTimeout(reset, 2000);
         
+       setTimeout(reset, 30)
+        }
     }
-}
-     let gameOverIn;
     //Count lives
     setTimeout(() => {
          if(countLives === 1){
@@ -502,6 +494,7 @@ function moveRed(){
     }else{
         redDownTurnIsAllowed=false
     }
+   console.log(redWantedDirection);
 
 
    if (redWantedDirection == "up" && (redUpTurnIsAllowed == true)){
