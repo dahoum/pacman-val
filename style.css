@@ -35,6 +35,27 @@ body{
     margin: 0px;
 }
 
+.gameOver {
+    position: absolute;
+    height: 10px;
+    width: 100px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -10px -463px;
+    z-index: 300000;
+}
+.ready {
+    position: absolute;
+    height: 10px;
+    width: 60px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -980px 0px;
+    z-index: 3000000;
+}
+
 .red{
     position: absolute;
     height: 15px;
@@ -52,7 +73,18 @@ body{
     background-image: url(./images/img.png);
     background-color: transparent;
     border-image: none;
-    background-position: 223px -80px;
+    /* down */
+    /* background-position: 127px -80px; */
+    background-position: 111px -80px;
+    /* up */
+    /* background-position: 143px -80px; */
+    /* background-position: 159px -80px; */
+    /* left */
+    /* background-position: 191px -80px; */
+    /* background-position: 175px -80px; */
+    /* right */
+    /* background-position: 207px -80px; */
+    /* background-position: 223px -80px; */
 }
 .green{
     position: absolute;
