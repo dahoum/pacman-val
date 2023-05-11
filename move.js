@@ -271,6 +271,7 @@ function gameLoop() {
     redLeftTurnIsAllowed = false;
     redUpTurnIsAllowed = false;
     redDownTurnIsAllowed = false;
+    red.style.visibility = "hidden"
     // isDeath = false;
     
     // redXpos = 113
@@ -279,9 +280,19 @@ function gameLoop() {
     }
 
      if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex){
-        isDeath = true;
-        
-         if(isDeath === true){
+        rightTurnIsAllowed = false;
+    leftTurnIsAllowed = false;
+    upTurnIsAllowed = false;
+    downTurnIsAllowed = false;
+    PacManDirection = undefined
+    
+    lastPressedKey = undefined
+    redRightTurnIsAllowed = false;
+    redLeftTurnIsAllowed = false;
+    redUpTurnIsAllowed = false;
+    redDownTurnIsAllowed = false;
+
+
         countLives++;
         isDeath = false;
         Dframe = [
@@ -302,8 +313,8 @@ function gameLoop() {
             
             }
         
-       setTimeout(reset, 30)
-        }
+       setTimeout(reset, 3000)
+        
     }
     //Count lives
     setTimeout(() => {
@@ -434,6 +445,10 @@ function moveRed(){
     }else{
         redDownTurnIsAllowed=false
     }
+
+     
+
+
    console.log(redWantedDirection);
 
 
