@@ -279,108 +279,117 @@ function gameLoop() {
          
     // reset 
     function reset(){
-    
-    pacmanRowIndex = 23
-    pacmanColumnIndex = 13;
-    redRowIndex = 11
-    redColumnIndex = 14
-    pinkColumnIndex = 13;
-    pinkRowIndex = 14;
-    pacman.style.top = 8 * (pacmanRowIndex+1)   ;
-    pacman.style.left = 8 * (pacmanColumnIndex+1) ;
-    red.style.top = 8 * (redRowIndex+1);
-    red.style.left = 8 * (redColumnIndex+1);
-    pink.style.top = 8 * (pinkRowIndex+1);
-    pink.style.left = 8 * (pinkColumnIndex+1);
-    rightTurnIsAllowed = false;
-    leftTurnIsAllowed = true;
-    upTurnIsAllowed = false;
-    downTurnIsAllowed = false;
-    PacManDirection = "Left";
-    redRightTurnIsAllowed = false;
-    redLeftTurnIsAllowed = false;
-    redUpTurnIsAllowed = false;
-    redDownTurnIsAllowed = false;
-    // isDeath = false;
-    
-    // redXpos = 113
-    // redYpos = 96
+        pacmanRowIndex = 23
+        pacmanColumnIndex = 13;
+        redRowIndex = 11
+        redColumnIndex = 14
+        pinkColumnIndex = 13;
+        pinkRowIndex = 14;
+        pacman.style.top = 8 * (pacmanRowIndex+1)   ;
+        pacman.style.left = 8 * (pacmanColumnIndex+1) ;
+        red.style.top = 8 * (redRowIndex+1);
+        red.style.left = 8 * (redColumnIndex+1);
+        pink.style.top = 8 * (pinkRowIndex+1);
+        pink.style.left = 8 * (pinkColumnIndex+1);
+        rightTurnIsAllowed = false;
+        leftTurnIsAllowed = true;
+        upTurnIsAllowed = false;
+        downTurnIsAllowed = false;
+        PacManDirection = "Left";
+        redRightTurnIsAllowed = false;
+        redLeftTurnIsAllowed = false;
+        redUpTurnIsAllowed = false;
+        redDownTurnIsAllowed = false;
+        redDirection = undefined;
+        redWantedDirection = undefined;
+        idGameLoop = setInterval(gameLoop, 100);
+        clearInterval(dieAn)
+        red.style.visibility = "visible";
+        pink.style.visibility = "visible";
+        pacman.style.visibility = "visible";
        
     }
 
-     if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex){
-        isDeath = true;
-        
-         if(isDeath === true){
-        countLives++;
-        clearInterval(idGameLoop);   
-        frame = [
-            '176px 0px',
-            '160px 0px',
-            '144px 0px',
-            '128px 0px',
-            '113px 0px',
-            '97px 0px',
-            '81px 0px',
-            '65px 0px',
-            '50px 0px',
-            '35px 0px',
-            '16px -4px'
-        ]
-
-        
-         let currentFrameIndex = 0;
-       dieAn = setInterval(() => {
-             pacman.style.backgroundPosition = frame[currentFrameIndex];
-             currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-             console.log(currentFrameIndex);
-             if(currentFrameIndex === 5){
-                pacman.style.visibility = "hidden";
-             }
-        },400)
-        
-       
-         
-        //  
-        setTimeout(reset, 2000);
-        
-       setTimeout(reset, 30)
+    let dieAn
+    if(redIsBlue === false){
+        if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex || 
+            pacmanColumnIndex === redColumnIndex+1 && pacmanRowIndex === redRowIndex+1||
+            pacmanColumnIndex === redColumnIndex-1 && pacmanRowIndex === redRowIndex-1 ||
+            pacmanColumnIndex === pinkColumnIndex && pacmanRowIndex === pinkRowIndex || 
+            pacmanColumnIndex === pinkColumnIndex+1 && pacmanRowIndex === pinkRowIndex+1||
+            pacmanColumnIndex === pinkColumnIndex-1 && pacmanRowIndex === pinkRowIndex-1 
+            ){
+            red.style.visibility = "hidden";
+            pink.style.visibility = "hidden";
+            countLives++;
+            clearInterval(idGameLoop);   
+            frame = [
+                '176px 0px',
+                '160px 0px',
+                '144px 0px',
+                '128px 0px',
+                '113px 0px',
+                '97px 0px',
+                '81px 0px',
+                '65px 0px',
+                '50px 0px',
+                '35px 0px',
+                '16px -4px'
+            ]
+    
+            
+             let currentFrameIndex = 0;
+           dieAn = setInterval(() => {
+                 pacman.style.backgroundPosition = frame[currentFrameIndex];
+                 currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
+                 console.log(currentFrameIndex);
+                 if(currentFrameIndex === 5){
+                    pacman.style.visibility = "hidden";
+                 }
+            },400)
+            
+           
+             
+            //  
+            setTimeout(reset, 2000);
+            
         }
     }
-    //Count lives
-    setTimeout(() => {
-         if(countLives === 1){
-        document.getElementById("lives2").style.visibility = "hidden";
-    }else if(countLives === 2){
-        document.getElementById("lives1").style.visibility = "hidden";
-    }else if(countLives === 3){
-        document.getElementById("lives").style.visibility = "hidden";
-    }else if(countLives === 4){
-            gameOverSign.style.visibility = "visible";
-        
-        setTimeout(()=>{
-            gameOverSign.style.visibility = "hidden";
-        }, 2000)
-        gameOver = true;
-        countLives = 1
-    }
-    }, 1000)
-    //game over
-    setTimeout(() => {
-        if(gameOver === true){
-            eatCoins = 0;
-        document.getElementById("lives1").style.visibility = "visible";
-       document.getElementById("lives2").style.visibility = "visible";
-       document.getElementById("lives").style.visibility = "visible";
-       clearInterval(gameOverIn)
-       gameOver = false;
-       setTimeout(() => {
-        location.reload();
-       }, 2000)
-  
-       
-       lastPressedKey = undefined;
-   }
+         let gameOverIn;
+        //Count lives
+        setTimeout(() => {
+             if(countLives === 1){
+            document.getElementById("lives2").style.visibility = "hidden";
+        }else if(countLives === 2){
+            document.getElementById("lives1").style.visibility = "hidden";
+        }else if(countLives === 3){
+            document.getElementById("lives").style.visibility = "hidden";
+        }else if(countLives === 4){
+                gameOverSign.style.visibility = "visible";
+            
+            setTimeout(()=>{
+                gameOverSign.style.visibility = "hidden";
+            }, 2000)
+            gameOver = true;
+            countLives = 1
+        }
+        }, 1000)
+        //game over
+        setTimeout(() => {
+            if(gameOver === true){
+                eatCoins = 0;
+            document.getElementById("lives1").style.visibility = "visible";
+           document.getElementById("lives2").style.visibility = "visible";
+           document.getElementById("lives").style.visibility = "visible";
+           clearInterval(gameOverIn)
+           gameOver = false;
+           setTimeout(() => {
+            location.reload();
+           }, 2000)
+      
+           
+           lastPressedKey = undefined;
+       }
 }, 30);
 
 document.addEventListener("keydown", (e) => {
@@ -494,7 +503,6 @@ function moveRed(){
     }else{
         redDownTurnIsAllowed=false
     }
-   console.log(redWantedDirection);
 
 
    if (redWantedDirection == "up" && (redUpTurnIsAllowed == true)){
@@ -611,32 +619,103 @@ function moveRed(){
 }
 
 
-
+let cntP = 0;
 function movePink(){
-    let currentPinkFrameIndex = 0;
     if(gameStart == true){
+   upAndDown= setTimeout(() => {
+    if(layout[pinkRowIndex-1][pinkColumnIndex] ==  2 && layout[pinkRowIndex+1][pinkColumnIndex] == 2 ){
+        
+        if(cntP % 2 == 1){
+            pinkUpTurnIsAllowed = true
+            pinkDownTurnIsAllowed = false
+            cntP++
+        }else if(cntP % 2 == 0){
+            pinkUpTurnIsAllowed = false
+            pinkDownTurnIsAllowed = true
+            cntP++
+        }
+        
+    } 
+    else if(layout[pinkRowIndex-1][pinkColumnIndex] ==  1 || layout[pinkRowIndex-1][pinkColumnIndex] ==  6){
+        pinkUpTurnIsAllowed = false
+        pinkDownTurnIsAllowed = true
+    } else if(layout[pinkRowIndex+1][pinkColumnIndex] ==  1 || layout[pinkRowIndex+1][pinkColumnIndex] ==  6){
+        pinkUpTurnIsAllowed = true
+        pinkDownTurnIsAllowed = false
+    }
+
+
+    if ( pinkUpTurnIsAllowed ){
+        pink.style.top = parseInt(pink.style.top) - 8 + "px";
+        pinkRowIndex--   
+        pinkFrame = ['143px -80px', '159px -80px']
+          currentPinkFrameIndex = 0;
+            setInterval(() => {
+              pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+              currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+          }, 20)
+    }
+    if( pinkDownTurnIsAllowed ){
+        pink.style.top = parseInt(pink.style.top) + 8 + "px";
+        pinkRowIndex++
+
+        pinkFrame = ['127px -80px', '111px -80px' ]
+        currentPinkFrameIndex = 0;
+                  
+         setInterval(() => {
+             pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+            currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+        }, 20)
+    }
+
+    }, 10)
+    
+
+  cl =  setTimeout(() => {
+        clearTimeout(upAndDown)
+        if(layout[pinkRowIndex-1][pinkColumnIndex] ==  6){
+            pinkUpTurnIsAllowed = true
+            if ( pinkUpTurnIsAllowed ){
+                pink.style.top = parseInt(pink.style.top) - 8 + "px";
+                pinkRowIndex--   
+                pinkFrame = ['143px -80px', '159px -80px']
+                  currentPinkFrameIndex = 0;
+                    setInterval(() => {
+                      pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+                      currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+                  }, 20)
+            }
+        }
+    
+    }, 5000)
+
+    clearTimeout(cl)
+ setInterval(movePinkRandom, 100)
+    function movePinkRandom(){
+          let currentPinkFrameIndex = 0;
+    
       
-  if((layout[pinkRowIndex][pinkColumnIndex+1] == 0 || layout[pinkRowIndex][pinkColumnIndex+1] == 4 || layout[pinkRowIndex][pinkColumnIndex+1] == 3 || layout[pinkRowIndex][pinkColumnIndex+1] == 6 || layout[pinkRowIndex][pinkColumnIndex+1] == 2)){
+  if(layout[pinkRowIndex][pinkColumnIndex+1] == 0 || layout[pinkRowIndex][pinkColumnIndex+1] == 4 ){
       pinkRightTurnIsAllowed = true
   }else{
       pinkRightTurnIsAllowed=false
   }
-   if(( layout[pinkRowIndex][pinkColumnIndex-1] == 0 || layout[pinkRowIndex][pinkColumnIndex-1] == 4 || layout[pinkRowIndex][pinkColumnIndex-1] == 3 || layout[pinkRowIndex][pinkColumnIndex-1] == 6 || layout[pinkRowIndex][pinkColumnIndex-1] == 2  )){
+   if(( layout[pinkRowIndex][pinkColumnIndex-1] == 0 || layout[pinkRowIndex][pinkColumnIndex-1] == 4  )){
       pinkLeftTurnIsAllowed = true
   } else{
       pinkLeftTurnIsAllowed = false
   }
-  if((layout[pinkRowIndex-1][pinkColumnIndex] == 0 || layout[pinkRowIndex-1][pinkColumnIndex] == 4 || layout[pinkRowIndex-1][pinkColumnIndex] == 3 || layout[pinkRowIndex-1][pinkColumnIndex] == 6 || layout[pinkRowIndex-1][pinkColumnIndex] == 2)){
+  if((layout[pinkRowIndex-1][pinkColumnIndex] == 0 || layout[pinkRowIndex-1][pinkColumnIndex] == 4)){
       pinkUpTurnIsAllowed = true
   }else{
       pinkUpTurnIsAllowed = false
   }
-   if((layout[pinkRowIndex+1][pinkColumnIndex] == 0 || layout[pinkRowIndex+1][pinkColumnIndex] == 4 || layout[pinkRowIndex+1][pinkColumnIndex] == 3 || layout[pinkRowIndex+1][pinkColumnIndex] == 6 || layout[pinkRowIndex+1][pinkColumnIndex] == 2)){
+   if((layout[pinkRowIndex+1][pinkColumnIndex] == 0 || layout[pinkRowIndex+1][pinkColumnIndex] == 4 )){
       pinkDownTurnIsAllowed = true  
   }else{
       pinkDownTurnIsAllowed=false
   }
-console.log(pinkWantedDirection);
+
  if (pinkWantedDirection == "up" && (pinkUpTurnIsAllowed == true)){
   pinkDirection = "up";
   //Animating pacman when moving up
@@ -740,20 +819,128 @@ pinkDirection = "left";
       pinkColumnIndex = 13
       pink.style.top = 8 * (pinkRowIndex+1);
       pink.style.left = 8 * (pinkColumnIndex+1);
-      clearInterval(rrrr)
+      clearInterval(rrrrp)
       pinkIsBlue = false
       eatCoins += 200
      }
   }
+    
+//   
     }
- 
+}
+}
+
+let greenUpTurnIsAllowed
+let greenDownTurnIsAllowed
+let cntG = 0;
+function moveGreen(){
+    if(gameStart == true){
+    if(layout[greenRowIndex-1][greenColumnIndex] ==  2 && layout[greenRowIndex+1][greenColumnIndex] == 2 ){
+        
+        if(cntG % 2 == 0){
+            greenUpTurnIsAllowed = true
+            greenDownTurnIsAllowed = false
+            cntG++
+        }else if(cntG % 2 == 1){
+            greenUpTurnIsAllowed = false
+            greenDownTurnIsAllowed = true
+            cntG++
+        }
+        
+    } 
+    else if(layout[greenRowIndex-1][greenColumnIndex] ==  1){
+        greenUpTurnIsAllowed = false
+        greenDownTurnIsAllowed = true
+    } else if(layout[greenRowIndex+1][greenColumnIndex] ==  1){
+        greenUpTurnIsAllowed = true
+        greenDownTurnIsAllowed = false
+    }
+
+
+    if ( greenUpTurnIsAllowed ){
+        green.style.top = parseInt(green.style.top) - 8 + "px";
+        greenRowIndex--   
+        greenFrame = ['160px -97px', '144px -97px']
+        
+        currentGreenFrameIndex = 0;
+          setInterval(() => {
+            green.style.backgroundPosition = greenFrame[currentGreenFrameIndex];
+            currentGreenFrameIndex = (currentGreenFrameIndex + 1)  % greenFrame.length;
+        }, 20)
+    }
+    if( greenDownTurnIsAllowed ){
+        green.style.top = parseInt(green.style.top) + 8 + "px";
+        greenRowIndex++
+
+        greenFrame = ['128px -97px', '112px -97px']
+        currentGreenFrameIndex = 0;
+          setInterval(() => {
+            green.style.backgroundPosition = greenFrame[currentGreenFrameIndex];
+            currentGreenFrameIndex = (currentGreenFrameIndex + 1)  % greenFrame.length;
+        }, 20)
+    }
+}
+}
+
+let yellowUpTurnIsAllowed
+let yellowDownTurnIsAllowed
+let cntY = 0;
+function moveYellow(){
+    if(gameStart == true){
+    if(layout[yellowRowIndex-1][yellowColumnIndex] ==  2 && layout[yellowRowIndex+1][yellowColumnIndex] == 2 ){
+        
+        if(cntY % 2 == 0){
+            yellowUpTurnIsAllowed = true
+            yellowDownTurnIsAllowed = false
+            cntY++
+        }else if(cntY % 2 == 1){
+            yellowUpTurnIsAllowed = false
+            yellowDownTurnIsAllowed = true
+            cntY++
+        }
+        
+    } 
+    else if(layout[yellowRowIndex-1][yellowColumnIndex] ==  1){
+        yellowUpTurnIsAllowed = false
+        yellowDownTurnIsAllowed = true
+    } else if(layout[yellowRowIndex+1][yellowColumnIndex] ==  1){
+        yellowUpTurnIsAllowed = true
+        yellowDownTurnIsAllowed = false
+    }
+
+
+    if ( yellowUpTurnIsAllowed ){
+        yellow.style.top = parseInt(yellow.style.top) - 8 + "px";
+        yellowRowIndex--   
+        yellowFrame = ['160px -113px', '144px -113px']
+        
+        currentYellowFrameIndex = 0;
+          setInterval(() => {
+            yellow.style.backgroundPosition = yellowFrame[currentYellowFrameIndex];
+            currentYellowFrameIndex = (currentYellowFrameIndex + 1)  % yellowFrame.length;
+        }, 20)
+    }
+    if( yellowDownTurnIsAllowed ){
+        yellow.style.top = parseInt(yellow.style.top) + 8 + "px";
+        yellowRowIndex++
+
+        yellowFrame = ['128px -113px', '112px -113px']
+        currentYellowFrameIndex = 0;
+          setInterval(() => {
+            yellow.style.backgroundPosition = yellowFrame[currentYellowFrameIndex];
+            currentYellowFrameIndex = (currentYellowFrameIndex + 1)  % yellowFrame.length;
+        }, 20)
+    }
+}
 }
 
 // set the initial state and launch the game loop
 function begin(){
     idGameLoop = setInterval(gameLoop, 100);
     setInterval(moveRed, 100);
-    setInterval(movePink, 100);
+    setInterval(movePink, 400);
+    setInterval(moveGreen, 400);
+    setInterval(moveYellow, 400);
 }
 document.addEventListener("DOMContentLoaded", createBoard)
 // launch the game
