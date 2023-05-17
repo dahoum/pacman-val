@@ -445,9 +445,6 @@ document.addEventListener("keydown", (e) => {
 );
 }
 
-
-
-
 function createBoard() {
     let posy = 0;
     for (let i = 0; i < layout.length; i++) {
@@ -498,7 +495,6 @@ function createBoard() {
         posy -= 8
 
     }
-    console.log(divArr);
 
     //Animate pellets
     el = document.querySelectorAll('[id=pellets]');
@@ -516,7 +512,6 @@ function createBoard() {
     }, 100)
                     
 }
-
 
 // red wanted direction 
 setInterval(()=>{
@@ -853,8 +848,10 @@ function movePinkRandom(){
   }
 function pinkFunction(){
      movePinkUpandDown = setInterval(movePink, 400);
+   
     setTimeout(() => {
         clearInterval(movePinkUpandDown)
+        
         // if(layout[pinkRowIndex+1][pinkColumnIndex] == 6){
             pinkColumnIndex = 14
             pinkRowIndex = 11
@@ -1047,17 +1044,18 @@ let moveGreenUpandDown;
 let moveGreenId;
 function greenFunction(){
     moveGreenUpandDown = setInterval(moveGreen, 400);
+
    setTimeout(() => {
        clearInterval(moveGreenUpandDown)
+       if(layout[pinkRowIndex+1][pinkColumnIndex] == 6){
            greenColumnIndex = 14
            greenRowIndex = 11
            green.style.top = 8 * (greenRowIndex+1)
            green.style.left = 8 * (greenColumnIndex+1)  
            moveGreenId = setInterval(moveGreenRandom, 100);
-    
+       }
        
    } , 10000)
-
 } 
 
 
@@ -1241,28 +1239,31 @@ yellowDirection = "right";
 let moveYellowUpandDown;
 let moveYellowId;
 function yellowFunction(){
-    moveYellowUpandDown = setInterval(moveYellow, 400);
+         moveYellowUpandDown = setInterval(moveYellow, 400);
+        
     setTimeout(() => {
         clearInterval(moveYellowUpandDown)
             yellowColumnIndex = 14
             yellowRowIndex = 11
             yellow.style.top = 8 * (yellowRowIndex+1)
             yellow.style.left = 8 * (yellowColumnIndex+1)  
-            moveYellowId = setInterval(moveYellowRandom, 100);
-     
-        
+            moveYellowId = setInterval(moveYellowRandom, 100);     
     } , 8000)
 }
 
+setInterval(()=>{
+    
+    yellowFunction()
+        pinkFunction()
+        greenFunction()
+}) 
 
 
 // set the initial state and launch the game loop
 function begin(){
     idGameLoop = setInterval(gameLoop, 100);
     setInterval(moveRed, 100);
-      yellowFunction()
-     pinkFunction()
-     greenFunction()
+       
 }
 document.addEventListener("DOMContentLoaded", createBoard)
 // launch the game
