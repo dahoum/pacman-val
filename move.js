@@ -286,9 +286,7 @@ function gameLoop() {
         pacman.style.top = 8 * (pacmanRowIndex+1);
         pacman.style.left = 8 * (pacmanColumnIndex+1);
     }
-    document.getElementById('liveCount').textContent = eatCoins
-
-         
+      
     // reset 
     function reset(){
         clearInterval(movePinkId)
@@ -438,12 +436,20 @@ function gameLoop() {
 
 document.addEventListener("keydown", (e) => {
         lastPressedKey = e.code;
-        gameStart = true
-        
-        readySign.style.visibility = "hidden";
          }
 );
 }
+function startOfTheGame(){
+    startTimeOut = setTimeout(()=> {
+     gameStart = true
+     PacManDirection = "Left"
+     leftTurnIsAllowed = true
+     lastPressedKey = "ArrowLeft"
+     readySign.style.visibility = "hidden";
+}, 2000)
+}
+
+
 
 function createBoard() {
     let posy = 0;
@@ -1047,13 +1053,11 @@ function greenFunction(){
 
    setTimeout(() => {
        clearInterval(moveGreenUpandDown)
-       if(layout[pinkRowIndex+1][pinkColumnIndex] == 6){
            greenColumnIndex = 14
            greenRowIndex = 11
            green.style.top = 8 * (greenRowIndex+1)
            green.style.left = 8 * (greenColumnIndex+1)  
            moveGreenId = setInterval(moveGreenRandom, 100);
-       }
        
    } , 10000)
 } 
@@ -1238,10 +1242,12 @@ yellowDirection = "right";
 }
 let moveYellowUpandDown;
 let moveYellowId;
+
+
+
 function yellowFunction(){
-         moveYellowUpandDown = setInterval(moveYellow, 400);
-        
-    setTimeout(() => {
+    moveYellowUpandDown = setInterval(moveYellow, 400);
+      setTimeout(() => {
         clearInterval(moveYellowUpandDown)
             yellowColumnIndex = 14
             yellowRowIndex = 11
@@ -1251,19 +1257,46 @@ function yellowFunction(){
     } , 8000)
 }
 
-setInterval(()=>{
-    
-    yellowFunction()
-        pinkFunction()
-        greenFunction()
-}) 
 
+// get score from sprite sheet
+  setInterval(() => {
+    d =String(eatCoins)[0]
+    r =String(eatCoins)[1]
+    k =String(eatCoins)[2]
+    document.getElementById('coin2').style.visibility = "hidden"
+    document.getElementById('coin3').style.visibility = "hidden"
+   if(String(eatCoins).length == 2){
+    const coin = document.getElementById('coin0');
+    coin.style.backgroundPosition = `-${10 +(d * 10)}px  -453px`; 
+   }else if(String(eatCoins).length == 3){ 
+    document.getElementById('coin2').style.visibility = "visible";
+    
+    const coin = document.getElementById('coin0');
+    coin.style.backgroundPosition = `-${10 +(d * 10)}px  -453px`; 
+    const coin0 = document.getElementById('coin1');
+    coin0.style.backgroundPosition = `-${10 +(r * 10)}px  -453px`; 
+   }else if(String(eatCoins).length == 4){
+    document.getElementById('coin2').style.visibility = "visible";
+    document.getElementById('coin3').style.visibility = "visible"
+    const coin = document.getElementById('coin0');
+    coin.style.backgroundPosition = `-${10 +(d * 10)}px  -453px`; 
+    const coin0 = document.getElementById('coin1');
+    coin0.style.backgroundPosition = `-${10 +(r * 10)}px  -453px`; 
+    const coin1 = document.getElementById('coin2');
+    coin1.style.backgroundPosition = `-${10 +(k * 10)}px  -453px`; 
+    
+   }
+        
+  }, 20)
 
 // set the initial state and launch the game loop
 function begin(){
     idGameLoop = setInterval(gameLoop, 100);
     setInterval(moveRed, 100);
-       
+       yellowFunction()
+        pinkFunction()
+        greenFunction()
+        startOfTheGame()
 }
 document.addEventListener("DOMContentLoaded", createBoard)
 // launch the game

@@ -45,6 +45,7 @@ body{
     background-position: -10px -463px;
     z-index: 300000;
 }
+
 .ready {
     position: absolute;
     height: 10px;
@@ -222,3 +223,53 @@ body{
     z-index: 2000;
 }
 
+.coin0 {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -10px -453px;
+    z-index: 500000;
+}
+.coin1 {
+    position: absolute;
+    left: 10px;
+    height:10px;
+    width: 10px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -10px -453px;
+    z-index: 500000;
+}
+.coin2 {
+    position: absolute;
+    left: 20px;
+    height:10px;
+    width: 10px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -10px -453px;
+    z-index: 500000;
+}
+.coin3 {
+    position: absolute;
+    left: 30px;
+    height:10px;
+    width: 10px;
+    background-image: url(./images/secondImg.png);
+    background-color: transparent;
+    border-image: none;
+    background-position: -10px -453px;
+    z-index: 500000;
+}
+
+.score{
+    position: absolute;
+    left:  160px;
+    top: 265px;
+    
+}
