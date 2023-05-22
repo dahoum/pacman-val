@@ -440,16 +440,16 @@ if((pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex ||
         pacmanColumnIndex === redColumnIndex+1 && pacmanRowIndex === redRowIndex+1||
         pacmanColumnIndex === redColumnIndex-1 && pacmanRowIndex === redRowIndex-1 )
         && redIsBlue == true){
-            if(!(redColumnIndex === 14 && redRowIndex == 11)){
-                setInterval(() => {
-                    if(redColumnIndex < 14 ){
-                        redWantedDirection == "up"
+            // if(!(redColumnIndex === 14 && redRowIndex == 11)){
+            //     setInterval(() => {
+            //         if(redColumnIndex < 14 ){
+            //             redWantedDirection == "up"
 
-                    }else if(redColumnIndex > 14){
-                        redWantedDirection == "down"
-                    }
-                }, 20)
-            }
+            //         }else if(redColumnIndex > 14){
+            //             redWantedDirection == "down"
+            //         }
+            //     }, 20)
+            // }
         redRowIndex = 11
         redColumnIndex = 14
         red.style.top = 8 * (redRowIndex+1);
