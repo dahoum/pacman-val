@@ -138,6 +138,16 @@ let pinkIsBlue = false
 let yellowIsBlue = false;
 let greenIsBlue = false;
 
+let redFrame;
+let currentRedFrameIndex = 0;
+let currentPinkFrameIndex = 0;
+let currentYellowFrameIndex;
+let currentGreenFrameIndex;
+let animationOfRedGhostBlue;
+let greenFrame;
+let movePinkUpandDown;
+
+
 function gameLoop() {
     
 //   movement in matrix
@@ -287,6 +297,208 @@ function gameLoop() {
         pacman.style.left = 8 * (pacmanColumnIndex+1);
     }
       
+
+        if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
+        //animation red in blue
+        redIsBlue = true;
+        blueAnimate = setInterval(() => {
+            if(redIsBlue === true){
+                redFrame = [
+                    '80px -65px',
+                    '94px -65px'
+                ]
+            }
+        }, 30)
+        setInterval(() => {
+             setTimeout(()=>{
+            if(redIsBlue === true){
+        redFrame = [
+                '80px -65px',
+                '94px -65px',
+                '47px -65px',
+                '63px -65px'
+                ]
+             }
+            
+        }, 9000)
+        }, 30)
+        let currentRedFrameIndex = 0;
+        animationOfRedGhostBlue = setInterval(() => {
+        red.style.backgroundPosition = redFrame[currentRedFrameIndex];
+        currentRedFrameIndex = (currentRedFrameIndex + 1)  % redFrame.length;
+        }, 10)
+
+        // animation pink in blue
+        pinkIsBlue = true;
+
+        blueAnimateP = setInterval(() => {
+            if(pinkIsBlue === true){
+                pinkFrame = [
+                    '80px -65px',
+                    '94px -65px'
+                ]
+            }
+        }, 30)
+
+        setInterval(() => {
+            setTimeout(()=>{
+           if(pinkIsBlue === true){
+                redFrame = [
+               '80px -65px',
+               '94px -65px',
+               '47px -65px',
+               '63px -65px'
+                ]
+            }
+           
+       }, 9000)
+       }, 30)
+
+       currentPinkFrameIndex = 0;
+          
+         setInterval(() => {
+             pink.style.backgroundPosition = pinkFrame[currentPinkFrameIndex];
+              currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
+          }, 20)
+
+        //   animation yellow in blue
+        yellowIsBlue = true;
+
+
+        blueAnimateY = setInterval(() => {
+            if(yellowIsBlue === true){
+                yellowFrame = [
+                    '80px -65px',
+                    '94px -65px'
+                ]
+            }
+        }, 30)
+
+        setInterval(() => {
+            setTimeout(()=>{
+           if(yellowIsBlue === true){
+                yellowFrame = [
+               '80px -65px',
+               '94px -65px',
+               '47px -65px',
+               '63px -65px'
+                ]
+            }
+           
+       }, 9000)
+       }, 30)
+
+       currentYellowFrameIndex = 0;
+       setInterval(() => {
+        yellow.style.backgroundPosition = yellowFrame[currentYellowFrameIndex];
+        currentYellowFrameIndex = (currentYellowFrameIndex + 1)  % yellowFrame.length;
+   }, 20)
+       
+
+   //   animation green in blue
+   greenIsBlue = true;
+
+   blueAnimateG = setInterval(() => {
+    if(greenIsBlue === true){
+        greenFrame = [
+            '80px -65px',
+            '94px -65px'
+        ]
+    }
+    }, 30)
+
+    setInterval(() => {
+        setTimeout(()=>{
+       if(greenIsBlue === true){
+            greenFrame = [
+           '80px -65px',
+           '94px -65px',
+           '47px -65px',
+           '63px -65px'
+            ]
+        }
+   }, 9000)
+   }, 30)
+
+   setInterval(() => {
+    green.style.backgroundPosition = greenFrame[currentGreenFrameIndex];
+     currentGreenFrameIndex = (currentGreenFrameIndex + 1)  % greenFrame.length;
+ }, 20)
+   
+
+    function clearInS(){ 
+        redIsBlue = false
+        pinkIsBlue = false
+        yellowIsBlue = false
+        greenIsBlue = false        
+    }
+     setTimeout(clearInS, 10000)
+}
+
+
+if((pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex || 
+        pacmanColumnIndex === redColumnIndex+1 && pacmanRowIndex === redRowIndex+1||
+        pacmanColumnIndex === redColumnIndex-1 && pacmanRowIndex === redRowIndex-1 )
+        && redIsBlue == true){
+            if(!(redColumnIndex === 14 && redRowIndex == 11)){
+                setInterval(() => {
+                    if(redColumnIndex < 14 ){
+                        redWantedDirection == "up"
+
+                    }else if(redColumnIndex > 14){
+                        redWantedDirection == "down"
+                    }
+                }, 20)
+            }
+        redRowIndex = 11
+        redColumnIndex = 14
+        red.style.top = 8 * (redRowIndex+1);
+        red.style.left = 8 * (redColumnIndex+1);
+        eatCoins += 200
+        redIsBlue = false
+        clearInterval(blueAnimate)
+   }
+
+if((pacmanColumnIndex === pinkColumnIndex && pacmanRowIndex === pinkRowIndex || 
+    pacmanColumnIndex === pinkColumnIndex+1 && pacmanRowIndex === pinkRowIndex+1||
+    pacmanColumnIndex === pinkColumnIndex-1 && pacmanRowIndex === pinkRowIndex-1) &&
+    pinkIsBlue == true){
+        pinkRowIndex = 11
+        pinkColumnIndex = 14
+        pink.style.top = 8 * (pinkRowIndex+1);
+        pink.style.left = 8 * (pinkColumnIndex+1);
+        pinkIsBlue = false
+        eatCoins += 200
+        clearInterval(blueAnimateP)
+       }
+
+if((pacmanColumnIndex === yellowColumnIndex && pacmanRowIndex === yellowRowIndex || 
+    pacmanColumnIndex === yellowColumnIndex+1 && pacmanRowIndex === yellowRowIndex+1||
+    pacmanColumnIndex === yellowColumnIndex-1 && pacmanRowIndex === yellowRowIndex-1) &&
+    yellowIsBlue == true){
+        yellowRowIndex = 11
+        yellowColumnIndex = 14
+        yellow.style.top = 8 * (yellowRowIndex+1);
+        yellow.style.left = 8 * (yellowColumnIndex+1);
+        yellowIsBlue = false
+        eatCoins += 200
+        clearInterval(blueAnimateY)
+       }
+    
+
+if((pacmanColumnIndex === greenColumnIndex && pacmanRowIndex === greenRowIndex || 
+    pacmanColumnIndex === greenColumnIndex+1 && pacmanRowIndex === greenRowIndex+1||
+    pacmanColumnIndex === greenColumnIndex-1 && pacmanRowIndex === greenRowIndex-1)
+    && greenIsBlue === true){
+    greenRowIndex = 11
+    greenColumnIndex = 14
+    green.style.top = 8 * (greenRowIndex+1);
+    green.style.left = 8 * (greenColumnIndex+1);
+    clearInterval(blueAnimateG)
+    greenIsBlue = false
+    eatCoins += 200
+}
+
     // reset 
     function reset(){
         clearInterval(movePinkId)
@@ -336,11 +548,18 @@ function gameLoop() {
         pinkFunction()
         yellowFunction()
         greenFunction()
+
+        redIsBlue = false;
+        pinkIsBlue = false;
+        yellowIsBlue = false;
+        greenIsBlue = false;
        
     }
 
+
+
     let dieAn
-    if(redIsBlue === false){
+    if(redIsBlue === false || pinkIsBlue === false  || yellowIsBlue === false || greenIsBlue === false ){
         if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex || 
             pacmanColumnIndex === redColumnIndex+1 && pacmanRowIndex === redRowIndex+1||
             pacmanColumnIndex === redColumnIndex-1 && pacmanRowIndex === redRowIndex-1 ||
@@ -381,7 +600,6 @@ function gameLoop() {
            dieAn = setInterval(() => {
                  pacman.style.backgroundPosition = frame[currentFrameIndex];
                  currentFrameIndex = (currentFrameIndex + 1)  % frame.length;
-                 console.log(currentFrameIndex);
                  if(currentFrameIndex === 5){
                     pacman.style.visibility = "hidden";
                  }
@@ -434,10 +652,12 @@ function gameLoop() {
 
 
 
+startTimeOut = setTimeout(()=> {
 document.addEventListener("keydown", (e) => {
         lastPressedKey = e.code;
          }
 );
+}, 2000)
 }
 function startOfTheGame(){
     startTimeOut = setTimeout(()=> {
@@ -519,7 +739,7 @@ function createBoard() {
                     
 }
 
-// red wanted direction 
+// ghosts wanted direction 
 setInterval(()=>{
        const directions = ["up", "down", "left", "right"];
     redWantedDirection = directions[Math.floor(Math.random() * 4)];
@@ -530,7 +750,6 @@ setInterval(()=>{
 
 
 function moveRed(){
-      let currentRedFrameIndex = 0;
       if(gameStart == true){
         
     if((layout[redRowIndex][redColumnIndex+1] == 0 || layout[redRowIndex][redColumnIndex+1] == 4 || layout[redRowIndex][redColumnIndex+1] == 3)){
@@ -625,45 +844,6 @@ function moveRed(){
         redRowIndex++
     }
 
-        if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
-        
-            redFrameP = [
-            '80px -65px',
-            '94px -65px'
-        ]
-       redIsBlue = true
-       let currentRedFrameIndexP = 0;
-      
-       
-      rrrr = setInterval(() => {
-        redFrame = redFrameP
-        currentRedFrameIndex = currentRedFrameIndexP
-        red.style.backgroundPosition = redFrameP[currentRedFrameIndexP];
-             currentRedFrameIndexP = (currentRedFrameIndexP + 1)  % redFrameP.length;
-             
-        }, 10)
-          function clearInS(){ 
-            redFrameP = redFrame
-            currentRedFrameIndexP = currentRedFrameIndex
-            redIsBlue = false
-        clearInterval(rrrr)
-    }
-    
-   redIsBlueTimeOut = setTimeout(clearInS, 10000)
-    }
-   if(redIsBlue === true){
-        if(pacmanColumnIndex === redColumnIndex && pacmanRowIndex === redRowIndex || 
-            pacmanColumnIndex === redColumnIndex+1 && pacmanRowIndex === redRowIndex+1||
-            pacmanColumnIndex === redColumnIndex-1 && pacmanRowIndex === redRowIndex-1){
-        redRowIndex = 11
-        redColumnIndex = 14
-        red.style.top = 8 * (redRowIndex+1);
-        red.style.left = 8 * (redColumnIndex+1);
-        clearInterval(rrrr)
-        redIsBlue = false
-        eatCoins += 200
-       }
-    }
       }
    
 }
@@ -693,8 +873,6 @@ function movePink(){
         pinkUpTurnIsAllowed = true
         pinkDownTurnIsAllowed = false
     }
-
-
     if ( pinkUpTurnIsAllowed ){
         pink.style.top = parseInt(pink.style.top) - 8 + "px";
         pinkRowIndex--   
@@ -717,10 +895,6 @@ function movePink(){
             currentPinkFrameIndex = (currentPinkFrameIndex + 1)  % pinkFrame.length;
         }, 20)
     }
-
-   
-    
-
 }
 }
 function movePinkRandom(){
@@ -810,45 +984,6 @@ function movePinkRandom(){
           pinkRowIndex++
       }
   
-          if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
-          
-              pinkFrameP = [
-              '80px -65px',
-              '94px -65px'
-          ]
-         pinkIsBlue = true
-         let currentPinkFrameIndexP = 0;
-        
-         
-        pppp = setInterval(() => {
-          pinkFrame = pinkFrameP
-          currentPinkFrameIndex = currentPinkFrameIndexP
-          pink.style.backgroundPosition = pinkFrameP[currentPinkFrameIndexP];
-               currentPinkFrameIndexP = (currentPinkFrameIndexP + 1)  % pinkFrameP.length;
-               
-          }, 10)
-            function clearInPink(){ 
-              pinkFrameP = pinkFrame
-              currentPinkFrameIndexP = currentPinkFrameIndex
-              pinkIsBlue = false
-          clearInterval(pppp)
-      }
-      
-     pinkIsBlueTimeOut = setTimeout(clearInPink, 10000)
-      }
-     if(pinkIsBlue === true){
-          if(pacmanColumnIndex === pinkColumnIndex && pacmanRowIndex === pinkRowIndex || 
-              pacmanColumnIndex === pinkColumnIndex+1 && pacmanRowIndex === pinkRowIndex+1||
-              pacmanColumnIndex === pinkColumnIndex-1 && pacmanRowIndex === pinkRowIndex-1){
-          pinkRowIndex = 11
-          pinkColumnIndex = 14
-          pink.style.top = 8 * (pinkRowIndex+1);
-          pink.style.left = 8 * (pinkColumnIndex+1);
-          clearInterval(pppp)
-          pinkIsBlue = false
-          eatCoins += 200
-         }
-      }
         }
      
   }
@@ -1004,46 +1139,6 @@ greenDirection = "right";
       green.style.top = parseInt(green.style.top) + 8 + "px";
       greenRowIndex++
   }
-
-      if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
-      
-          greenFrameP = [
-          '80px -65px',
-          '94px -65px'
-      ]
-     greenIsBlue = true
-     let currentGreenFrameIndexP = 0;
-    
-     
-    gggg = setInterval(() => {
-      greenFrame = greenFrameP
-      currentGreenFrameIndex = currentGreenFrameIndexP
-      green.style.backgroundPosition = greenFrameP[currentGreenFrameIndexP];
-           currentGreenFrameIndexP = (currentGreenFrameIndexP + 1)  % greenFrameP.length;
-           
-      }, 10)
-        function clearInG(){ 
-          greenFrameP = greenFrame
-          currentGreenFrameIndexP = currentGreenFrameIndex
-          greenIsBlue = false
-      clearInterval(gggg)
-  }
-  
- greenIsBlueTimeOut = setTimeout(clearInG, 10000)
-  }
- if(greenIsBlue === true){
-      if(pacmanColumnIndex === greenColumnIndex && pacmanRowIndex === greenRowIndex || 
-          pacmanColumnIndex === greenColumnIndex+1 && pacmanRowIndex === greenRowIndex+1||
-          pacmanColumnIndex === greenColumnIndex-1 && pacmanRowIndex === greenRowIndex-1){
-      greenRowIndex = 11
-      greenColumnIndex = 14
-      green.style.top = 8 * (greenRowIndex+1);
-      green.style.left = 8 * (greenColumnIndex+1);
-      clearInterval(gggg)
-      greenIsBlue = false
-      eatCoins += 200
-     }
-  }
     }
 }
 let moveGreenUpandDown;
@@ -1110,6 +1205,8 @@ function moveYellow(){
             currentYellowFrameIndex = (currentYellowFrameIndex + 1)  % yellowFrame.length;
         }, 20)
     }
+
+
 }
 }
 function moveYellowRandom(){
@@ -1199,45 +1296,6 @@ yellowDirection = "right";
       yellowRowIndex++
   }
 
-      if(layout[pacmanRowIndex][pacmanColumnIndex+1] == 3 || layout[pacmanRowIndex][pacmanColumnIndex-1] == 3 ||  layout[pacmanRowIndex-1][pacmanColumnIndex] == 3 || layout[pacmanRowIndex+1][pacmanColumnIndex] == 3 ){
-      
-          yellowFrameP = [
-          '80px -65px',
-          '94px -65px'
-      ]
-     yellowIsBlue = true
-     let currentYellowFrameIndexP = 0;
-    
-     
-    yyyy = setInterval(() => {
-      yellowFrame = yellowFrameP
-      currentYellowFrameIndex = currentYellowFrameIndexP
-      yellow.style.backgroundPosition = yellowFrameP[currentYellowFrameIndexP];
-           currentYellowFrameIndexP = (currentYellowFrameIndexP + 1)  % yellowFrameP.length;
-           
-      }, 10)
-        function clearInY(){ 
-          yellowFrameP = yellowFrame
-          currentYellowFrameIndexP = currentYellowFrameIndex
-          yellowIsBlue = false
-      clearInterval(yyyy)
-  }
-  
- yellowIsBlueTimeOut = setTimeout(clearInY, 10000)
-  }
- if(yellowIsBlue === true){
-      if(pacmanColumnIndex === yellowColumnIndex && pacmanRowIndex === yellowRowIndex || 
-          pacmanColumnIndex === yellowColumnIndex+1 && pacmanRowIndex === yellowRowIndex+1||
-          pacmanColumnIndex === yellowColumnIndex-1 && pacmanRowIndex === yellowRowIndex-1){
-      yellowRowIndex = 11
-      yellowColumnIndex = 14
-      yellow.style.top = 8 * (yellowRowIndex+1);
-      yellow.style.left = 8 * (yellowColumnIndex+1);
-      clearInterval(yyyy)
-      yellowIsBlue = false
-      eatCoins += 200
-     }
-  }
     }
 }
 let moveYellowUpandDown;

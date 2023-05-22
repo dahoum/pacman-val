@@ -65,6 +65,8 @@ body{
     background-color: transparent;
     border-image: none;
     background-position: 175px -65px;
+
+
     /* background-position: 223px -65px; */
 }
 .pink{
@@ -122,8 +124,8 @@ body{
     /* background-position: 128px -113px; */
     /* background-position: 112px -113px; */
     /* Up */
-    background-position: 160px -113px;
-    /* background-position: 144px -113px; */
+    /* background-position: 160px -113px; */
+    background-position: 144px -113px;
     /* Left */
     /* background-position: 192px -113px; */
     /* background-position: 176px -113px; */
